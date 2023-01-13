@@ -64,6 +64,7 @@ class KaryawanController extends _CrudController
                     'create' => 'required',
                     'edit' => 'required'
                 ],
+                'type' => 'datepicker',
                 'lang' => 'general.tgl_masuk',
             ],
             'kode' => [
@@ -80,6 +81,7 @@ class KaryawanController extends _CrudController
                     'edit' => 'required'
                 ],
                 'list' => 0,
+                'type' => 'datepicker',
                 'lang' => 'general.dob',
             ],
             'gender' => [
@@ -88,6 +90,7 @@ class KaryawanController extends _CrudController
                     'edit' => 'required'
                 ],
                 'list' => 0,
+                'type' => 'select2',
                 'lang' => 'general.gender',
             ],
             'no_hp' => [
@@ -104,6 +107,7 @@ class KaryawanController extends _CrudController
                     'edit' => 'required'
                 ],
                 'list' => 0,
+                'type' => 'textarea',
                 'lang' => 'general.alamat',
             ],
             'gaji_pokok' => [
@@ -140,6 +144,7 @@ class KaryawanController extends _CrudController
         }
 
         $this->data['listSet']['status'] = get_list_active_inactive();
+        $this->data['listSet']['gender'] = get_list_gender();
         $this->data['listSet']['position_id'] = $position;
         $this->listView['show'] = env('ADMIN_TEMPLATE').'.page.karyawan.forms';
     }
