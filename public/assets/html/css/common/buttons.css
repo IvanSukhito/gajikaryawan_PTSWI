@@ -1,0 +1,49 @@
+.btn {
+    font-weight: bold;
+    border-radius: 0;
+}
+.btn-warning {
+    background-color: #ffd169;
+    color: #002955;
+}
+.btn-primary {
+    background-color: #002955;
+    border-color: #002955;
+    font-size: 14px;
+}
+.btn-default {
+    background-color: #e6e6e6;
+    border-color: #e6e6e6;
+    color: #002955;
+    font-size: 14px;
+}
+.btn-lg {
+    font-size: 14px;
+    padding: 8px 82px;
+}
+.btn-login,
+a.btn-login {
+    color: white;
+    width: 350px;
+    margin: 0 auto;
+    max-width: 100%;
+    font-weight: 500;
+    font-size: 12px;
+}
+.btn-login-facebook {
+    background-color: #3c63c2;
+}
+.btn-login-facebook:hover,
+.btn-login-facebook:active,
+.btn-login-facebook:focus {
+    background-color: #0e3084
+}
+.btn-login-instagram {
+    background-color: #b50085;
+}
+.btn-login-instagram:hover,
+.btn-login-instagram:active,
+.btn-login-instagram:focus {
+    background-color: #8c0468;
+}
+

@@ -1,0 +1,720 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="shortcut icon" type="image/ico" href="images/favicon.ico" />
+
+    <link rel="stylesheet" href="css/main.css">
+
+    <title>Korea Tourism Indonesia</title>
+</head>
+
+<body class="bg-page">
+<header id="kto-header" class="overlay">
+    <div class="container">
+        <nav class="navbar navbar-light">
+            <a class="navbar-brand" href="https://www.visitkorea.or.id/akudankorea">
+                <img src="images/iyk.png" alt="logo-header" />
+            </a>
+            <!--<button class="btn btn-blue" data-toggle="modal" data-target="#loginPopup">Masuk / Daftar baru</button>-->
+            <!--KETIKA LOGGED IN-->
+            <div class="btn-pro">
+                <span>Hi, Sally Soul</span>
+<!--
+                <button class="btn btn-profile" data-toggle="modal" data-target="#loginProfile">SS</button>
+-->
+                <button class="btn btn-profile" data-toggle="modal" data-target="#loginProfile">
+                    <img src="images/user.png" alt="user" />
+                </button>
+            </div>
+
+            <div class="navbar-collapse" id="navbarKTO">
+                <button class="navbar-toggler hamburger hamburger--elastic">
+                    <span class="hamburger-box">
+                        <span class="hamburger-inner"></span>
+                    </span>
+                </button>
+                <div class="p-3 pb-5">
+                    <h5 class="color-blackgrey font-medium">Hi, <span class="color-blue">Jacob</span></h5>
+                    <button class="btn btn-login btn-orange">LOG OUT</button>
+                    <button class="btn btn-login btn-orange"  data-toggle="modal" data-target="#modalLogin">DAFTAR / MASUK</button>
+                </div>
+
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item ">
+                        <a class="nav-link" href="#">
+                            Home
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="#">
+                            Gallery Peserta
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="#">
+                            Video Gallery
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="#">
+                            3rd Province
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="#">
+                            Terms & Condition
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+    </div>
+</header>
+
+<div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="modalLoginLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <img src="images/close.png" />
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6 text-center">
+                        <div class="content-left">
+                            <h5>#KeKoreaAja</h5>
+                            <p>Masuk dengan akun sosial media kamu</p>
+                            <button class="btn btn-login btn-login-facebook d-block"><i class="fa fa-facebook-square"></i> Masuk dengan Facebook</button>
+                            <span class="d-block my-1 my-md-3">ATAU</span>
+                            <button class="btn btn-login btn-login-instagram d-block"><i class="fa fa-instagram"></i> Masuk dengan Instagram</button>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="content-right">
+                            <h3>Hai!</h3>
+                            <p>Selamat datang ke web
+                                aktivasi #KeKoreaAja </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="loginPopup" tabindex="-1" aria-labelledby="loginPopupLabel" aria-hidden="true">
+    <div class="modal-dialog modal-kto">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="loginPopupLabel">Masuk</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row justify-content-center">
+                    <div class="col-md-10">
+                        <form>
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Email" />
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="Password" />
+                            </div>
+                            <button type="button" class="btn btn-trans p-0 d-block mb-3" data-toggle="modal" data-target="#loginForgot">Forget password?</button>
+                            <button type="submit" class="btn btn-blue full">Masuk</button>
+                            <div class="text-center mt-3">
+                                <button type="button" class="btn btn-trans" data-toggle="modal" data-target="#register">Daftar baru</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="loginForgot" tabindex="-1" aria-labelledby="loginForgotLabel" aria-hidden="true">
+    <div class="modal-dialog modal-kto">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="loginForgotLabel">Lupa password?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p class="mb-3 mb-md-4">Masukkan email yang terdaftar di Korea Mindful Journey dan <br /> kami akan mengirimkan link untuk reset password.</p>
+                <div class="row justify-content-center">
+                    <div class="col-md-10">
+
+                        <form>
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Email" />
+                            </div>
+
+                            <button type="submit" class="btn btn-blue full mt-3 mt-md-5">Kirim</button>
+
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="loginForgotChange" tabindex="-1" aria-labelledby="loginForgotChangeLabel" aria-hidden="true">
+    <div class="modal-dialog modal-kto">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="loginForgotChangeLabel">Ubah password</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row justify-content-center">
+                    <div class="col-md-10">
+                        <form>
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="Password Saat Ini" />
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="Password Baru" />
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="Konfirmasi Password Baru" />
+                            </div>
+                            <button type="submit" class="btn btn-blue full mt-3 mt-md-5">Ubah</button>
+
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="loginProfile" tabindex="-1" aria-labelledby="loginProfileLabel" aria-hidden="true">
+    <div class="modal-dialog modal-kto">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="loginProfileLabel">Profil</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row justify-content-center">
+                    <div class="col-md-10">
+                        <div class="profile-name">
+                            <div class="btn-profile">SS</div>
+                            <div class="d-block">
+                                <p class="mb-0 text-left">Sally Soul </p>
+                                <p class="text-left">sallysoul@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-md-10">
+                                <button type="button" class="btn btn-blue-trans full mt-3" data-toggle="modal" data-target="#editProfile">Edit profil</button>
+                                <button type="button" class="btn btn-blue-trans full mt-3 mb-3 mb-md-5" data-toggle="modal" data-target="#loginForgotChange">Ubah password</button>
+
+                                <hr />
+                                <button type="button" class="btn btn-blue full mt-3 mt-md-5">Keluar</button>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="editProfile" tabindex="-1" aria-labelledby="editProfileLabel" aria-hidden="true">
+    <div class="modal-dialog modal-kto">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editProfileLabel">Edit Profil</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row justify-content-center">
+                    <div class="col-md-10">
+
+                        <form>
+                            <h3 class="text-center mb-3">Data diri</h3>
+
+                            <div class="profile-name big justify-content-center">
+                                <div class="btn-profile">SS</div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Nama sesuai KTP" />
+                            </div>
+                            <div class="form-group d-flex">
+                                <div class="form-check ">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                    <label class="form-check-label" for="inlineRadio1">Wanita</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                    <label class="form-check-label" for="inlineRadio2">Pria</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="No. Handphone" />
+                            </div>
+                            <div class="form-group">
+                                <input type="date" class="form-control" placeholder="Tanggal Lahir" />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Tempat Lahir" />
+                            </div>
+                            <h3 class="text-center my-3">Akun Login</h3>
+                            <div class="form-group">
+                                <input type="text" class="form-control" value="ss@hh.com" disabled />
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" value="cccwcecwe" disabled />
+                            </div>
+                        </form>
+                        <div class="row justify-content-center">
+                            <div class="col-md-10">
+                                <button type="button" class="btn btn-blue full mt-3 mt-md-5">Ubah</button>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="register" tabindex="-1" aria-labelledby="registerLabel" aria-hidden="true">
+    <div class="modal-dialog modal-kto">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="registerLabel">Daftar Baru</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row justify-content-center">
+                    <div class="col-md-10">
+                        <h3 class="text-center mb-3">Data diri</h3>
+
+                        <form>
+                            <div class="profile-name big justify-content-center">
+                                <div class="btn-profile">
+                                    <img src="images/register.svg" class="img-fluid" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Nama sesuai KTP" />
+                            </div>
+                            <div class="form-group d-flex">
+                                <div class="form-check ">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option1">
+                                    <label class="form-check-label" for="inlineRadio3">Wanita</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option2">
+                                    <label class="form-check-label" for="inlineRadio4">Pria</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="No. Handphone" />
+                            </div>
+                            <div class="form-group">
+                                <input type="date" class="form-control"  id="date_time" placeholder="Tanggal Lahir" />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Tempat Lahir" />
+                            </div>
+                            <h3 class="text-center my-3">Akun Login</h3>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Email" />
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="Password" />
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="Konfirmasi Password" />
+                            </div>
+                        </form>
+                        <div class="row justify-content-center">
+                            <div class="col-md-10">
+                                <button type="button" class="btn btn-blue full mt-3 mt-md-5">Ubah</button>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+    <main class="home">
+        <section class="section section-banner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-7 col-lg-5 text-center text-md-left">
+                        <img src="images/name.svg" alt="name" />
+                        <div class="box">
+                            <p class="mb-0">Banyak cara untuk menemukan kebahagiaan, salah satunya dengan mengeksplorasi beragam destinasi di Korea yang memanjakan jiwa dan raga, serta menjadikannya pengalaman yang tidak terlupakan.</p>
+                        </div>
+                        <a href="#section_riddle_mobile" class="btn btn-blue">Jawab Riddle</a>
+                    </div>
+                </div>
+            </div>
+         </section>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <section class="section section-top row align-items-center">
+                        <div class="col-md-6">
+                            <img src="images/hadiah.png" alt="hadiah" />
+                        </div>
+                        <div class="col-md-6 text-center text-md-left mt-3 mt-md-0">
+                            <p class="mb-0">Jawab riddle seputar destinasi bertema Medical & Wellness di Korea <strong>untuk memenangkan Mindful Kit berisi Google Home/speaker, diffuser, aromatherapy candles, dan voucher belanja senilai Rp500.000</strong> yang siap menemanimu relaksasi sekaligus memanjakan diri.</p>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <div class="accordion accordion-kto d-md-none" id="accordionKTO">
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Korea Mindful Journey
+                        </button>
+                    </h2>
+                </div>
+
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionKTO">
+                    <div class="card-body text-center">
+
+                        <p>Kamu sedang berlibur ke Korea. Tidak hanya akan mengunjungi tempat wisata yang indah dan menyenangkan, di liburan kali ini kamu juga ingin mengeksplorasi destinasi menarik lainnya. <br />
+                            Agar liburan kali ini lebih lengkap dan mindful secara jiwa dan raga, kamu memutuskan untuk mengunjungi destinasi bertema Medical & Wellness, serta berencana melakukan beberapa perawatan di sana. <br />
+                            Namun, sebelum mendapatkan perawatan yang diinginkan, kamu harus memecahkan beberapa riddles. <br />
+                            Ini akan menjadi perjalanan wisata bertema Medical & Wellness kamu di Korea!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card card-2">
+                <div class="card-header" id="headingTwo">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Cara Bermain
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionKTO">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-4">
+                                <img src="images/1.png" alt="image-1" class="img-icon" />
+                            </div>
+                            <div class="col-8">
+                                <p>Login menggunakan Facebook atau email kamu</p>
+                            </div>
+
+                            <div class="col-4">
+                                <img src="images/2.svg" alt="image-2" class="img-icon" />
+                            </div>
+                            <div class="col-8">
+                                <p>Jawab riddle seputar destinasi bertema Medical & Wellness di Korea</p>
+                            </div>
+
+                            <div class="col-4">
+                                <img src="images/3.svg" alt="image-3" class="img-icon" />
+                            </div>
+                            <div class="col-8">
+                                <p>Perhatikan petunjuk dan cari bantuan di visitkorea.or.id/wellness atau visitkorea.or.id/medical sebagai bantuan</p>
+                            </div>
+
+                            <div class="col-4">
+                                <img src="images/4.svg" alt="image-4" class="img-icon" />
+                            </div>
+                            <div class="col-8">
+                                <p>Setelah menyelesaikan enam riddle, download dan upload mantra, share di feed IG kamu, tag @ktoid, mention tiga teman yang ingin kamu ajak ke #KoreaMindfulJourney beserta alasannya</p>
+                            </div>
+                            <div class="col-4">
+                                <img src="images/5.svg" alt="image-5" class="img-icon" />
+                            </div>
+                            <div class="col-8">
+                                <p>Menangkan Mindful Kit (Google Home/speaker, diffuser, aromatherapy candles, dan voucher belanja senilai Rp500.000)</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="card card-3">
+                <div class="card-header" id="headingThree">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                            Korea Mindful Journey
+                        </button>
+                    </h2>
+                </div>
+
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionKTO">
+                    <div class="card-body">
+                        <ol>
+                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. consectetur adipiscing elit,</li>
+                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. consectetur adipiscing elit,</li>
+                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. consectetur adipiscing elit,</li>
+                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. consectetur adipiscing elit,</li>
+                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. consectetur adipiscing elit,</li>
+                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. consectetur adipiscing elit,</li>
+                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. consectetur adipiscing elit,</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <div class="card card-4">
+                <div class="card-header" id="headingFour">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                            Pecahkan Riddlenya
+                        </button>
+                    </h2>
+                </div>
+
+                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionKTO">
+                    <div class="card-body">
+                        <div class="row mb-3">
+                            <div class="col-6">
+                                <img src="images/n1.svg" class="img-rid" alt="riddle" />
+                                <img src="images/ic1.svg" class="img-ic-rd" alt="icon-riddle" />
+                                <p>14 Juni 2021</p>
+                            </div>
+                            <div class="col-6">
+                                <img src="images/n2.svg" class="img-rid" alt="riddle" />
+                                <img src="images/ic2.svg" class="img-ic-rd" alt="icon-riddle" />
+                                <p>14 Juni 2021</p>
+                            </div>
+                            <div class="col-6">
+                                <img src="images/n3.svg" class="img-rid" alt="riddle" />
+                                <img src="images/ic3.svg" class="img-ic-rd" alt="icon-riddle" />
+                                <p>14 Juni 2021</p>
+                            </div>
+                            <div class="col-6">
+                                <img src="images/n4.svg" class="img-rid" alt="riddle" />
+                                <img src="images/ic1.svg" class="img-ic-rd" alt="icon-riddle" />
+                                <p>14 Juni 2021</p>
+                            </div>
+                            <div class="col-6">
+                                <img src="images/n5.svg" class="img-rid" alt="riddle" />
+                                <img src="images/ic5.svg" class="img-ic-rd" alt="icon-riddle" />
+                                <p>14 Juni 2021</p>
+                            </div>
+                            <div class="col-6">
+                                <img src="images/n6.svg" class="img-rid" alt="riddle" />
+                                <img src="images/ic6.svg" class="img-ic-rd" alt="icon-riddle" />
+                                <p>14 Juni 2021</p>
+                            </div>
+                            <div class="col-12 mt-3">
+                                <p class="mb-3">You can download the mantra after finished all the riddles challenge</p>
+                                <a href="#" class="btn btn-grey">Download Mantra</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container d-none d-md-block">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <section class="section section-quote">
+                        <hr />
+                        <h1>Korea Mindful Journey</h1>
+                        <p>Kamu sedang berlibur ke Korea. Tidak hanya akan mengunjungi tempat wisata yang indah dan menyenangkan, di liburan kali ini kamu juga ingin mengeksplorasi destinasi menarik lainnya. Agar liburan kali ini lebih lengkap dan mindful secara jiwa dan raga, kamu memutuskan untuk mengunjungi destinasi bertema Medical & Wellness, serta berencana melakukan beberapa perawatan di sana. Namun, sebelum mendapatkan perawatan yang diinginkan, kamu harus memecahkan beberapa riddles.</p>
+                        <p>Ini akan menjadi perjalanan wisata bertema Medical & Wellness kamu di Korea!</p>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <section class="section section-tabs d-none d-md-block">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active" id="cara-tab" data-toggle="tab" href="#cara" role="tab" aria-controls="cara" aria-selected="true">Cara Bermain</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="tnc-tab" data-toggle="tab" href="#tnc" role="tab" aria-controls="tnc" aria-selected="false">Syarat & Ketentuan</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="cara" role="tabpanel" aria-labelledby="cara-tab">
+                    <div class="container text-center">
+                        <div class="row">
+                            <div class="col-md">
+                                <img src="images/1.png" alt="image-1" class="img-icon" />
+                                <p>Login menggunakan Facebook atau email kamu</p>
+                            </div>
+                            <div class="col-md">
+                                <img src="images/2.svg" alt="image-2" class="img-icon" />
+                                <p>Jawab riddle seputar destinasi bertema Medical & Wellness di Korea</p>
+                            </div>
+                            <div class="col-md">
+                                <img src="images/3.svg" alt="image-3" class="img-icon" />
+                                <p>Perhatikan petunjuk dan cari bantuan di visitkorea.or.id/wellness atau visitkorea.or.id/medical sebagai bantuan</p>
+                            </div>
+                            <div class="col-md">
+                                <img src="images/4.svg" alt="image-4" class="img-icon" />
+                                <p>Setelah menyelesaikan enam riddle, download dan upload mantra, share di feed IG kamu, tag @ktoid, mention tiga teman yang ingin kamu ajak ke #KoreaMindfulJourney beserta alasannya</p>
+                            </div>
+                            <div class="col-md">
+                                <img src="images/5.svg" alt="image-5" class="img-icon" />
+                                <p>Menangkan Mindful Kit (Google Home/speaker, diffuser, aromatherapy candles, dan voucher belanja senilai Rp500.000)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="tnc" role="tabpanel" aria-labelledby="tnc-tab">
+                    <div class="container">
+                        <h2 class="mb-3 mb-md-5 text-center">Syarat & Ketentuan</h2>
+                        <p>1. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. consectetur adipiscing elit, 2. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. consectetur adipiscing elit, 3. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. consectetur adipiscing elit, 4. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. consectetur adipiscing elit, 5. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. consectetur adipiscing elit, 6. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. consectetur adipiscing elit, 7. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. consectetur adipiscing elit, 8. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. consectetur adipiscing elit, 9. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. consectetur adipiscing elit, 10. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. consectetur adipiscing elit,</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section section-riddle d-none d-md-block" id="section_riddle_mobile">
+            <div class="container">
+                <h2 class="mb-md-4 mb-md-5">Pecahkan Riddlenya</h2>
+
+                <div class="row mb-3">
+                    <div class="col-md">
+                        <img src="images/n1.svg" class="img-rid" alt="riddle" />
+                        <img src="images/ic1.svg" class="img-ic-rd" alt="icon-riddle" />
+                        <p>14 Juni 2021</p>
+                    </div>
+                    <div class="col-md">
+                        <img src="images/n2.svg" class="img-rid" alt="riddle" />
+                        <img src="images/ic2.svg" class="img-ic-rd" alt="icon-riddle" />
+                        <p>14 Juni 2021</p>
+                    </div>
+                    <div class="col-md">
+                        <img src="images/n3.svg" class="img-rid" alt="riddle" />
+                        <img src="images/ic3.svg" class="img-ic-rd" alt="icon-riddle" />
+                        <p>14 Juni 2021</p>
+                    </div>
+                    <div class="col-md">
+                        <img src="images/n4.svg" class="img-rid" alt="riddle" />
+                        <img src="images/ic1.svg" class="img-ic-rd" alt="icon-riddle" />
+                        <p>14 Juni 2021</p>
+                    </div>
+                    <div class="col-md">
+                        <img src="images/n5.svg" class="img-rid" alt="riddle" />
+                        <img src="images/ic5.svg" class="img-ic-rd" alt="icon-riddle" />
+                        <p>14 Juni 2021</p>
+                    </div>
+                    <div class="col-md">
+                        <img src="images/n6.svg" class="img-rid" alt="riddle" />
+                        <img src="images/ic6.svg" class="img-ic-rd" alt="icon-riddle" />
+                        <p>14 Juni 2021</p>
+                    </div>
+                </div>
+
+                <p class="mb-3">You can download the mantra after finished all the riddles challenge</p>
+                <a href="#" class="btn btn-grey">Download Mantra</a>
+            </div>
+
+        </section>
+
+
+    </main>
+    <footer id="kto-footer">
+        <div class="footer-top">
+            <div class="container">
+                <nav class="nav d-block d-xl-flex justify-content-center">
+                    <a class="nav-link active" href="#"> Log In </a>
+                    <a class="nav-link" href="#">Register</a>
+                    <a class="nav-link" href="#">Video BTOB</a>
+                    <a class="nav-link" href="#">K-Events</a>
+                    <a class="nav-link" href="#">Great Deals</a>
+                    <a class="nav-link" href="#">Testimonial</a>
+                </nav>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-6 col-md-3 col-xl-2">
+                        <a class="navbar-brand mr-0" href="#">
+                            <img src="images/korean-tourism-organization.png" alt="logo-footer" />
+                        </a>
+                    </div>
+                    <div class="col-6 col-md">
+                        <h3>KTO Jakarta</h3>
+                        <nav class="nav d-block d-xl-flex justify-content-start">
+                            <a class="nav-link" href="#">Notifikasi</a>
+                            <a class="nav-link" href="#">Tentang Kami</a>
+                            <a class="nav-link" href="#">Hubungi Kami</a>
+                            <a class="nav-link" href="#">Privacy Policy</a>
+                            <a class="nav-link" href="#">Site Map</a>
+                        </nav>
+                        <div class="d-none d-md-block copy">
+                            <p>Copyright Pensil Media, 2018 All Rights Reserved</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="social-media-group d-flex">
+                            <a class="nav-link social-link" href="#">
+                                <i class="fa fa-facebook-square"></i>
+                            </a>
+                            <a class="nav-link social-link" href="#">
+                                <i class="fa fa-twitter-square"></i>
+                            </a>
+                            <a class="nav-link social-link" href="#">
+                                <i class="fa fa-youtube-square"></i>
+                            </a>
+                            <a class="nav-link social-link" href="#">
+                                <i class="fa fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-12 d-md-none copy">
+                        <p>Copyright Pensil Media, 2018 All Rights Reserved</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+<!--
+    <script src="js/retina.min.js"></script>
+-->
+    <script src="js/lightcase.js"></script>
+    <script src="owlcarousel/owl.carousel.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

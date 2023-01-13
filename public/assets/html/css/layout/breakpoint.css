@@ -1,0 +1,442 @@
+@media (min-width: 576px) {
+
+
+}
+@media (min-width: 768px) {
+    section.section-banner {
+        background-image: url("../../images/banner.png");
+    }
+    p {
+        font-size: 16px;
+    }
+    .btn {
+        font-size: 16px;
+        padding: 5px 30px;
+    }
+    .btn-lg {
+        padding: 8px 82px;
+    }
+    .section {
+        padding: 30px 0;
+    }
+    #kto-header .navbar .navbar-brand img {
+        max-width: 100px;
+    }
+    #kto-header .navbar .navbar-brand.right img {
+        max-width: 80px;
+    }
+    #kto-header nav.navbar {
+        padding: 15px 0;
+    }
+    .hamburger-inner, .hamburger-inner:after, .hamburger-inner:before {
+        width: 35px;
+    }
+    #kto-footer .footer-top .nav {
+        column-count: 6;
+    }
+    #kto-footer .nav .nav-link {
+        padding: 5px 0;
+        border-right: 1px solid grey;
+        text-align: center;
+    }
+    #kto-footer .footer-top .nav .nav-link:nth-last-child(1) {
+        border-right: none;
+    }
+    #kto-footer .nav .nav-link:last-child {
+        border-right: none;
+    }
+    #kto-footer .footer-bottom .nav  {
+        column-count: 2;
+    }
+    #kto-footer .footer-bottom .nav .nav-link {
+        border-right: none;
+        padding: 0;
+        font-size: 14px;
+    }
+
+    #kto-footer .nav .nav-link {
+        font-size: 14px;
+    }
+    #kto-footer .footer-bottom .copy p {
+        text-align: left;
+    }
+    #kto-footer .footer-bottom {
+        padding: 40px 0 50px;
+    }
+    #kto-footer .footer-bottom .social-media-group {
+        justify-content: flex-end;
+    }
+    #kto-footer .footer-bottom .social-media-group .nav-link .fa {
+        font-size: 30px;
+    }
+
+    section.section-banner {
+        padding-top: 125px;
+        padding-bottom: 75px;
+    }
+    .banner-content {
+        margin-left: -50px;
+    }
+    .section-steps img {
+        width: 115px;
+    }
+    .section-steps img.large {
+        width: 150px;
+    }
+    section.section-button:after {
+        height: 80px;
+    }
+    .modal.modal-login .modal-body .content-left {
+        padding: 55px 10px 55px 40px;
+    }
+    section.section-page-header {
+        padding: 100px 0 50px;
+    }
+    section.section-page-nav {
+        padding: 100px 0 15px;
+    }
+    .img-done {
+        bottom: -140px;
+    }
+    section.section-winner .winner-list {
+        padding: 35px 35px 40px;
+    }
+    section.section-winner .img-float-right {
+        right: -90px;
+        top: 95px;
+        width: 300px;
+    }
+    section.section-winner .img-float-left {
+        width: 300px;
+    }
+    section.section-tabs .tab-content .img-icon {
+        max-height: 65px;
+        width: auto;
+    }
+    .nav-submit .nav-item {
+        width: auto;
+    }
+    .nav-submit .nav-link {
+        margin-right: 15px;
+    }
+    .bg-frame .col-md-6 {
+        min-height: 390px;
+    }
+    .modal-dialog {
+        max-width: 600px;
+    }
+    .modal-template .modal-dialog {
+        max-width: 400px;
+    }
+    .modal.modal-login .modal-body .content-right p {
+        font-size: 17px;
+    }
+    .section-province .card-body {
+        min-height: 130px;
+        margin-bottom: 15px;
+    }
+    .filter .form-control#limit {
+        width: 70%;
+    }
+    .filter .form-control#sortby {
+        width: 90%;
+    }
+    .submission .container-page {
+        max-width: 720px;
+    }
+    .modal.modal-login .modal-body .content-right {
+        min-height: 465px;
+    }
+    section.section-top {
+        background-position: left center;
+        padding-top: 30px;
+    }
+    section.section-tabs .tab-content p {
+        font-size: 14px;
+    }
+    section.section-tabs .tab-content .tab-pane {
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+    section.section-tabs .nav-tabs .nav-item .nav-link {
+        font-size: 17px;
+    }
+    section.section-riddle {
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+    .section.section-banner-page {
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+    .modal.modal-success .modal-content p {
+        font-size: 16px;
+    }
+    .modal-dialog.modal-lg {
+        max-width: 700px;
+    }
+    .modal.modal-selamat .modal-body .btn {
+        font-size: 13px;
+        padding: 2px 25px;
+        display: inline-block;
+    }
+}
+
+@media (min-width: 992px) {
+    .btn {
+        padding: 5px 40px;
+    }
+    .btn-volume {
+        border: 1px solid #A4C226;
+        color: #A4C226;
+        padding: 6px 20px !important;
+        font-size: 12px !important;
+        width: auto;
+        height: auto;
+    }
+    .btn-volume.off {
+        border: 1px solid #9A9A9A;
+        color: #9A9A9A;
+    }
+    .btn-volume span {
+        display: inline;
+    }
+    .modal .modal-body {
+        padding: 35px 25px;
+    }
+    .submission .container-page {
+        max-width: 960px;
+    }
+    section.section-tabs .tab-content .img-icon {
+        max-height: 100px;
+    }
+    .btn-pro span {
+        font-size: 20px;
+    }
+    .bg-frame .col-md-6 {
+        min-height: 450px;
+        padding-top: 90px;
+    }
+    section.section-tabs .tab-content .tab-pane {
+        padding-top: 75px;
+        padding-bottom: 75px;
+    }
+    section.section-tabs .tab-content .img-icon {
+        margin-bottom: 20px;
+    }
+    section.section-riddle {
+        padding-top: 75px;
+        padding-bottom: 75px;
+    }
+    section.section-riddle.page small {
+        font-size: 16px;
+        display: block;
+        margin-bottom: 15px;
+    }
+    section.section-riddle.page p {
+        font-size: 18px;
+    }
+    .modal-dialog.modal-lg {
+        max-width: 800px;
+    }
+    .modal.modal-selamat p {
+        font-size: 14px;
+    }
+    .modal.modal-selamat .modal-body {
+        padding: 35px 15px 0;
+    }
+
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1200px;
+    }
+    .container-page {
+        max-width: 1000px;
+    }
+    section.section-banner {
+        padding-top: 150px;
+        padding-bottom: 100px;
+    }
+    .submission .container-page {
+        max-width: 1000px;
+    }
+    .container-form {
+        max-width: 700px;
+    }
+    h1.section-banner {
+        font-size: 42px;
+    }
+    h1 {
+        font-size: 30px;
+    }
+    h2 {
+        font-size: 22px;
+    }
+    p {
+        font-size: 18px;
+    }
+    .btn-kto {
+        min-width: 150px;
+    }
+    .sub-title {
+        font-size: 22px;
+    }
+    .section {
+        padding: 75px 0;
+    }
+    .btn-tag {
+        margin: 0 13px 10px;
+    }
+    #kto-header nav.navbar {
+        padding: 0;
+    }
+    #kto-header .navbar-nav .nav-item .dropdown-menu {
+        border-radius: 0;
+        top: 99%;
+        background: rgba(255,255,255,0.9);
+    }
+
+    #kto-footer .footer-top .nav {
+        column-count: unset;
+    }
+    #kto-footer .nav .nav-link:nth-last-child(1) {
+        border-right: 1px solid grey;
+    }
+    #kto-footer .nav .nav-link {
+        padding: 0px 15px;
+    }
+    #kto-footer .footer-bottom .nav .nav-link {
+        border-right: 1px solid grey;
+        padding: 0 10px;
+    }
+    #kto-footer .footer-bottom .nav .nav-link:first-child {
+        padding-left: 0;
+    }
+    #kto-footer .footer-bottom .nav .nav-link:last-child {
+        border-right: none;
+    }
+    #kto-footer .footer-bottom .nav {
+        margin-bottom: 10px;
+        column-count: unset;
+    }
+    #kto-footer .footer-bottom .social-media-group {
+        padding-top: 15px;
+    }
+    #kto-footer .footer-bottom .copy p {
+        font-size: 12px;
+        margin-top: 35px;
+    }
+    #kto-header .navbar-nav .nav-item .nav-link {
+        padding: 8px 15px;
+    }
+    #kto-footer .airlines {
+        justify-content: flex-end;
+    }
+    .banner-content {
+        margin-left: -100px;
+    }
+    .section-steps img {
+        width: 160px;
+    }
+    .section-steps img.large {
+        width: 200px;
+    }
+    section.section-button {
+        padding-top: 40px;
+    }
+    section.section-button .btn-kto {
+        margin-bottom: 75px;
+    }
+    section.section-button:after {
+        height: 100px;
+    }
+    .card-gallery {
+        margin-bottom: 30px;
+    }
+    .video-player .btn-orange{
+        min-width: 130px;
+    }
+    section.section-video {
+        padding-top: 25px;
+        padding-bottom: 50px;
+    }
+    .card-gallery .card-body {
+        padding: 0 15px 20px;
+    }
+    section.section-page-nav {
+        padding: 100px 0 15px;
+    }
+    .nav-submit .nav-item .nav-link img {
+        margin-right: 10px;
+    }
+    .modal-text {
+        padding: 40px;
+    }
+    .img-done {
+        bottom: -90px;
+    }
+    section.section-quote h1 {
+        margin-bottom: 45px;
+        margin-top: 45px;
+    }
+    section.section-winner .img-float-right {
+        right: -165px;
+        top: 215px;
+        width: 500px;
+    }
+    section.section-winner .img-float-left {
+        width: 500px;
+        bottom: -75px;
+    }
+    .bg-frame .col-md-6 {
+        min-height: 485px;
+        padding-top: 100px;
+    }
+    .bg-frame canvas {
+        height: 200px;
+        width: 315px;
+    }
+    .bg-frame.day-3.template-2 .bg-left,
+    .bg-frame.day-4.template-2 .bg-left,
+    .bg-frame.day-4.template-4 .bg-left,
+    .bg-frame.day-5.template-4 .bg-left,
+    .bg-frame.day-3.template-5 .bg-left {
+        padding-top: 90px;
+    }
+    .owl-carousel.template-carousel .owl-nav button.owl-next {
+        right: -45px;
+    }
+    .owl-carousel.template-carousel .owl-nav button.owl-prev {
+        left: -45px;
+    }
+    .section.section-province {
+        padding-top: 30px;
+    }
+    .section-form .btn-orange {
+        padding: 7px 75px;
+    }
+    section.section-page-done {
+        padding-bottom: 140px;
+    }
+    .section-province .card-body {
+        min-height: 150px;
+    }
+    .filter .form-control#limit {
+        width: auto;
+    }
+    .filter .form-control#sortby {
+        width: auto;
+    }
+    .modal.modal-login .modal-body .content-right {
+        min-height: 492px;
+    }
+    section.section-riddle {
+        min-height: 475px;
+    }
+}
+
+@media (min-width: 1600px) {
+
+}

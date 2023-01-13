@@ -1,0 +1,128 @@
+#kto-header.overlay {
+    position: absolute;
+    width: 100%;
+    z-index: 10;
+    padding-top: 15px;
+}
+#kto-header nav.navbar {
+    padding: 5px 0;
+}
+#kto-header nav.navbar .hashtag {
+    color: #ff5400;
+    font-size: 20px;
+}
+#kto-header nav.navbar button.hamburger{
+    padding-right: 0;
+}
+#kto-header .navbar-nav .nav-item .nav-link {
+    color: #000000;
+    display: block;
+    transition: 0.3s;
+    padding: 10px 15px;
+    font-size: 14px;
+    font-weight: 500;
+}
+#kto-header .navbar-nav .nav-item .nav-link:hover:before,
+#kto-header .navbar-nav .nav-item .nav-link:focus:before,
+#kto-header .navbar-nav .nav-item .nav-link:active:before {
+    content: "";
+    width: 100%;
+    background: #002955;
+    height: 4px;
+    bottom: -2px;
+    left: 0;
+    z-index: 1000;
+    position: absolute;
+}
+#kto-header .navbar-nav .nav-item .dropdown-menu {
+    border: none;
+    padding-top: 0;
+}
+#kto-header .navbar .navbar-brand img {
+    max-width: 80px;
+}
+#kto-header #language .flag-lang {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    background-size: cover;
+    border-radius: 100%;
+    position: relative;
+    top: 3px;
+    margin-right: 8px;
+    border: 1px solid;
+}
+.hamburger-inner, .hamburger-inner:after, .hamburger-inner:before {
+    height: 4px;
+    background-color: #000000;
+    width: 30px;
+}
+
+#kto-header #navbarKTO {
+    background: #f7f7f7;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 270px;
+    height: 100%;
+    z-index: 10;
+    transition: 0.5s;
+    box-shadow: 0 16px 16px 0 rgba(0, 0, 0, 0.24), 0 0 16px 0 rgba(0, 0, 0, 0.18);
+}
+#kto-header #navbarKTO .navbar-nav {
+    background: #FFFFFF;
+}
+#kto-header #navbarKTO.active {
+    right: 0;
+}
+#navbarKTO .btn-login {
+    padding: 5px 15px;
+    font-size: 14px;
+    margin: 7px 0;
+    border-radius: 0;
+    font-weight: 500;
+}
+#navbarKTO img.rounded-circle {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+#navbarKTO h5 {
+    font-size: 14px;
+}
+#navbarKTO .btn-blue {
+    font-size: 14px;
+    line-height: 15px;
+    margin-bottom: 5px;
+    padding: 7px 20px;
+}
+#kto-header.position-relative nav.navbar {
+    padding: 0;
+}
+
+.btn-pro {
+    font-family: 'GothamNarrow-Bold';
+    color: #203A84;
+}
+.btn-pro span {
+    margin-right: 15px;
+    font-size: 16px;
+}
+.btn-pro .btn-profile {
+    font-family: 'GothamNarrow-Medium';
+    font-size: 25px;
+    background: #203A84;
+    color: #ffffff;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    padding: 0;
+    line-height: 50px;
+}
+.btn-pro .btn-profile img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 100%;
+}

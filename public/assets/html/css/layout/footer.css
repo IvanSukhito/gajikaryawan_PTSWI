@@ -1,0 +1,71 @@
+#kto-footer .footer-top {
+    background: #292d33;
+    padding: 15px 0;
+}
+#kto-footer .footer-top .nav {
+    column-count: 2;
+}
+#kto-footer .nav .nav-link {
+    color: #9b9b9b;
+    padding: 0;
+    font-size: 12px;
+}
+#kto-footer .nav .nav-link:hover,
+#kto-footer .nav .nav-link:focus,
+#kto-footer .nav .nav-link:active,
+#kto-footer .nav .nav-link.active {
+    color: #fbb800;
+}
+#kto-footer .footer-bottom {
+    background: #2e3440;
+    color: #ffffff;
+    padding: 20px 0 30px;
+}
+#kto-footer .footer-bottom h3 {
+    font-size: 14px;
+    margin-bottom: 7px;
+}
+#kto-footer .footer-bottom .nav .nav-link {
+    font-size: 12px;
+    text-align: left;
+}
+#kto-footer .footer-bottom .social-media-group {
+    justify-content: center;
+}
+#kto-footer .footer-bottom .social-media-group .nav-link .fa {
+    font-size: 22px;
+}
+#kto-footer .footer-bottom .copy p {
+    font-size: 10px;
+    color: #9b9b9b;
+    text-align: center;
+}
+
+#kto-footer .social-link {
+    color: #ffffff;
+    padding: 10px 5px;
+}
+
+#kto-footer .social-link:hover,
+#kto-footer .social-link:focus,
+#kto-footer .social-link:active {
+    color: #fbb800;
+}
+
+#kto-footer .airlines {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+}
+#kto-footer .airlines span {
+    background: #ffffff;
+    border-radius: 8px;
+    display: block;
+    margin: 0 5px;
+    padding: 4px 5px;
+    text-align: center;
+    min-height: 36px;
+}
+#kto-footer .airlines span img {
+    max-width: 75px;
+}
