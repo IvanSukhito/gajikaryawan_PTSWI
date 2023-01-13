@@ -17,7 +17,7 @@ class historyAbsen extends Model
         'time_end',
         'att_start',
         'att_end',
-        'type',
+        'status',
         'weekday'
 
     ];

@@ -256,3 +256,18 @@ if ( ! function_exists('get_list_shift_data_status')) {
         ];
     }
 }
+
+if ( ! function_exists('get_list_status_absensi')) {
+    function get_list_status_absensi()
+    {
+        return [
+            'H' => __('general.Hadir'),
+            'L' => __('general.Libur'),
+            'N' => __('general.Nihil'),
+            'SD' => __('general.Surat_Dokter'),
+            'S' => __('general.Sakit'),
+            'I' => __('general.Izin'),
+            'IR' => __('general.Izin_Resmi')
+        ];
+    }
+}

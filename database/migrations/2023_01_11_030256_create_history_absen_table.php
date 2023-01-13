@@ -21,7 +21,7 @@ return new class extends Migration
             $table->time('time_end')->nullable();
             $table->datetime('att_start')->nullable();
             $table->datetime('att_end')->nullable();
-            $table->tinyInteger('type')->default(1);
+            $table->char('type', 2)->default(1);
             $table->tinyInteger('weekday')->default(0);
             $table->timestamps();
         });

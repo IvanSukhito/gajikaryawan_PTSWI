@@ -179,7 +179,7 @@ else {
                                                                 <th>@lang('general.time_end')</th>
                                                                 <th>@lang('general.att_start')</th>
                                                                 <th>@lang('general.att_end')</th>
-                                                          
+                                                                <th>@lang('general.status_absen')</th>
                                                               
                                                             </tr>
                                                             </thead>
@@ -192,7 +192,7 @@ else {
                                                                     <td>{{$list->time_end}}</td>
                                                                     <td>{{$list->att_start}}</td>
                                                                     <td>{{$list->att_end}}</td>
-                                                               
+                                                                    <td>{{$getStatusAtt[$list->status]}}</td>
                                                                 </tr>
                                                           
                                                             @endforeach
@@ -211,7 +211,7 @@ else {
                                                                 <th>@lang('general.time_end')</th>
                                                                 <th>@lang('general.att_start')</th>
                                                                 <th>@lang('general.att_end')</th>
-                                                          
+                                                                <th>@lang('general.status_absen')</th>
                                                               
                                                             </tr>
                                                             </thead>
@@ -224,6 +224,7 @@ else {
                                                                     <td>{{$list->time_end}}</td>
                                                                     <td>{{$list->att_start}}</td>
                                                                     <td>{{$list->att_end}}</td>
+                                                                    <td>{{$getStatusAtt[$list->status]}}</td>
                                                                
                                                                 </tr>
                                                           
@@ -243,7 +244,7 @@ else {
                                                                 <th>@lang('general.time_end')</th>
                                                                 <th>@lang('general.att_start')</th>
                                                                 <th>@lang('general.att_end')</th>
-                                                          
+                                                                <th>@lang('general.status_absen')</th>
                                                               
                                                             </tr>
                                                             </thead>
@@ -256,6 +257,7 @@ else {
                                                                     <td>{{$list->time_end}}</td>
                                                                     <td>{{$list->att_start}}</td>
                                                                     <td>{{$list->att_end}}</td>
+                                                                    <td>{{$getStatusAtt[$list->status]}}</td>
                                                                
                                                                 </tr>
                                                           
@@ -275,17 +277,19 @@ else {
                                                                 <th>@lang('general.time_end')</th>
                                                                 <th>@lang('general.att_start')</th>
                                                                 <th>@lang('general.att_end')</th>    
+                                                                <th>@lang('general.status_absen')</th>
                                                             </tr>
                                                             </thead>
                                                             <tbody>
                                                             @foreach($absenApr as $list)
                                                                 <tr>
-                                                                    <td>{{$list->id}}</td>
+                                                                
                                                                     <td>{{$list->hari}}</td>
                                                                     <td>{{$list->time_start}}</td>
                                                                     <td>{{$list->time_end}}</td>
                                                                     <td>{{$list->att_start}}</td>
                                                                     <td>{{$list->att_end}}</td>
+                                                                    <td>{{$getStatusAtt[$list->status]}}</td>
                                                                 </tr>
                                                           
                                                             @endforeach
@@ -302,18 +306,20 @@ else {
                                                                 <th>@lang('general.time_start')</th>
                                                                 <th>@lang('general.time_end')</th>
                                                                 <th>@lang('general.att_start')</th>
-                                                                <th>@lang('general.att_end')</th>    
+                                                                <th>@lang('general.att_end')</th>  
+                                                                <th>@lang('general.status_absen')</th>  
                                                             </tr>
                                                             </thead>
                                                             <tbody>
                                                             @foreach($absenMei as $list)
                                                                 <tr>
-                                                                    <td>{{$list->id}}</td>
+                                                                 
                                                                     <td>{{$list->hari}}</td>
                                                                     <td>{{$list->time_start}}</td>
                                                                     <td>{{$list->time_end}}</td>
                                                                     <td>{{$list->att_start}}</td>
                                                                     <td>{{$list->att_end}}</td>
+                                                                    <td>{{$getStatusAtt[$list->status]}}</td>
                                                                 </tr>
                                                           
                                                             @endforeach
@@ -332,18 +338,20 @@ else {
                                                                 <th>@lang('general.time_start')</th>
                                                                 <th>@lang('general.time_end')</th>
                                                                 <th>@lang('general.att_start')</th>
-                                                                <th>@lang('general.att_end')</th>    
+                                                                <th>@lang('general.att_end')</th>  
+                                                                <th>@lang('general.status_absen')</th>  
                                                             </tr>
                                                             </thead>
                                                             <tbody>
                                                             @foreach($absenJun as $list)
                                                                 <tr>
-                                                                    <td>{{$list->id}}</td>
+                                                                 
                                                                     <td>{{$list->hari}}</td>
                                                                     <td>{{$list->time_start}}</td>
                                                                     <td>{{$list->time_end}}</td>
                                                                     <td>{{$list->att_start}}</td>
                                                                     <td>{{$list->att_end}}</td>
+                                                                    <td>{{$getStatusAtt[$list->status]}}</td>
                                                                 </tr>
                                                           
                                                             @endforeach
@@ -361,18 +369,20 @@ else {
                                                                 <th>@lang('general.time_start')</th>
                                                                 <th>@lang('general.time_end')</th>
                                                                 <th>@lang('general.att_start')</th>
-                                                                <th>@lang('general.att_end')</th>    
+                                                                <th>@lang('general.att_end')</th> 
+                                                                <th>@lang('general.status_absen')</th>   
                                                             </tr>
                                                             </thead>
                                                             <tbody>
                                                             @foreach($absenJul as $list)
                                                                 <tr>
-                                                                    <td>{{$list->id}}</td>
+                                                               
                                                                     <td>{{$list->hari}}</td>
                                                                     <td>{{$list->time_start}}</td>
                                                                     <td>{{$list->time_end}}</td>
                                                                     <td>{{$list->att_start}}</td>
                                                                     <td>{{$list->att_end}}</td>
+                                                                    <td>{{$getStatusAtt[$list->status]}}</td>
                                                                 </tr>
                                                           
                                                             @endforeach
@@ -389,18 +399,20 @@ else {
                                                                 <th>@lang('general.time_start')</th>
                                                                 <th>@lang('general.time_end')</th>
                                                                 <th>@lang('general.att_start')</th>
-                                                                <th>@lang('general.att_end')</th>    
+                                                                <th>@lang('general.att_end')</th>   
+                                                                <th>@lang('general.status_absen')</th> 
                                                             </tr>
                                                             </thead>
                                                             <tbody>
                                                             @foreach($absenAgu as $list)
                                                                 <tr>
-                                                                    <td>{{$list->id}}</td>
+                                                               
                                                                     <td>{{$list->hari}}</td>
                                                                     <td>{{$list->time_start}}</td>
                                                                     <td>{{$list->time_end}}</td>
                                                                     <td>{{$list->att_start}}</td>
                                                                     <td>{{$list->att_end}}</td>
+                                                                    <td>{{$getStatusAtt[$list->status]}}</td>
                                                                 </tr>
                                                           
                                                             @endforeach
@@ -417,18 +429,20 @@ else {
                                                                 <th>@lang('general.time_start')</th>
                                                                 <th>@lang('general.time_end')</th>
                                                                 <th>@lang('general.att_start')</th>
-                                                                <th>@lang('general.att_end')</th>    
+                                                                <th>@lang('general.att_end')</th>  
+                                                                <th>@lang('general.status_absen')</th>  
                                                             </tr>
                                                             </thead>
                                                             <tbody>
                                                             @foreach($absenSep as $list)
                                                                 <tr>
-                                                                    <td>{{$list->id}}</td>
+                                                                   
                                                                     <td>{{$list->hari}}</td>
                                                                     <td>{{$list->time_start}}</td>
                                                                     <td>{{$list->time_end}}</td>
                                                                     <td>{{$list->att_start}}</td>
                                                                     <td>{{$list->att_end}}</td>
+                                                                    <td>{{$getStatusAtt[$list->status]}}</td>
                                                                 </tr>
                                                           
                                                             @endforeach
@@ -446,17 +460,19 @@ else {
                                                                 <th>@lang('general.time_end')</th>
                                                                 <th>@lang('general.att_start')</th>
                                                                 <th>@lang('general.att_end')</th>    
+                                                                <th>@lang('general.status_absen')</th>
                                                             </tr>
                                                             </thead>
                                                             <tbody>
                                                             @foreach($absenOkt as $list)
                                                                 <tr>
-                                                                    <td>{{$list->id}}</td>
+                                                              
                                                                     <td>{{$list->hari}}</td>
                                                                     <td>{{$list->time_start}}</td>
                                                                     <td>{{$list->time_end}}</td>
                                                                     <td>{{$list->att_start}}</td>
                                                                     <td>{{$list->att_end}}</td>
+                                                                    <td>{{$getStatusAtt[$list->status]}}</td>
                                                                 </tr>
                                                           
                                                             @endforeach
@@ -474,17 +490,19 @@ else {
                                                                 <th>@lang('general.time_end')</th>
                                                                 <th>@lang('general.att_start')</th>
                                                                 <th>@lang('general.att_end')</th>    
+                                                                <th>@lang('general.status_absen')</th>
                                                             </tr>
                                                             </thead>
                                                             <tbody>
                                                             @foreach($absenNov as $list)
                                                                 <tr>
-                                                                    <td>{{$list->id}}</td>
+                                                                  
                                                                     <td>{{$list->hari}}</td>
                                                                     <td>{{$list->time_start}}</td>
                                                                     <td>{{$list->time_end}}</td>
                                                                     <td>{{$list->att_start}}</td>
                                                                     <td>{{$list->att_end}}</td>
+                                                                    <td>{{$getStatusAtt[$list->status]}}</td>
                                                                 </tr>
                                                           
                                                             @endforeach
@@ -501,18 +519,20 @@ else {
                                                                 <th>@lang('general.time_start')</th>
                                                                 <th>@lang('general.time_end')</th>
                                                                 <th>@lang('general.att_start')</th>
-                                                                <th>@lang('general.att_end')</th>    
+                                                                <th>@lang('general.att_end')</th>   
+                                                                <th>@lang('general.status_absen')</th> 
                                                             </tr>
                                                             </thead>
                                                             <tbody>
                                                             @foreach($absenDec as $list)
                                                                 <tr>
-                                                                    <td>{{$list->id}}</td>
+                                                                 
                                                                     <td>{{$list->hari}}</td>
                                                                     <td>{{$list->time_start}}</td>
                                                                     <td>{{$list->time_end}}</td>
                                                                     <td>{{$list->att_start}}</td>
                                                                     <td>{{$list->att_end}}</td>
+                                                                    <td>{{$getStatusAtt[$list->status]}}</td>
                                                                 </tr>
                                                           
                                                             @endforeach

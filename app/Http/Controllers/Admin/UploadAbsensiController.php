@@ -180,49 +180,36 @@ class UploadAbsensiController extends _CrudController
                         foreach ($spreadsheet->getRowIterator() as $key => $row) {
                             if($key >= 3) {
                                 $nama = strip_tags(preg_replace('~[\\\\/:*?"<>|(1234567890)]~', ' ', $spreadsheet->getCell("A". $key)->getValue()));
-                                // $tgl3 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("D". $key)->getValue());
-                                // $tgl4 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("E". $key)->getValue());
-                                // $tgl5 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("F". $key)->getValue());
-                                // $tgl6 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("G". $key)->getValue());
-                                // $tgl7 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("H". $key)->getValue());
-                                // $tgl8 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("I". $key)->getValue());
-                                // $tgl9 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("J". $key)->getValue());
-                                // $tgl10 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("K". $key)->getValue());
-                                // $tgl11 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("L". $key)->getValue());
-                                // $tgl12 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("M". $key)->getValue());
-                                // $tgl13 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("N". $key)->getValue());
-                                // $tgl14 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("O". $key)->getValue());
-                                // $tgl15 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("P". $key)->getValue());
-                                // $tgl16 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("Q". $key)->getValue());
-                                // $tgl17 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("R". $key)->getValue());
-                                // $tgl18 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("S". $key)->getValue());
-                                // $tgl19 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("T". $key)->getValue());
-                                // $tgl20 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("U". $key)->getValue());
-                                // $tgl21 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("V". $key)->getValue());
-                                // $tgl22 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("W". $key)->getValue());
-                                // $tgl23 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("X". $key)->getValue());
-                                // $tgl24 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("Y". $key)->getValue());
-                                // $tgl25 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("Z". $key)->getValue());
-                                // $tgl26 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("AA". $key)->getValue());
-                                // $tgl27 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("AB". $key)->getValue());
-                                // $tgl28 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("AC". $key)->getValue());
-                                // $tgl29 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("AD". $key)->getValue());
-                                // $tgl30 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("AE". $key)->getValue());
-                                // $tgl31 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("AF". $key)->getValue());
+                                $tgl3 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("D". $key)->getValue());
+                                $tgl4 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("E". $key)->getValue());
+                                $tgl5 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("F". $key)->getValue());
+                                $tgl6 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("G". $key)->getValue());
+                                $tgl7 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("H". $key)->getValue());
+                                $tgl8 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("I". $key)->getValue());
+                                $tgl9 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("J". $key)->getValue());
+                                $tgl10 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("K". $key)->getValue());
+                                $tgl11 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("L". $key)->getValue());
+                                $tgl12 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("M". $key)->getValue());
+                                $tgl13 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("N". $key)->getValue());
+                                $tgl14 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("O". $key)->getValue());
+                                $tgl15 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("P". $key)->getValue());
+                                $tgl16 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("Q". $key)->getValue());
+                                $tgl17 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("R". $key)->getValue());
+                                $tgl18 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("S". $key)->getValue());
+                                $tgl19 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("T". $key)->getValue());
+                                $tgl20 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("U". $key)->getValue());
+                                $tgl21 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("V". $key)->getValue());
+                                $tgl22 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("W". $key)->getValue());
+                                $tgl23 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("X". $key)->getValue());
+                                $tgl24 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("Y". $key)->getValue());
+                                $tgl25 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("Z". $key)->getValue());
+                                $tgl26 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("AA". $key)->getValue());
+                                $tgl27 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("AB". $key)->getValue());
+                                $tgl28 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("AC". $key)->getValue());
+                                $tgl29 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("AD". $key)->getValue());
+                                $tgl30 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("AE". $key)->getValue());
+                                $tgl31 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("AF". $key)->getValue());
 
-                                // if($key = 2){
-                                //     $tanggal = $spreadsheet->getCell('B' . $key)->getValue()->getPlainText();
-
-                                  
-                                // }
-                                //  dd($tanggal);
-                              
-                                // if(strlen($tgl3) == 0){
-                                //     $saveAbsen =  [
-                                //         'karyawan_id' => $karyawan_id,
-                                //         'hari' =>
-                                //     ];
-                                // }
                                 //dd($nama);
                                 $karyawan = karyawan::where('nama_pekerja', $nama)->first();
                                 //dd($karyawan);
@@ -233,7 +220,7 @@ class UploadAbsensiController extends _CrudController
                                 {
                                     if($nama = $karyawan){
                                         for($koloms = 'B'; $koloms != $kolomAkhir; $koloms++){
-                                            $saveAbsen = [
+                                            $saveReportAbsen = [
                                                 'karyawan_id' => $karyawan->id,
                                                 'hari' => $spreadsheet->getCell($koloms . $key)->getValue()->getPlainText().'-2023',
                                                 'time_start' => null,
@@ -245,7 +232,7 @@ class UploadAbsensiController extends _CrudController
                                                 //'hari' => $spreadsheet->getCell($koloms . $key)->getValue()->getPlainText()
                                             ];
                                             //dd($saveAbsen);
-                                            historyAbsen::create($saveAbsen);
+                                            historyAbsen::create($saveReportAbsen);
                                         
                                         }
                                     }
