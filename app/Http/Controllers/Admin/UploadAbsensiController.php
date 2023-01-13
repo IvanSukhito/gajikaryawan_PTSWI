@@ -209,33 +209,32 @@ class UploadAbsensiController extends _CrudController
                                 $tgl29 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("AD". $key)->getValue());
                                 $tgl30 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("AE". $key)->getValue());
                                 $tgl31 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("AF". $key)->getValue());
-
+                                //$statusKehadiran =  $spreadsheet->getCell('B2' . $key)->getValue();
                                 //dd($nama);
                                 $karyawan = karyawan::where('nama_pekerja', $nama)->first();
                                 //dd($karyawan);
                                 $kolomAkhir = 'AG';
                                 $no = 1;
-                               
-                                if($key = 2)
-                                {
+                                if($key > 2){
                                     if($nama = $karyawan){
                                         for($koloms = 'B'; $koloms != $kolomAkhir; $koloms++){
+                                     
                                             $saveReportAbsen = [
                                                 'karyawan_id' => $karyawan->id,
-                                                'hari' => $spreadsheet->getCell($koloms . $key)->getValue()->getPlainText().'-2023',
+                                                'hari' => \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($spreadsheet->getCell($koloms . 2)->getValue())->format('Y-m-d'),
                                                 'time_start' => null,
                                                 'time_end' => null,
                                                 'att_start' => null,
                                                 'att_end' => null,
-                                                'type' => 1,
+                                                'status' => $spreadsheet->getCell($koloms . $key)->getValue(),
                                                 'weekday' => 0,
-                                                //'hari' => $spreadsheet->getCell($koloms . $key)->getValue()->getPlainText()
+                                               
                                             ];
                                             //dd($saveAbsen);
                                             historyAbsen::create($saveReportAbsen);
                                         
                                         }
-                                    }
+                                } 
                                 
                                 }
                               
@@ -260,7 +259,7 @@ class UploadAbsensiController extends _CrudController
         else {
             session()->flash('message', __('general.success_add_', ['field' => $this->data['thisLabel']]));
             session()->flash('message_alert', 2);
-            return redirect()->route($this->rootRoute.'.' . $this->route . '.index');
+            return redirect()->route($this->rootRoute.'.' . $this->route . '.create');
         }
     }
 
