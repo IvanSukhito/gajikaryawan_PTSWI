@@ -23,8 +23,8 @@ if ( ! function_exists('get_list_gender')) {
     function get_list_gender()
     {
         return [
-            'Pria' => __('Pria'),
-            'Wanita' => __('Wanita')
+            1 => __('Pria'),
+            2 => __('Wanita')
         ];
     }
 }

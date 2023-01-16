@@ -119,6 +119,12 @@ class KaryawanController extends _CrudController
                 'type' => 'money',
                 'lang' => 'general.gaji_pokok',
             ],
+            'keterangan' => [
+                'create' => 0,
+                'edit' => 0,
+                'show' => 0,
+                'list' => 0,
+            ],
             'created_at' => [
                 'create' => 0,
                 'edit' => 0,

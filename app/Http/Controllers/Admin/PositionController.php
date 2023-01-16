@@ -51,7 +51,7 @@ class PositionController extends _CrudController
         ];
 
         parent::__construct(
-            $request, 'general.position', 'position', 'Position', 'position',
+            $request, 'general.position', 'position', 'position', 'position',
             $passingData
         );
       
@@ -59,23 +59,5 @@ class PositionController extends _CrudController
 
     }
 
-    public function show($id)
-    {
-        $this->callPermission();
-
-        $getData = $this->crud->show($id);
-        if (!$getData) {
-            return redirect()->route($this->rootRoute.'.' . $this->route . '.index');
-        }
-
-        $data = $this->data;
-
-        $data['viewType'] = 'show';
-        $data['formsTitle'] = __('general.title_show', ['field' => $data['thisLabel']]);
-        $data['passing'] = collectPassingData($this->passingData, $data['viewType']);
-        $data['data'] = $getData;
-
-        return view($this->listView[$data['viewType']], $data);
-    }
-
+  
 }

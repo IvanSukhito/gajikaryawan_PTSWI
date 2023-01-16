@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string('no_hp')->nullable();
             $table->string('alamat');
             $table->decimal('gaji_pokok',26, 2)->nullable();
-            $table->text('keterangan');
+            $table->text('keterangan')->nullable();
             $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });
