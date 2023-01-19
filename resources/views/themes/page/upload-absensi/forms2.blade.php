@@ -67,13 +67,28 @@ else {
                 @endif
 
                 <div class="card-body">
-                    <div class="form-group">
-                        <label for="example_upload_absensi">{{ __('general.example_upload_absensi') }} <span class="text-red">*</span></label><br />
-                        <a href="?download_example_import=1"
-                           class="btn btn-sm btn-primary" title="{{ __('general.download') }}" id="example_upload_absensi">
+                    <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="example_upload_absensi">{{ __('general.example_upload_absensi') }} <span class="text-red">*</span></label><br />
+                            <a href="?download_example_import=1"
+                                class="btn btn-sm btn-primary" title="{{ __('general.download') }}" id="example_upload_absensi">
                             <i class="fa fa-file-excel-o"></i><span class=""> {{ __('general.download') }}</span>
-                        </a>
+                            </a>
+                        </div>
                     </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="choose_month">{{ __('general.choose_month') }} <span class="text-red">*</span></label><br />
+                            <select name="month" class="form-control select2 select2-hidden-accessible" style="width: 100%;" data-select2-id="month" tabindex="-1" aria-hidden="true">
+                                <option selected="selected" data-select2-id="'{{date('F', strtotime(date("Y-m-d")))}}" value="{{date('F', strtotime(date("Y-m-d")))}}">{{date('F', strtotime(date("Y-m-d")))}}</option>
+                                <option data-select2-id="{{date('F', strtotime("-1 month", strtotime(date("Y-m-d"))))}}" value="{{date('F', strtotime("-1 month", strtotime(date("Y-m-d"))))}}">{{date('F', strtotime("-1 month", strtotime(date("Y-m-d"))))}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+            
 
                     <div class="form-group">
                         <label for="upload_absensi">{{ __('general.upload_absensi') }} <span class="text-red">*</span></label>

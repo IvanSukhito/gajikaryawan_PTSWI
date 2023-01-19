@@ -124,6 +124,11 @@ class UploadAbsensiController extends _CrudController
 
 
         $getFile = $this->request->file('upload_absensi');
+        $getMonth = $this->request->get('month');
+
+        //dd(date('m', strtotime($getMonth)));
+        //date('Y');
+        dd(date('Y'));
 
         if($getFile) {
 //            $destinationPath = 'synapsaapps/product/example_import';
@@ -149,11 +154,10 @@ class UploadAbsensiController extends _CrudController
 
                                 $karyawan = karyawan::where('nama_pekerja', $nama)->first();
                                 //dd($karyawan);
-                                $kolomAkhir = 'AG';
-                                $no = 1;
-                                if($key > 2){
+                                $kolomAkhir = 'AH';
+                                if($key > 1){
                                     if($nama = $karyawan){
-                                        for($koloms = 'B'; $koloms != $kolomAkhir; $koloms++){
+                                        for($koloms = 'D'; $koloms != $kolomAkhir; $koloms++){
                                      
                                             $saveReportAbsen = [
                                                 'karyawan_id' => $karyawan->id,
