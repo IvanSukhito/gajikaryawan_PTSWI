@@ -22,7 +22,7 @@ return new class extends Migration
             $table->date('tgl_masuk');
             $table->string('kode')->nullable();
             $table->date('dob')->nullable();
-            $table->integer('gender')->default(1);
+            $table->tinyInteger('gender')->default(1);
             $table->string('no_hp')->nullable();
             $table->string('alamat');
             $table->decimal('gaji_pokok',26, 2)->nullable();

@@ -169,84 +169,73 @@ class KaryawanController extends _CrudController
         $riwayatAbsenJan = historyAbsen::selectRaw('history_absen.*')
                             ->leftjoin('karyawans', 'karyawans.id','=','history_absen.karyawan_id')
                             ->where('history_absen.karyawan_id', $id)
-                            ->whereMonth('att_start', '01')
+                            ->whereMonth('tanggal', '01')
                             ->get();
 
         $riwayatAbsenFeb = historyAbsen::selectRaw('history_absen.*')
                             ->leftjoin('karyawans', 'karyawans.id','=','history_absen.karyawan_id')
                             ->where('history_absen.karyawan_id', $id)
-                            ->whereMonth('att_start', '02')
-                            ->whereMonth('att_end','02')
+                            ->whereMonth('tanggal','02')
                             ->get();
 
         $riwayatAbsenMar = historyAbsen::selectRaw('history_absen.*')
                             ->leftjoin('karyawans', 'karyawans.id','=','history_absen.karyawan_id')
                             ->where('history_absen.karyawan_id', $id)
-                            ->whereMonth('att_start', '03')
-                            ->whereMonth('att_end', '03')
+                            ->whereMonth('tanggal', '03')
                             ->get();
 
         $riwayatAbsenApr = historyAbsen::selectRaw('history_absen.*')
                             ->leftjoin('karyawans', 'karyawans.id','=','history_absen.karyawan_id')
                             ->where('history_absen.karyawan_id', $id)
-                            ->whereMonth('att_start', '04')
-                            ->whereMonth('att_end', '04')
+                            ->whereMonth('tanggal', '04')
                             ->get();
 
         $riwayatAbsenMei = historyAbsen::selectRaw('history_absen.*')
                             ->leftjoin('karyawans', 'karyawans.id','=','history_absen.karyawan_id')
                             ->where('history_absen.karyawan_id', $id)
-                            ->whereMonth('att_start', '05')
-                            ->whereMonth('att_end', '05')
+                            ->whereMonth('tanggal', '05')
                             ->get();
 
         $riwayatAbsenJun = historyAbsen::selectRaw('history_absen.*')
                             ->leftjoin('karyawans', 'karyawans.id','=','history_absen.karyawan_id')
                             ->where('history_absen.karyawan_id', $id)
-                            ->whereMonth('att_start', '06')
-                            ->whereMonth('att_end', '06')
+                            ->whereMonth('tanggal', '06')
                             ->get();
 
         $riwayatAbsenJul = historyAbsen::selectRaw('history_absen.*')
                             ->leftjoin('karyawans', 'karyawans.id','=','history_absen.karyawan_id')
                             ->where('history_absen.karyawan_id', $id)
-                            ->whereMonth('att_start', '07')
-                            ->whereMonth('att_end', '07')
+                            ->whereMonth('tanggal', '07')
                             ->get(); 
 
         $riwayatAbsenAgu = historyAbsen::selectRaw('history_absen.*')
                             ->leftjoin('karyawans', 'karyawans.id','=','history_absen.karyawan_id')
                             ->where('history_absen.karyawan_id', $id)
-                            ->whereMonth('att_start', '08')
-                            ->whereMonth('att_end', '08')
+                            ->whereMonth('tanggal', '08')
                             ->get();      
                    
-                            $riwayatAbsenSep = historyAbsen::selectRaw('history_absen.*')
+        $riwayatAbsenSep = historyAbsen::selectRaw('history_absen.*')
                             ->leftjoin('karyawans', 'karyawans.id','=','history_absen.karyawan_id')
                             ->where('history_absen.karyawan_id', $id)
-                            ->whereMonth('att_start', '09')
-                            ->whereMonth('att_end', '09')
+                            ->whereMonth('tanggal', '09')
                             ->get();
 
         $riwayatAbsenOkt = historyAbsen::selectRaw('history_absen.*')
                             ->leftjoin('karyawans', 'karyawans.id','=','history_absen.karyawan_id')
                             ->where('history_absen.karyawan_id', $id)
-                            ->whereMonth('att_start', '10')
-                            ->whereMonth('att_end', '10')
+                            ->whereMonth('tanggal', '10')
                             ->get(); 
         
         $riwayatAbsenNov = historyAbsen::selectRaw('history_absen.*')
                             ->leftjoin('karyawans', 'karyawans.id','=','history_absen.karyawan_id')
                             ->where('history_absen.karyawan_id', $id)
-                            ->whereMonth('att_start', '11')
-                            ->whereMonth('att_end', '11')
+                            ->whereMonth('tanggal', '11')
                             ->get();  
                             
         $riwayatAbsenDec = historyAbsen::selectRaw('history_absen.*')
                             ->leftjoin('karyawans', 'karyawans.id','=','history_absen.karyawan_id')
                             ->where('history_absen.karyawan_id', $id)
-                            ->whereMonth('att_start', '12')
-                            ->whereMonth('att_end', '12')
+                            ->whereMonth('tanggal', '12')
                             ->get();      
                   
         $data['viewType'] = 'show';

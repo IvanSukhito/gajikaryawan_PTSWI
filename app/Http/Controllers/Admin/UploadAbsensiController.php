@@ -122,40 +122,6 @@ class UploadAbsensiController extends _CrudController
             'upload_absensi' => 'required',
         ]);
 
-        //A-N
-        //A = Nama
-        //B = 01
-        //C = 02
-        //D = 03
-        //E = 04
-        //F = 05
-        //G = 06
-        //H = 07 
-        //I = 08
-        //J = 09
-        //K = 10
-        //L = 11
-        //M = 12
-        //N = 13
-        //O = 14
-        //P = 15
-        //Q = 16
-        //R = 17
-        //S = 18
-        //T = 19
-        //U = 20
-        //V = 21
-        //W = 22
-        //X = 23
-        //Y = 24
-        //Z = 25
-        //AA = 26
-        //AB = 27
-        //AC = 28
-        //AD = 29
-        //AE = 30
-        //AF = 31
-        //Start From Row 2
 
         $getFile = $this->request->file('upload_absensi');
 
@@ -180,37 +146,7 @@ class UploadAbsensiController extends _CrudController
                         foreach ($spreadsheet->getRowIterator() as $key => $row) {
                             if($key >= 3) {
                                 $nama = strip_tags(preg_replace('~[\\\\/:*?"<>|(1234567890)]~', ' ', $spreadsheet->getCell("A". $key)->getValue()));
-                                $tgl3 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("D". $key)->getValue());
-                                $tgl4 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("E". $key)->getValue());
-                                $tgl5 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("F". $key)->getValue());
-                                $tgl6 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("G". $key)->getValue());
-                                $tgl7 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("H". $key)->getValue());
-                                $tgl8 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("I". $key)->getValue());
-                                $tgl9 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("J". $key)->getValue());
-                                $tgl10 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("K". $key)->getValue());
-                                $tgl11 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("L". $key)->getValue());
-                                $tgl12 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("M". $key)->getValue());
-                                $tgl13 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("N". $key)->getValue());
-                                $tgl14 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("O". $key)->getValue());
-                                $tgl15 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("P". $key)->getValue());
-                                $tgl16 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("Q". $key)->getValue());
-                                $tgl17 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("R". $key)->getValue());
-                                $tgl18 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("S". $key)->getValue());
-                                $tgl19 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("T". $key)->getValue());
-                                $tgl20 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("U". $key)->getValue());
-                                $tgl21 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("V". $key)->getValue());
-                                $tgl22 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("W". $key)->getValue());
-                                $tgl23 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("X". $key)->getValue());
-                                $tgl24 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("Y". $key)->getValue());
-                                $tgl25 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("Z". $key)->getValue());
-                                $tgl26 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("AA". $key)->getValue());
-                                $tgl27 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("AB". $key)->getValue());
-                                $tgl28 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("AC". $key)->getValue());
-                                $tgl29 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("AD". $key)->getValue());
-                                $tgl30 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("AE". $key)->getValue());
-                                $tgl31 = preg_replace('~[\\\\/*?"<>|()-]~', ' ', $spreadsheet->getCell("AF". $key)->getValue());
-                                //$statusKehadiran =  $spreadsheet->getCell('B2' . $key)->getValue();
-                                //dd($nama);
+
                                 $karyawan = karyawan::where('nama_pekerja', $nama)->first();
                                 //dd($karyawan);
                                 $kolomAkhir = 'AG';
@@ -221,11 +157,8 @@ class UploadAbsensiController extends _CrudController
                                      
                                             $saveReportAbsen = [
                                                 'karyawan_id' => $karyawan->id,
-                                                'hari' => \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($spreadsheet->getCell($koloms . 2)->getValue())->format('Y-m-d'),
-                                                'time_start' => null,
-                                                'time_end' => null,
-                                                'att_start' => null,
-                                                'att_end' => null,
+                                                'hari' => \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($spreadsheet->getCell($koloms . 2)->getValue())->format('dd'),
+                                                'tanggal' => \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($spreadsheet->getCell($koloms . 2)->getValue())->format('Y-m-d'),
                                                 'status' => $spreadsheet->getCell($koloms . $key)->getValue(),
                                                 'weekday' => 0,
                                                

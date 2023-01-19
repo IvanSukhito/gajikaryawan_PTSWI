@@ -175,10 +175,7 @@ else {
                                                             <tr>
                                                            
                                                                 <th>@lang('general.hari')</th>
-                                                                <th>@lang('general.time_start')</th>
-                                                                <th>@lang('general.time_end')</th>
-                                                                <th>@lang('general.att_start')</th>
-                                                                <th>@lang('general.att_end')</th>
+                                                                <th>@lang('general.tanggal')</th>
                                                                 <th>@lang('general.status_absen')</th>
                                                               
                                                             </tr>
@@ -188,10 +185,7 @@ else {
                                                                 <tr>
                                                               
                                                                     <td>{{$list->hari}}</td>
-                                                                    <td>{{$list->time_start}}</td>
-                                                                    <td>{{$list->time_end}}</td>
-                                                                    <td>{{$list->att_start}}</td>
-                                                                    <td>{{$list->att_end}}</td>
+                                                                    <td>{{$list->tanggal}}</td>
                                                                     <td>{{$getStatusAtt[$list->status]}}</td>
                                                                 </tr>
                                                           
@@ -207,10 +201,7 @@ else {
                                                             <tr>
                                                          
                                                                 <th>@lang('general.hari')</th>
-                                                                <th>@lang('general.time_start')</th>
-                                                                <th>@lang('general.time_end')</th>
-                                                                <th>@lang('general.att_start')</th>
-                                                                <th>@lang('general.att_end')</th>
+                                                                <th>@lang('general.tanggal')</th>
                                                                 <th>@lang('general.status_absen')</th>
                                                               
                                                             </tr>
@@ -220,10 +211,7 @@ else {
                                                                 <tr>
                                                                
                                                                     <td>{{$list->hari}}</td>
-                                                                    <td>{{$list->time_start}}</td>
-                                                                    <td>{{$list->time_end}}</td>
-                                                                    <td>{{$list->att_start}}</td>
-                                                                    <td>{{$list->att_end}}</td>
+                                                                    <td>{{$list->tanggal}}</td>
                                                                     <td>{{$getStatusAtt[$list->status]}}</td>
                                                                
                                                                 </tr>
@@ -240,10 +228,7 @@ else {
                                                             <tr>
                                                               
                                                                 <th>@lang('general.hari')</th>
-                                                                <th>@lang('general.time_start')</th>
-                                                                <th>@lang('general.time_end')</th>
-                                                                <th>@lang('general.att_start')</th>
-                                                                <th>@lang('general.att_end')</th>
+                                                                <th>@lang('general.tanggal')</th>
                                                                 <th>@lang('general.status_absen')</th>
                                                               
                                                             </tr>
@@ -253,10 +238,7 @@ else {
                                                                 <tr>
                                                               
                                                                     <td>{{$list->hari}}</td>
-                                                                    <td>{{$list->time_start}}</td>
-                                                                    <td>{{$list->time_end}}</td>
-                                                                    <td>{{$list->att_start}}</td>
-                                                                    <td>{{$list->att_end}}</td>
+                                                                    <td>{{$list->tanggal}}</td>
                                                                     <td>{{$getStatusAtt[$list->status]}}</td>
                                                                
                                                                 </tr>
@@ -273,10 +255,7 @@ else {
                                                         <thead>
                                                             <tr>
                                                                 <th>@lang('general.hari')</th>
-                                                                <th>@lang('general.time_start')</th>
-                                                                <th>@lang('general.time_end')</th>
-                                                                <th>@lang('general.att_start')</th>
-                                                                <th>@lang('general.att_end')</th>    
+                                                                <th>@lang('general.tanggal')</th>    
                                                                 <th>@lang('general.status_absen')</th>
                                                             </tr>
                                                             </thead>
@@ -285,10 +264,7 @@ else {
                                                                 <tr>
                                                                 
                                                                     <td>{{$list->hari}}</td>
-                                                                    <td>{{$list->time_start}}</td>
-                                                                    <td>{{$list->time_end}}</td>
-                                                                    <td>{{$list->att_start}}</td>
-                                                                    <td>{{$list->att_end}}</td>
+                                                                    <td>{{$list->tanggal}}</td>
                                                                     <td>{{$getStatusAtt[$list->status]}}</td>
                                                                 </tr>
                                                           
@@ -303,10 +279,7 @@ else {
                                                         <thead>
                                                             <tr>
                                                                 <th>@lang('general.hari')</th>
-                                                                <th>@lang('general.time_start')</th>
-                                                                <th>@lang('general.time_end')</th>
-                                                                <th>@lang('general.att_start')</th>
-                                                                <th>@lang('general.att_end')</th>  
+                                                                <th>@lang('general.tanggal')</th>  
                                                                 <th>@lang('general.status_absen')</th>  
                                                             </tr>
                                                             </thead>
@@ -315,10 +288,7 @@ else {
                                                                 <tr>
                                                                  
                                                                     <td>{{$list->hari}}</td>
-                                                                    <td>{{$list->time_start}}</td>
-                                                                    <td>{{$list->time_end}}</td>
-                                                                    <td>{{$list->att_start}}</td>
-                                                                    <td>{{$list->att_end}}</td>
+                                                                    <td>{{$list->tanggal}}</td>
                                                                     <td>{{$getStatusAtt[$list->status]}}</td>
                                                                 </tr>
                                                           
@@ -335,10 +305,7 @@ else {
                                                         <thead>
                                                             <tr>
                                                                 <th>@lang('general.hari')</th>
-                                                                <th>@lang('general.time_start')</th>
-                                                                <th>@lang('general.time_end')</th>
-                                                                <th>@lang('general.att_start')</th>
-                                                                <th>@lang('general.att_end')</th>  
+                                                                <th>@lang('general.tanggal')</th>  
                                                                 <th>@lang('general.status_absen')</th>  
                                                             </tr>
                                                             </thead>
@@ -347,10 +314,7 @@ else {
                                                                 <tr>
                                                                  
                                                                     <td>{{$list->hari}}</td>
-                                                                    <td>{{$list->time_start}}</td>
-                                                                    <td>{{$list->time_end}}</td>
-                                                                    <td>{{$list->att_start}}</td>
-                                                                    <td>{{$list->att_end}}</td>
+                                                                    <td>{{$list->tanggal}}</td>
                                                                     <td>{{$getStatusAtt[$list->status]}}</td>
                                                                 </tr>
                                                           
@@ -366,10 +330,7 @@ else {
                                                         <thead>
                                                             <tr>
                                                                 <th>@lang('general.hari')</th>
-                                                                <th>@lang('general.time_start')</th>
-                                                                <th>@lang('general.time_end')</th>
-                                                                <th>@lang('general.att_start')</th>
-                                                                <th>@lang('general.att_end')</th> 
+                                                                <th>@lang('general.tanggal')</th> 
                                                                 <th>@lang('general.status_absen')</th>   
                                                             </tr>
                                                             </thead>
@@ -378,10 +339,7 @@ else {
                                                                 <tr>
                                                                
                                                                     <td>{{$list->hari}}</td>
-                                                                    <td>{{$list->time_start}}</td>
-                                                                    <td>{{$list->time_end}}</td>
-                                                                    <td>{{$list->att_start}}</td>
-                                                                    <td>{{$list->att_end}}</td>
+                                                                    <td>{{$list->tanggal}}</td>
                                                                     <td>{{$getStatusAtt[$list->status]}}</td>
                                                                 </tr>
                                                           
@@ -396,10 +354,7 @@ else {
                                                         <thead>
                                                             <tr>
                                                                 <th>@lang('general.hari')</th>
-                                                                <th>@lang('general.time_start')</th>
-                                                                <th>@lang('general.time_end')</th>
-                                                                <th>@lang('general.att_start')</th>
-                                                                <th>@lang('general.att_end')</th>   
+                                                                <th>@lang('general.tanggal')</th>   
                                                                 <th>@lang('general.status_absen')</th> 
                                                             </tr>
                                                             </thead>
@@ -408,10 +363,7 @@ else {
                                                                 <tr>
                                                                
                                                                     <td>{{$list->hari}}</td>
-                                                                    <td>{{$list->time_start}}</td>
-                                                                    <td>{{$list->time_end}}</td>
-                                                                    <td>{{$list->att_start}}</td>
-                                                                    <td>{{$list->att_end}}</td>
+                                                                    <td>{{$list->tanggal}}</td>
                                                                     <td>{{$getStatusAtt[$list->status]}}</td>
                                                                 </tr>
                                                           
@@ -426,9 +378,6 @@ else {
                                                         <thead>
                                                             <tr>
                                                                 <th>@lang('general.hari')</th>
-                                                                <th>@lang('general.time_start')</th>
-                                                                <th>@lang('general.time_end')</th>
-                                                                <th>@lang('general.att_start')</th>
                                                                 <th>@lang('general.att_end')</th>  
                                                                 <th>@lang('general.status_absen')</th>  
                                                             </tr>
@@ -438,10 +387,7 @@ else {
                                                                 <tr>
                                                                    
                                                                     <td>{{$list->hari}}</td>
-                                                                    <td>{{$list->time_start}}</td>
-                                                                    <td>{{$list->time_end}}</td>
-                                                                    <td>{{$list->att_start}}</td>
-                                                                    <td>{{$list->att_end}}</td>
+                                                                    <td>{{$list->tanggal}}</td>
                                                                     <td>{{$getStatusAtt[$list->status]}}</td>
                                                                 </tr>
                                                           
@@ -456,10 +402,7 @@ else {
                                                         <thead>
                                                             <tr>
                                                                 <th>@lang('general.hari')</th>
-                                                                <th>@lang('general.time_start')</th>
-                                                                <th>@lang('general.time_end')</th>
-                                                                <th>@lang('general.att_start')</th>
-                                                                <th>@lang('general.att_end')</th>    
+                                                                <th>@lang('general.tanggal')</th>    
                                                                 <th>@lang('general.status_absen')</th>
                                                             </tr>
                                                             </thead>
@@ -468,10 +411,7 @@ else {
                                                                 <tr>
                                                               
                                                                     <td>{{$list->hari}}</td>
-                                                                    <td>{{$list->time_start}}</td>
-                                                                    <td>{{$list->time_end}}</td>
-                                                                    <td>{{$list->att_start}}</td>
-                                                                    <td>{{$list->att_end}}</td>
+                                                                    <td>{{$list->tanggal}}</td>
                                                                     <td>{{$getStatusAtt[$list->status]}}</td>
                                                                 </tr>
                                                           
@@ -486,10 +426,7 @@ else {
                                                         <thead>
                                                             <tr>
                                                                 <th>@lang('general.hari')</th>
-                                                                <th>@lang('general.time_start')</th>
-                                                                <th>@lang('general.time_end')</th>
-                                                                <th>@lang('general.att_start')</th>
-                                                                <th>@lang('general.att_end')</th>    
+                                                                <th>@lang('general.tanggal')</th>    
                                                                 <th>@lang('general.status_absen')</th>
                                                             </tr>
                                                             </thead>
@@ -498,10 +435,7 @@ else {
                                                                 <tr>
                                                                   
                                                                     <td>{{$list->hari}}</td>
-                                                                    <td>{{$list->time_start}}</td>
-                                                                    <td>{{$list->time_end}}</td>
-                                                                    <td>{{$list->att_start}}</td>
-                                                                    <td>{{$list->att_end}}</td>
+                                                                    <td>{{$list->tanggal}}</td>
                                                                     <td>{{$getStatusAtt[$list->status]}}</td>
                                                                 </tr>
                                                           
@@ -516,10 +450,7 @@ else {
                                                         <thead>
                                                             <tr>
                                                                 <th>@lang('general.hari')</th>
-                                                                <th>@lang('general.time_start')</th>
-                                                                <th>@lang('general.time_end')</th>
-                                                                <th>@lang('general.att_start')</th>
-                                                                <th>@lang('general.att_end')</th>   
+                                                                <th>@lang('general.tanggal')</th>   
                                                                 <th>@lang('general.status_absen')</th> 
                                                             </tr>
                                                             </thead>
@@ -528,10 +459,7 @@ else {
                                                                 <tr>
                                                                  
                                                                     <td>{{$list->hari}}</td>
-                                                                    <td>{{$list->time_start}}</td>
-                                                                    <td>{{$list->time_end}}</td>
-                                                                    <td>{{$list->att_start}}</td>
-                                                                    <td>{{$list->att_end}}</td>
+                                                                    <td>{{$list->tanggal}}</td>
                                                                     <td>{{$getStatusAtt[$list->status]}}</td>
                                                                 </tr>
                                                           

@@ -13,10 +13,7 @@ class historyAbsen extends Model
     protected $fillable = [
         'karyawan_id',
         'hari',
-        'time_start',
-        'time_end',
-        'att_start',
-        'att_end',
+        'tanggal',
         'status',
         'weekday'
 
