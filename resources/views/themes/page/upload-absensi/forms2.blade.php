@@ -81,8 +81,8 @@ else {
                         <div class="form-group">
                             <label for="choose_month">{{ __('general.choose_month') }} <span class="text-red">*</span></label><br />
                             <select name="month" class="form-control select2 select2-hidden-accessible" style="width: 100%;" data-select2-id="month" tabindex="-1" aria-hidden="true">
-                                <option selected="selected" data-select2-id="'{{date('F', strtotime(date("Y-m-d")))}}" value="{{date('F', strtotime(date("Y-m-d")))}}">{{date('F', strtotime(date("Y-m-d")))}}</option>
-                                <option data-select2-id="{{date('F', strtotime("-1 month", strtotime(date("Y-m-d"))))}}" value="{{date('F', strtotime("-1 month", strtotime(date("Y-m-d"))))}}">{{date('F', strtotime("-1 month", strtotime(date("Y-m-d"))))}}</option>
+                                <option selected="selected" data-select2-id="'{{date('F Y', strtotime(date("Y-m-d")))}}" value="{{date('F Y', strtotime(date("Y-m-d")))}}">{{date('F Y', strtotime(date("Y-m-d")))}}</option>
+                                <option data-select2-id="{{date('F Y', strtotime("-1 month", strtotime(date("Y-m-d"))))}}" value="{{date('F Y', strtotime("-1 month", strtotime(date("Y-m-d"))))}}">{{date('F Y', strtotime("-1 month", strtotime(date("Y-m-d"))))}}</option>
                             </select>
                         </div>
                     </div>

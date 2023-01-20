@@ -124,12 +124,10 @@ class UploadAbsensiController extends _CrudController
 
 
         $getFile = $this->request->file('upload_absensi');
-        $getMonth = $this->request->get('month');
-
-        //dd(date('m', strtotime($getMonth)));
-        //date('Y');
-        dd(date('Y'));
-
+        $getDate = $this->request->get('month');
+        $getYear = substr($getDate, -4);
+        $getMonth = date('m', strtotime(substr($getDate, 0, -5)));
+    
         if($getFile) {
 //            $destinationPath = 'synapsaapps/product/example_import';
 //
@@ -149,24 +147,39 @@ class UploadAbsensiController extends _CrudController
                     if ($data) {
                         $spreadsheet = $data->getActiveSheet();
                         foreach ($spreadsheet->getRowIterator() as $key => $row) {
-                            if($key >= 3) {
-                                $nama = strip_tags(preg_replace('~[\\\\/:*?"<>|(1234567890)]~', ' ', $spreadsheet->getCell("A". $key)->getValue()));
+                            if($key >= 2) {
+                                $nama = strip_tags(preg_replace('~[\\\\/:*?"<>|(1234567890)]~', ' ',$spreadsheet->getCell("C". $key)->getValue()));
 
                                 $karyawan = karyawan::where('nama_pekerja', $nama)->first();
                                 //dd($karyawan);
-                                $kolomAkhir = 'AH';
-                                if($key > 1){
+                                $kolomAkhir = 'AI';
+                                if($key >= 2 && $key <= 11){
                                     if($nama = $karyawan){
                                         for($koloms = 'D'; $koloms != $kolomAkhir; $koloms++){
                                      
-                                            $saveReportAbsen = [
+                                           
+                                                $status = $spreadsheet->getCell($koloms . $key)->getValue();
+
+                                                $getTgl = $spreadsheet->getCell($koloms . 1)->getValue();
+
+                                                $tanggal = $getYear.'-'.$getMonth.'-'.$getTgl;
+                                                $weekday = 0;
+                                                if($status == 'H'){
+                                                    $weekday = 1;
+                                                }else{
+                                                    $weekday = 0;
+                                                }
+
+                                              
+                                                $saveReportAbsen = [
                                                 'karyawan_id' => $karyawan->id,
-                                                'hari' => \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($spreadsheet->getCell($koloms . 2)->getValue())->format('dd'),
-                                                'tanggal' => \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($spreadsheet->getCell($koloms . 2)->getValue())->format('Y-m-d'),
-                                                'status' => $spreadsheet->getCell($koloms . $key)->getValue(),
-                                                'weekday' => 0,
+                                                'hari' =>  date('l', strtotime($tanggal)),
+                                                'tanggal' => $tanggal,
+                                                'status' => $status,
+                                                'weekday' => $weekday,
                                                
-                                            ];
+                                                ];
+
                                             //dd($saveAbsen);
                                             historyAbsen::create($saveReportAbsen);
                                         
