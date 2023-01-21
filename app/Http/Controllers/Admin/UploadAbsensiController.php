@@ -7,6 +7,7 @@ use App\Codes\Models\Position;
 use App\Codes\Models\Admin;
 use App\Codes\Models\karyawan;
 use App\Codes\Models\historyAbsen;
+use App\Codes\Models\absenPerMonth;
 use App\Codes\Logic\ExampleLogic;
 use Yajra\DataTables\DataTables;
 
@@ -149,12 +150,29 @@ class UploadAbsensiController extends _CrudController
                         foreach ($spreadsheet->getRowIterator() as $key => $row) {
                             if($key >= 2) {
                                 $nama = strip_tags(preg_replace('~[\\\\/:*?"<>|(1234567890)]~', ' ',$spreadsheet->getCell("C". $key)->getValue()));
-
+                                $getCountH = $spreadsheet->getCell("AI". $key)->getCalculatedValue();
+                                $getCountN = $spreadsheet->getCell("AJ". $key)->getCalculatedValue();
+                                $getCountCT = $spreadsheet->getCell("AK". $key)->getCalculatedValue();
+                                $getCountSD = $spreadsheet->getCell("AL". $key)->getCalculatedValue();
+                                $getCountCH = $spreadsheet->getCell("AM". $key)->getCalculatedValue();
+                                $getCountIR = $spreadsheet->getCell("AN". $key)->getCalculatedValue();
+                                $getCountA = $spreadsheet->getCell("AO". $key)->getCalculatedValue();
+                                $getCountI = $spreadsheet->getCell("AP". $key)->getCalculatedValue();
+                                $getCountS = $spreadsheet->getCell("AQ". $key)->getCalculatedValue();
+                                $getCountHD = $spreadsheet->getCell("AR". $key)->getCalculatedValue();
+                                $getCountDL = $spreadsheet->getCell("AS". $key)->getCalculatedValue();
+                                $getCountTL = $spreadsheet->getCell("AT". $key)->getCalculatedValue();
+                                $getCountPC = $spreadsheet->getCell("AU". $key)->getCalculatedValue();
+                                $getCountLC = $spreadsheet->getCell("AV". $key)->getCalculatedValue();
+                                $getCountDed1 = $spreadsheet->getCell("AW". $key)->getCalculatedValue();
+                                $getCountDed2 = $spreadsheet->getCell("AX". $key)->getCalculatedValue();
+                                //DEduction1 Alpha, Izin, Sakit, dan HD(2)
+                                //Deduction2 sum(Tl, PC, LC) lebih dari 5 x
                                 $karyawan = karyawan::where('nama_pekerja', $nama)->first();
                                 //dd($karyawan);
                                 $kolomAkhir = 'AI';
                                 if($key >= 2 && $key <= 11){
-                                    if($nama = $karyawan){
+                                    if($karyawan){
                                         for($koloms = 'D'; $koloms != $kolomAkhir; $koloms++){
                                      
                                            
@@ -179,16 +197,45 @@ class UploadAbsensiController extends _CrudController
                                                 'weekday' => $weekday,
                                                
                                                 ];
-
+                                                
                                             //dd($saveAbsen);
                                             historyAbsen::create($saveReportAbsen);
                                         
                                         }
-                                } 
+                                    } 
                                 
                                 }
                               
-                               
+
+                                if($key >= 2 && $key <= 11){
+                                    if($karyawan){
+                                            $saveCountAbsen = [
+                                                'karyawan_id' => $karyawan->id,
+                                                'Month' =>  $getMonth,
+                                                'Year' => $getYear,
+                                                'H' => $getCountH,
+                                                'N' => $getCountN,
+                                                'CT' => $getCountCT,
+                                                'SD' => $getCountSD,
+                                                'CH' => $getCountCH,
+                                                'IR' => $getCountIR,
+                                                'A' => $getCountA,
+                                                'I' => $getCountI,
+                                                'S' => $getCountS,
+                                                'HD' => $getCountHD,
+                                                'DL' => $getCountDL,
+                                                'TL' => $getCountTL,
+                                                'PC' => $getCountPC,
+                                                'LC' => $getCountLC,
+                                                'Deduction_1' => $getCountDed1,
+                                                'Deduction_2'=> $getCountDed2
+                                               
+                                                ];    
+                                                //dd($saveCountAbsen); 
+                                            absenPerMonth::create($saveCountAbsen);
+                                        }
+                                     
+                                    }
                              
                           
                             }
@@ -205,7 +252,7 @@ class UploadAbsensiController extends _CrudController
 
         if($this->request->ajax()){
             return response()->json(['result' => 1, 'message' => __('general.success_add_', ['field' => $this->data['thisLabel']])]);
-        }
+        }   
         else {
             session()->flash('message', __('general.success_add_', ['field' => $this->data['thisLabel']]));
             session()->flash('message_alert', 2);

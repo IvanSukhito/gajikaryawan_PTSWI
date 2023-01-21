@@ -6,6 +6,7 @@ use App\Codes\Logic\_CrudController;
 use App\Codes\Models\Karyawan;
 use App\Codes\Models\position;
 use App\Codes\Models\historyAbsen;
+use App\Codes\Logic\AbsensiPerMonth;
 use Yajra\DataTables\DataTables;
 
 use Illuminate\Http\Request;
@@ -166,6 +167,13 @@ class KaryawanController extends _CrudController
 
         $data = $this->data;
 
+        // $history = new AbsensiPerMonth(2);
+
+        // $getHistory = $history->getAttCount();
+
+       //dd($getHistory);
+        
+
         $riwayatAbsenJan = historyAbsen::selectRaw('history_absen.*')
                             ->leftjoin('karyawans', 'karyawans.id','=','history_absen.karyawan_id')
                             ->where('history_absen.karyawan_id', $id)
@@ -187,6 +195,7 @@ class KaryawanController extends _CrudController
         $riwayatAbsenApr = historyAbsen::selectRaw('history_absen.*')
                             ->leftjoin('karyawans', 'karyawans.id','=','history_absen.karyawan_id')
                             ->where('history_absen.karyawan_id', $id)
+            
                             ->whereMonth('tanggal', '04')
                             ->get();
 
