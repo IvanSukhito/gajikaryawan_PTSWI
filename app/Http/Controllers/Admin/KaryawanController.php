@@ -38,7 +38,7 @@ class KaryawanController extends _CrudController
                 'lang' => 'general.position',
                 'type' => 'select2'
             ],
-            'nama_pekerja' => [
+            'nama' => [
                 'validate' => [
                     'create' => 'required',
                     'edit' => 'required'
@@ -52,31 +52,55 @@ class KaryawanController extends _CrudController
                 ],
                 'lang' => 'general.nik',
             ],
-            'npwp' => [
+            'no_npwp' => [
                 'validate' => [
                     'create' => 'required',
                     'edit' => 'required'
                 ],
                 'list' => 0,
-                'lang' => 'general.npwp',
+                'lang' => 'general.no_npwp',
             ],
-            'tgl_masuk' => [
+            'no_ktp' => [
+                'validate' => [
+                    'create' => 'required',
+                    'edit' => 'required'
+                ],
+                'list' => 0,
+                'lang' => 'general.no_ktp',
+            ],
+            'tgl_mulai_kerja' => [
                 'validate' => [
                     'create' => 'required',
                     'edit' => 'required'
                 ],
                 'type' => 'datepicker',
-                'lang' => 'general.tgl_masuk',
+                'lang' => 'general.tgl_mulai',
             ],
-            'kode' => [
+            'tgl_keluar_kerja' => [
+                'validate' => [
+                    'create' => 'required',
+                    'edit' => 'required'
+                ],
+                'type' => 'datepicker',
+                'lang' => 'general.tgl_keluar',
+            ],
+            'usia' => [
                 'validate' => [
                     'create' => 'required',
                     'edit' => 'required'
                 ],
                 'list' => 0,
-                'lang' => 'general.kode',
+                'lang' => 'general.usia',
             ],
-            'dob' => [
+            'agama' => [
+                'validate' => [
+                    'create' => 'required',
+                    'edit' => 'required'
+                ],
+                'list' => 0,
+                'lang' => 'general.agama',
+            ],
+            'tgl_lahir' => [
                 'validate' => [
                     'create' => 'required',
                     'edit' => 'required'
@@ -85,7 +109,7 @@ class KaryawanController extends _CrudController
                 'type' => 'datepicker',
                 'lang' => 'general.dob',
             ],
-            'gender' => [
+            'jenis_kelamin' => [
                 'validate' => [
                     'create' => 'required',
                     'edit' => 'required'
@@ -94,32 +118,59 @@ class KaryawanController extends _CrudController
                 'type' => 'select2',
                 'lang' => 'general.gender',
             ],
-            'no_hp' => [
+            'telephone_1' => [
                 'validate' => [
                     'create' => 'required',
                     'edit' => 'required'
                 ],
                 'list' => 0,
-                'lang' => 'general.no_hp',
+                'type' => 'phone',
+                'lang' => 'general.telephone1',
             ],
-            'alamat' => [
+            'telephone_2' => [
+                'validate' => [
+                    'create' => 'required',
+                    'edit' => 'required'
+                ],
+                'list' => 0,
+                'type' => 'phone',
+                'lang' => 'general.telephone2',
+            ],
+            'alamat_tetap' => [
                 'validate' => [
                     'create' => 'required',
                     'edit' => 'required'
                 ],
                 'list' => 0,
                 'type' => 'textarea',
-                'lang' => 'general.alamat',
+                'lang' => 'general.alamat_tetap',
             ],
-            'gaji_pokok' => [
+            'kode_pos1' => [
                 'validate' => [
                     'create' => 'required',
                     'edit' => 'required'
                 ],
                 'list' => 0,
-                'type' => 'money',
-                'lang' => 'general.gaji_pokok',
+                'lang' => 'general.kode_pos1',
             ],
+            'alamat_sementara' => [
+                'validate' => [
+                    'create' => 'required',
+                    'edit' => 'required'
+                ],
+                'list' => 0,
+                'type' => 'textarea',
+                'lang' => 'general.alamat_sementara',
+            ],
+            'kode_pos2' => [
+                'validate' => [
+                    'create' => 'required',
+                    'edit' => 'required'
+                ],
+                'list' => 0,
+                'lang' => 'general.kode_pos2',
+            ],
+           
             'keterangan' => [
                 'create' => 0,
                 'edit' => 0,
@@ -151,7 +202,7 @@ class KaryawanController extends _CrudController
         }
 
         $this->data['listSet']['status'] = get_list_active_inactive();
-        $this->data['listSet']['gender'] = get_list_gender();
+        $this->data['listSet']['jenis_kelamin'] = get_list_gender();
         $this->data['listSet']['position_id'] = $position;
         $this->listView['show'] = env('ADMIN_TEMPLATE').'.page.karyawan.forms';
     }

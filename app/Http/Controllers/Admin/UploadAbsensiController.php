@@ -24,24 +24,7 @@ class UploadAbsensiController extends _CrudController
                 'show' => 0,
                 'lang' => 'No'
             ],
-            'name' => [
-                'validate' => [
-                    'create' => 'required',
-                    'edit' => 'required'
-                ],
-                'lang' => 'general.position_name',
-            ],
-            'salary' => [
-                'validate' => [
-                    'create' => 'required',
-                    'edit' => 'required'
-                ],
-
-                'type' => 'money',
-                'lang' => 'general.salary',
-                'custom' => ', name: "salary"'
-            ],
-         
+        
             'created_at' => [
                 'create' => 0,
                 'edit' => 0,
@@ -150,6 +133,7 @@ class UploadAbsensiController extends _CrudController
                         foreach ($spreadsheet->getRowIterator() as $key => $row) {
                             if($key >= 2) {
                                 $nama = strip_tags(preg_replace('~[\\\\/:*?"<>|(1234567890)]~', ' ',$spreadsheet->getCell("C". $key)->getValue()));
+                                $getNik = $spreadsheet->getCell("B". $key)->getValue();
                                 $getCountH = $spreadsheet->getCell("AI". $key)->getCalculatedValue();
                                 $getCountN = $spreadsheet->getCell("AJ". $key)->getCalculatedValue();
                                 $getCountCT = $spreadsheet->getCell("AK". $key)->getCalculatedValue();
@@ -168,7 +152,7 @@ class UploadAbsensiController extends _CrudController
                                 $getCountDed2 = $spreadsheet->getCell("AX". $key)->getCalculatedValue();
                                 //DEduction1 Alpha, Izin, Sakit, dan HD(2)
                                 //Deduction2 sum(Tl, PC, LC) lebih dari 5 x
-                                $karyawan = karyawan::where('nama_pekerja', $nama)->first();
+                                $karyawan = karyawan::where('nik', $getNik)->first();
                                 //dd($karyawan);
                                 $kolomAkhir = 'AI';
                                 if($key >= 2 && $key <= 11){
