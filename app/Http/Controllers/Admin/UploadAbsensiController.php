@@ -83,9 +83,9 @@ class UploadAbsensiController extends _CrudController
         $getData = $this->data;
         $data = $this->data;
 
-        $data['thisLabel'] = __('general.product');
+        $data['thisLabel'] = __('general.absensi');
         $data['viewType'] = 'create';
-        $data['formsTitle'] = __('general.title_create', ['field' => __('general.product')]);
+        $data['formsTitle'] = __('general.title_create', ['field' => __('general.absensi')]);
         $data['passing'] = collectPassingData($this->passingData, $data['viewType']);
         $data['data'] = $getData;
 

@@ -153,6 +153,7 @@ return [
     'notification' => 'Notification',
     'relationship' => 'Relationship',
     'ok' => 'Ok',
+    'import' => 'Import',
     'page' => 'Page',
     'riddle' => 'Riddle',
     'questions' => 'Questions',
@@ -167,7 +168,7 @@ return [
     'city' => 'City',
     'browser' => 'Browser',
     'ip_address' => 'IP Address',
-
+    'upload' => 'upload',
 
     //2
     'salary' => 'Gaji Pokok',

@@ -46,6 +46,11 @@ Route::group(['prefix' => env('ADMIN_URL'), 'middleware' => ['web']], function (
                         $router->get($linkName . '/create2', $controller.'@create2')->name('admin.' . $linkName . '.create2');
                         $router->post($linkName . '/store2', $controller.'@store2')->name('admin.' . $linkName . '.store2');
                         break;
+                    case 'karyawan':
+                            $router->get($linkName . '/import', $controller.'@import')->name('admin.' . $linkName . '.import');
+                            $router->post($linkName . '/storeimport', $controller.'@storeimport')->name('admin.' . $linkName . '.storeimport');
+                            break;
+
                 }    
                 $router->get($linkName . '/data', $controller . '@dataTable')->name('admin.' . $linkName . '.dataTable');
                 $router->resource($linkName, $controller, ['as' => 'admin']);

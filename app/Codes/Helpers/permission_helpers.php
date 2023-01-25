@@ -410,6 +410,8 @@ if ( ! function_exists('listAvailablePermission'))
 
         $listPermission['upload-absensi']['create'][] = 'admin.upload-absensi.create2';
         $listPermission['upload-absensi']['create'][] = 'admin.upload-absensi.store2';
+        $listPermission['karyawan']['create'][] = 'admin.karyawan.import';
+        $listPermission['karyawan']['create'][] = 'admin.karyawan.storeimport';
 
         return $listPermission;
     }
