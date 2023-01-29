@@ -13,21 +13,14 @@ class position extends Model
     protected $primaryKey = 'id';
     protected $fillable = [
         'name',
-        'salary'
+        
     ];
 
-    protected $appends = [
-        'salary_nice',
-    ];
-
+   
 
     public function getKaryawan()
     {
         return $this->hasMany(Karyawan::class, 'position_id', 'id');
     }
-    public function getSalaryNiceAttribute()
-    {
-        return intval($this->salary) > 0 ? number_format($this->salary, 0, ',', '.') : 0;
-    }
-    
+  
 }

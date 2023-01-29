@@ -15,9 +15,13 @@ use Yajra\DataTables\DataTables;
 use Illuminate\Http\Request;
 
 class KaryawanController extends _CrudController
+
 {
+    protected $passingKaryawanDetail;
     public function __construct(Request $request)
 {
+       
+
         $passingData = [
             'id' => [
                 'create' => 0,
@@ -85,23 +89,8 @@ class KaryawanController extends _CrudController
                     'edit' => 'required'
                 ],
                 'type' => 'datepicker',
+                'list' => 0,
                 'lang' => 'general.tgl_keluar',
-            ],
-            'usia' => [
-                'validate' => [
-                    'create' => 'required',
-                    'edit' => 'required'
-                ],
-                'list' => 0,
-                'lang' => 'general.usia',
-            ],
-            'agama' => [
-                'validate' => [
-                    'create' => 'required',
-                    'edit' => 'required'
-                ],
-                'list' => 0,
-                'lang' => 'general.agama',
             ],
             'tgl_lahir' => [
                 'validate' => [
@@ -121,6 +110,68 @@ class KaryawanController extends _CrudController
                 'type' => 'select2',
                 'lang' => 'general.gender',
             ],
+          
+            'keterangan' => [
+                'create' => 0,
+                'edit' => 0,
+                'show' => 0,
+                'list' => 0,
+            ],
+            'created_at' => [
+                'create' => 0,
+                'edit' => 0,
+                'show' => 0,
+                'list' => 0,
+            ],
+            'action' => [
+                'create' => 0,
+                'edit' => 0,
+                'show' => 0,
+            ]
+        ];
+
+        $this->passingKaryawanDetail = generatePassingData([
+            'usia' => [
+                'validate' => [
+                    'create' => 'required',
+                    'edit' => 'required'
+                ],
+                'list' => 0,
+                'lang' => 'general.usia',
+            ],
+            'agama' => [
+                'validate' => [
+                    'create' => 'required',
+                    'edit' => 'required'
+                ],
+                'list' => 0,
+                'lang' => 'general.agama',
+            ],
+            'level_pendidikan' => [
+                'validate' => [
+                    'create' => 'required',
+                    'edit' => 'required'
+                ],
+                'list' => 0,
+                'lang' => 'general.level_pendidikan',
+            ],
+            'berat_badan' => [
+                'validate' => [
+                    'create' => 'required',
+                    'edit' => 'required'
+                ],
+                'list' => 0,
+                'lang' => 'general.berat_badan',
+            ],
+            'tinggi_badan' => [
+                'validate' => [
+                    'create' => 'required',
+                    'edit' => 'required'
+                ],
+                'list' => 0,
+                'lang' => 'general.tinggi_badan',
+            ],
+
             'telephone_1' => [
                 'validate' => [
                     'create' => 'required',
@@ -174,24 +225,7 @@ class KaryawanController extends _CrudController
                 'lang' => 'general.kode_pos2',
             ],
            
-            'keterangan' => [
-                'create' => 0,
-                'edit' => 0,
-                'show' => 0,
-                'list' => 0,
-            ],
-            'created_at' => [
-                'create' => 0,
-                'edit' => 0,
-                'show' => 0,
-                'list' => 0,
-            ],
-            'action' => [
-                'create' => 0,
-                'edit' => 0,
-                'show' => 0,
-            ]
-        ];
+        ]);
 
         parent::__construct(
             $request, 'general.karyawan', 'karyawan', 'Karyawan', 'karyawan',
@@ -301,11 +335,14 @@ class KaryawanController extends _CrudController
                             ->leftjoin('karyawans', 'karyawans.id','=','history_absen.karyawan_id')
                             ->where('history_absen.karyawan_id', $id)
                             ->whereMonth('tanggal', '12')
-                            ->get();      
+                            ->get();     
+                            
+        $getKaryawanDetail = karyawan_details::where('karyawans_id', $getData->id)->first();                    
                   
         $data['viewType'] = 'show';
         $data['formsTitle'] = __('general.title_show', ['field' => $data['thisLabel']]);
         $data['passing'] = collectPassingData($this->passingData, $data['viewType']);
+        $data['passing_detail'] = collectPassingData($this->passingKaryawanDetail, $data['viewType']);
         $data['data'] = $getData;
         $data['absenJan'] = $riwayatAbsenJan;
         $data['absenFeb'] = $riwayatAbsenFeb;
@@ -320,6 +357,7 @@ class KaryawanController extends _CrudController
         $data['absenNov'] = $riwayatAbsenNov;
         $data['absenDec'] = $riwayatAbsenDec;
         $data['getStatusAtt'] = get_list_status_absensi();
+        $data['karyawanDetails'] = $getKaryawanDetail;
         //dd($data['getStatusAtt']);
         return view($this->listView[$data['viewType']], $data);
     }
@@ -413,30 +451,43 @@ class KaryawanController extends _CrudController
                                 $getFasKes = $spreadsheet->getCell("AL". $key)->getValue();
                                 //DEduction1 Alpha, Izin, Sakit, dan HD(2)
                                 //Deduction2 sum(Tl, PC, LC) lebih dari 5 x
+
+                                $tglKeluarKerja = '';
+                                if(strlen($getTglKeluarKerja) > 0){
+                                    $tglKeluarKerja = \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($getTglKeluarKerja)->format('Y-m-d');
+                                }else{
+                                    $tglKeluarKerja = null;
+                                }
+
+                               
+
+                               
+
+                                $saveData = [
+                                    'position_id' => 0,
+                                    'nama' => $nama,
+                                    'nik' => $getNik,
+                                    'jenis_kelamin' => $getGender,
+                                    'no_ktp' => $getKTP,
+                                    'no_npwp' => $getNPWP,
+                                    'no_kpj' => $getKPJ,
+                                    'tgl_mulai_kerja' => \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($getTglMulaiKerja)->format('Y-m-d'),
+                                    'tgl_keluar_kerja' =>  $tglKeluarKerja,
+                                    'supervisor_no' => $getSupervisorNo ?? 0,
+                                    'tgl_lahir' => \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($getTanggalLahir)->format('Y-m-d'),
+                                    'tempat_lahir' => $getTempatLahir,
+                                    'status' => 1
+                                ];
+
                                 $karyawan = karyawan::where('nik', $getNik)->first();
                                 //dd($getNik);
                                 if($karyawan){
                                         
+                                    $karyawan->update($saveData);
                                     $karyawanId = $karyawan->id;
                                     
                                 }else{
                                   
-                                    $saveData = [
-                                        'position_id' => 0,
-                                        'nama' => $nama,
-                                        'nik' => $getNik,
-                                        'jenis_kelamin' => $getGender,
-                                        'no_ktp' => $getKTP,
-                                        'no_npwp' => $getNPWP,
-                                        'no_kpj' => $getKPJ,
-                                        'tgl_mulai_kerja' => \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($getTglMulaiKerja)->format('Y-m-d'),
-                                        'tgl_keluar_kerja' => \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($getTglKeluarKerja)->format('Y-m-d'),
-                                        'supervisor_no' => $getSupervisorNo ?? 0,
-                                        'tgl_lahir' => \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($getTanggalLahir)->format('Y-m-d'),
-                                        'tempat_lahir' => $getTempatLahir,
-                                        'status' => 1
-                                    ];
-
                                     //dd($saveData);
                                     $dataKaryawan = karyawan::create($saveData);
                                     $karyawanId =  $dataKaryawan->id;
@@ -460,7 +511,14 @@ class KaryawanController extends _CrudController
                                 ];
 
                                 //dd($saveKaryawanDetail);
-                                karyawan_details::create($saveKaryawanDetail);
+                                $karyawanDetail = karyawan_details::where('karyawans_id', $karyawanId)->first();
+                                if($karyawanDetail){
+                                    $karyawanDetail->update($saveKaryawanDetail);
+                                }
+                                else{
+                                    karyawan_details::create($saveKaryawanDetail);
+                                }
+                           
 
                                 
                              

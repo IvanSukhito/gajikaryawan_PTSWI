@@ -26,17 +26,7 @@ class PositionController extends _CrudController
                 ],
                 'lang' => 'general.position_name',
             ],
-            'salary' => [
-                'validate' => [
-                    'create' => 'required',
-                    'edit' => 'required'
-                ],
-
-                'type' => 'money',
-                'lang' => 'general.salary',
-                'custom' => ', name: "salary"'
-            ],
-         
+      
             'created_at' => [
                 'create' => 0,
                 'edit' => 0,

@@ -265,11 +265,20 @@ if ( ! function_exists('listAllMenu')) {
             ],
             [
                 'name' => __('general.karyawan'),
-                'icon' => '<i class="nav-icon fa fa-address-card"></i>',
+                'icon' => '<i class="nav-icon fa fa-users"></i>',
                 'title' => __('general.karyawan'),
                 'active' => ['admin.karyawan.'],
                 'route' => 'admin.karyawan.index',
                 'key' => 'karyawan',
+                'type' => 1,
+            ],
+            [
+                'name' => __('general.salary'),
+                'icon' => '<i class="nav-icon fa fa-credit-card-alt"></i>',
+                'title' => __('general.salary'),
+                'active' => ['admin.salary.'],
+                'route' => 'admin.salary.index',
+                'key' => 'salary',
                 'type' => 1,
             ],
             [
@@ -332,7 +341,8 @@ if ( ! function_exists('listAvailablePermission'))
         $listPermission = [];
 
         foreach ([
-            'upload-absensi'
+            'upload-absensi',
+            'salary',
                  ] as $keyPermission) {
             $listPermission[$keyPermission] = [
                 'list' => [
@@ -412,6 +422,8 @@ if ( ! function_exists('listAvailablePermission'))
         $listPermission['upload-absensi']['create'][] = 'admin.upload-absensi.store2';
         $listPermission['karyawan']['create'][] = 'admin.karyawan.import';
         $listPermission['karyawan']['create'][] = 'admin.karyawan.storeimport';
+        $listPermission['salary']['create'][] = 'admin.salary.import';
+        $listPermission['salary']['create'][] = 'admin.salary.storeimport';
 
         return $listPermission;
     }

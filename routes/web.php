@@ -38,6 +38,7 @@ Route::group(['prefix' => env('ADMIN_URL'), 'middleware' => ['web']], function (
                 'App\Http\Controllers\Admin\PositionController' => 'position',
                 'App\Http\Controllers\Admin\KaryawanController' => 'karyawan',
                 'App\Http\Controllers\Admin\UploadAbsensiController' => 'upload-absensi',
+                'App\Http\Controllers\Admin\SalaryController' => 'salary',
             ];
 
             foreach ($listRouter as $controller => $linkName) {
@@ -50,6 +51,10 @@ Route::group(['prefix' => env('ADMIN_URL'), 'middleware' => ['web']], function (
                             $router->get($linkName . '/import', $controller.'@import')->name('admin.' . $linkName . '.import');
                             $router->post($linkName . '/storeimport', $controller.'@storeimport')->name('admin.' . $linkName . '.storeimport');
                             break;
+                    case 'salary':
+                        $router->get($linkName . '/import', $controller.'@import')->name('admin.' . $linkName . '.import');
+                        $router->post($linkName . '/storeimport', $controller.'@storeimport')->name('admin.' . $linkName . '.storeimport');
+                        break;
 
                 }    
                 $router->get($linkName . '/data', $controller . '@dataTable')->name('admin.' . $linkName . '.dataTable');

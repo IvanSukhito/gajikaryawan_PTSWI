@@ -76,9 +76,9 @@ else {
                                           
                                         </div>
 
-                                        <h3 class="profile-username text-center">{{ $data->nama_pekerja }}</h3>
+                                        <h3 class="profile-username text-center">{{ $data->nama }}</h3>
 
-                                        <p class="text-muted text-center">{{ $data->dob }}</p>
+                                        <p class="text-muted text-center">{{ $data->tgl_lahir }}</p>
 
                                         <ul class="list-group list-group-unbordered mb-3">
                                             <li class="list-group-item">
@@ -113,7 +113,7 @@ else {
 
                                         <strong>NPWP</strong>
 
-                                        <p class="text-muted"> {{ $data->npwp}}</p>
+                                        <p class="text-muted"> {{ $data->no_npwp}}</p>
 
                                         <hr>
 
@@ -146,6 +146,7 @@ else {
                                         <div class="tab-content">
                                             <div class="tab-pane active" id="biodata">
                                                 @include(env('ADMIN_TEMPLATE').'._component.generate_forms')
+                                                @include(env('ADMIN_TEMPLATE').'.page.karyawan.generate_forms_2')
                                             </div>
                                             <!-- /.tab-pane -->
                                             <div class="tab-pane" id="absen-month">

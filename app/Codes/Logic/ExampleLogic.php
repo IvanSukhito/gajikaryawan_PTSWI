@@ -36,4 +36,16 @@ class ExampleLogic
         readfile($file);
         exit();
     }
+    public function downloadExampleImportSalary(){
+        $file = public_path('/import/ExampleImport-MasterSalary.xlsx');
+        //$file = asset('/import/reportabsensi.xlsx');
+        $fileName = create_slugs('Example Import Salary');
+
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="'.$fileName.'.xlsx"');
+        header('Cache-Control: max-age=0');
+        header('Cache-Control: max-age=1');
+        readfile($file);
+        exit();
+    }
 }
