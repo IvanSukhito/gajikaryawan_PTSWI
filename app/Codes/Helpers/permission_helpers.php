@@ -273,15 +273,6 @@ if ( ! function_exists('listAllMenu')) {
                 'type' => 1,
             ],
             [
-                'name' => __('general.salary'),
-                'icon' => '<i class="nav-icon fa fa-credit-card-alt"></i>',
-                'title' => __('general.salary'),
-                'active' => ['admin.salary.'],
-                'route' => 'admin.salary.index',
-                'key' => 'salary',
-                'type' => 1,
-            ],
-            [
                 'name' => __('general.upload-absensi'),
                 'icon' => '<i class="nav-icon fa fa-file-excel-o"></i>',
                 'title' => __('general.upload-absensi'),
@@ -289,6 +280,44 @@ if ( ! function_exists('listAllMenu')) {
                 'route' => 'admin.upload-absensi.create',
                 'key' => 'upload-absensi',
                 'type' => 1,
+            ],
+            //masterdata
+            [
+                'name' => __('general.master-data'),
+                'icon' => '<i class="nav-icon fa fa-bars"></i>',
+                'title' => __('general.master-data'),
+                'active' => [
+                    'admin.salary.',
+                    'admin.ptkp.',
+                    'admin.tunj-berkala.'
+                ],
+                'type' => 2,
+                'data' => [
+                    [
+                        'name' => __('general.salary'),
+                        'title' => __('general.salary'),
+                        'active' => ['admin.salary.'],
+                        'route' => 'admin.salary.index',
+                        'key' => 'salary',
+                        'type' => 1
+                    ],
+                    [
+                        'name' => __('general.ptkp'),
+                        'title' => __('general.ptkp'),
+                        'active' => ['admin.ptkp.'],
+                        'route' => 'admin.ptkp.index',
+                        'key' => 'ptkp',
+                        'type' => 1
+                    ],
+                    [
+                        'name' => __('general.tunj-berkala'),
+                        'title' => __('general.tunj-berkala'),
+                        'active' => ['admin.tunj-berkala.'],
+                        'route' => 'admin.tunj-berkala.index',
+                        'key' => 'tunj-berkala',
+                        'type' => 1
+                    ]
+                ]
             ],
             //setting
             [
@@ -395,6 +424,8 @@ if ( ! function_exists('listAvailablePermission'))
                      'role',
                      'position',
                      'karyawan',
+                     'ptkp',
+                     'tunj-berkala',
                  ] as $keyPermission) {
             $listPermission[$keyPermission] = [
                 'list' => [

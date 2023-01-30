@@ -189,6 +189,8 @@ class SalaryController extends _CrudController
                              
                                
                                 if(strlen($getGradeSalary)> 0 ){
+
+                                    $salary = salary::where('grade_series', $getGradeSalary)->first();
                                     $saveMasterSalary = [
                                         'grade_series' => $getGradeSalary,
                                         'basic_salary' => $getBasicSalary,
@@ -200,7 +202,17 @@ class SalaryController extends _CrudController
                                         'bonus_produksi' => $getBonuSProduksi,
                                     ];
 
-                                    salary::create($saveMasterSalary);
+                               
+                                    
+                                    if($salary){
+
+                                        $salary->update($saveMasterSalary);
+                                    }else{
+                                        
+                                        
+                                        salary::create($saveMasterSalary);
+                                    }
+                                 
 
                                 }
                

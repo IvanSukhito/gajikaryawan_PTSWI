@@ -187,7 +187,7 @@ else {
                                                               
                                                                     <td>{{$list->hari}}</td>
                                                                     <td>{{$list->tanggal}}</td>
-                                                                    <td>{{$getStatusAtt[$list->status]}}</td>
+                                                                    <td>{{(int) $getStatusAtt[$list->status]*2}}</td>
                                                                 </tr>
                                                           
                                                             @endforeach

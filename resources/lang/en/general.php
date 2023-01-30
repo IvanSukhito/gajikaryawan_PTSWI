@@ -8,7 +8,7 @@ return [
     |--------------------------------------------------------------------------
     */
     //month
-
+    '10000' => 10.000,
     'jan' => 'jan',
     'feb' => 'feb',
     'mar' => 'mar',
@@ -28,7 +28,10 @@ return [
     'time_end' => 'waktu selesai',
     'hari' => 'hari',
 
-
+    //tunjangan
+    'ptkp' => 'PTKP',
+    'tunj-berkala' => 'Tunjangan Berkala',
+    'master-data' => 'Master Data',
     //
     'add' => 'Add',
     'add_tasks' => 'Add Task',
