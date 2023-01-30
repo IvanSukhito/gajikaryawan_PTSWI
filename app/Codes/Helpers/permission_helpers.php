@@ -272,15 +272,7 @@ if ( ! function_exists('listAllMenu')) {
                 'key' => 'karyawan',
                 'type' => 1,
             ],
-            [
-                'name' => __('general.upload-absensi'),
-                'icon' => '<i class="nav-icon fa fa-file-excel-o"></i>',
-                'title' => __('general.upload-absensi'),
-                'active' => ['admin.upload-absensi.'],
-                'route' => 'admin.upload-absensi.create',
-                'key' => 'upload-absensi',
-                'type' => 1,
-            ],
+        
             //masterdata
             [
                 'name' => __('general.master-data'),
@@ -317,6 +309,35 @@ if ( ! function_exists('listAllMenu')) {
                         'key' => 'tunj-berkala',
                         'type' => 1
                     ]
+                ]
+            ],
+            [
+                'name' => __('general.upload-file'),
+                'icon' => '<i class="nav-icon fa fa-external-link-square"></i>',
+                'title' => __('general.upload-file'),
+                'active' => [
+                    'admin.upload-absensi.',
+                    'admin.upload-lembur.'
+                ],
+                'type' => 2,
+                'data' => [
+                    [
+                        'name' => __('general.upload-lembur'),
+                        'title' => __('general.upload-lembur'),
+                        'active' => ['admin.upload-lembur.'],
+                        'route' => 'admin.upload-lembur.index',
+                        'key' => 'upload-lembur',
+                        'type' => 1
+                    ],
+                    [
+                        'name' => __('general.upload-absensi'),
+                        'title' => __('general.upload-absensi'),
+                        'active' => ['admin.upload-absensi.'],
+                        'route' => 'admin.upload-absensi.create',
+                        'key' => 'upload-absensi',
+                        'type' => 1
+                    ]
+                
                 ]
             ],
             //setting
@@ -371,7 +392,7 @@ if ( ! function_exists('listAvailablePermission'))
 
         foreach ([
             'upload-absensi',
-            'salary',
+       
                  ] as $keyPermission) {
             $listPermission[$keyPermission] = [
                 'list' => [
@@ -381,6 +402,23 @@ if ( ! function_exists('listAvailablePermission'))
                 'create' => [
                     'admin.'.$keyPermission.'.create',
                     'admin.'.$keyPermission.'.store'
+                ],
+
+            ];
+        }
+
+        foreach ([
+            'salary',
+       
+                 ] as $keyPermission) {
+            $listPermission[$keyPermission] = [
+                'list' => [
+                    'admin.'.$keyPermission.'.index',
+                    'admin.'.$keyPermission.'.dataTable'
+                ],
+                'show' => [
+                    'admin.'.$keyPermission.'.show'
+                 
                 ],
 
             ];

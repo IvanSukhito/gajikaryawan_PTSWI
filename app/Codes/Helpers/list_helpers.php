@@ -3,7 +3,7 @@ if ( ! function_exists('get_list_active_inactive')) {
     function get_list_active_inactive()
     {
         return [
-            1 => __('general.10.000'),
+            1 => __('general.active'),
             2 => __('general.inactive')
         ];
     }

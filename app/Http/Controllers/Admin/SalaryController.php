@@ -41,6 +41,7 @@ class SalaryController extends _CrudController
                     'edit' => 'required'
                 ],
                 'lang' => 'general.tunjangan_jabatan',
+                'list' => 0
             ],
             'tunjangan_kerajinan' => [
                 'validate' => [
@@ -74,13 +75,13 @@ class SalaryController extends _CrudController
                 'list' => 0,
                 'lang' => 'general.slt_day',
             ],
-            'bonus_prediksi' => [
+            'bonus_produksi' => [
                 'validate' => [
                     'create' => 'required',
                     'edit' => 'required'
                 ],
                 'list' => 0,
-                'lang' => 'general.bonus_prediksi',
+                'lang' => 'general.bonus_produksi',
             ],
       
             'created_at' => [

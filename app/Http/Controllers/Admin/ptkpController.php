@@ -17,6 +17,7 @@ class ptkpController extends _CrudController
                 'create' => 0,
                 'edit' => 0,
                 'show' => 0,
+                'list' => 0,
                 'lang' => 'No'
             ],
             'code' => [
