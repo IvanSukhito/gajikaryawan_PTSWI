@@ -8,7 +8,7 @@ return [
     |--------------------------------------------------------------------------
     */
     //month
-    '10000' => 10.000,
+
     'jan' => 'jan',
     'feb' => 'feb',
     'mar' => 'mar',
@@ -29,6 +29,10 @@ return [
     'hari' => 'hari',
 
     //absensi
+    'absensi' => 'Absensi',
+    'upload_absensi' => 'Upload Absensi',
+    'example_upload_absensi' => 'Example Absensi',
+    'choose_month' => 'Choose Month',
     'Normal' => 'Normal',
     'Libur' => 'Libur',
     'Alpa' => 'Alpa',

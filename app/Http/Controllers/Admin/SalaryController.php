@@ -33,6 +33,7 @@ class SalaryController extends _CrudController
                     'create' => 'required',
                     'edit' => 'required'
                 ],
+                'type' => 'money',  
                 'lang' => 'general.basic_salary',
             ],
             'tunjangan_jabatan' => [

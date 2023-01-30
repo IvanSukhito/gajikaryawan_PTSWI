@@ -60,40 +60,19 @@ class UploadAbsensiController extends _CrudController
 
         $data['thisLabel'] = __('general.absensi');
         $data['viewType'] = 'create';
-        $data['formsTitle'] = __('general.title_create');
+        $data['formsTitle'] = __('general.title_create', ['field' => __('general.absensi')]);
         $data['passing'] = collectPassingData($this->passingData, $data['viewType']);
 
         return view($this->listView[$data['viewType']], $data);
     }
 
-    public function create2(){
-        $this->callPermission();
-
-        $adminId = session()->get('admin_id');
-        $getAdmin = Admin::where('id', $adminId)->first();
-        if (!$getAdmin) {
-            return redirect()->route($this->rootRoute.'.' . $this->route . '.index');
-        }
-
-        if($this->request->get('download_example_import')) {
-            $getLogic = new ExampleLogic();
-            $getLogic->downloadExampleImportProduct();
-        }
-
-        $getData = $this->data;
-        $data = $this->data;
-
-        $data['thisLabel'] = __('general.absensi');
-        $data['viewType'] = 'create';
-        $data['formsTitle'] = __('general.title_create', ['field' => __('general.absensi')]);
-        $data['passing'] = collectPassingData($this->passingData, $data['viewType']);
-        $data['data'] = $getData;
-
-        return view($this->listView['create2'], $data);
-    }
+    
 
     //function import absensi
     public function store2(){
+        ini_set('memory_limit', -1);
+        ini_set('max_execution_time', -1);
+
         $this->callPermission();
 
         $adminId = session()->get('admin_id');
@@ -150,7 +129,7 @@ class UploadAbsensiController extends _CrudController
                                 $getCountLC = $spreadsheet->getCell("AV". $key)->getCalculatedValue();
                                 $getCountDed1 = $spreadsheet->getCell("AW". $key)->getCalculatedValue();
                                 $getCountDed2 = $spreadsheet->getCell("AX". $key)->getCalculatedValue();
-                                //DEduction1 Alpha, Izin, Sakit, dan HD(2)
+                                //Deduction1 Alpha, Izin, Sakit, dan HD(2)
                                 //Deduction2 sum(Tl, PC, LC) lebih dari 5 x
                                 $karyawan = karyawan::where('nik', $getNik)->first();
                                 //dd($karyawan);
@@ -182,8 +161,15 @@ class UploadAbsensiController extends _CrudController
                                                
                                                 ];
                                                 
+                                                $cekAbsensi = historyAbsen::where('karyawan_id', $karyawan->id)->whereDate('tanggal', $tanggal)->first();
+
+                                                if($cekAbsensi){
+                                                    $cekAbsensi->update($saveReportAbsen);
+                                                }else{
+                                                    historyAbsen::create($saveReportAbsen);
+                                                }
                                             //dd($saveAbsen);
-                                            historyAbsen::create($saveReportAbsen);
+                                        
                                         
                                         }
                                     } 
