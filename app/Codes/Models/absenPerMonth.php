@@ -29,7 +29,10 @@ class absenPerMonth extends Model
         'PC',
         'LC',
         'Deduction_1',
-        'Deduction_2'
+        'Deduction_2',
+        'Working_days',
+        'Full_Att',
+        'Bonus',
 
     ];
 

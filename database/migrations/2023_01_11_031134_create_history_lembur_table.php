@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('history_lembur', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('karyawan_id')->default(0);
-            $table->datetime('att_start')->nullable();
-            $table->datetime('att_end')->nullable();
-            $table->integer('lama_lembur')->default(0);
+            $table->string('hari')->nullable();
+            $table->datetime('tanggal')->nullable();
+            $table->decimal('lama_lembur', 3, 2)->default(0);
             $table->timestamps();
         });
     }

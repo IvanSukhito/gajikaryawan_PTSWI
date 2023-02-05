@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('karyawans_id')->default(0);
             $table->string('title_plan')->nullable();
             $table->tinyInteger('usia')->default(1);
-            $table->string('agama');
+            $table->string('agama')->nullable();
             $table->string('level_pendidikan')->nullable();
             $table->integer('berat_badan')->default(0);
             $table->integer('tinggi_badan')->default(0);

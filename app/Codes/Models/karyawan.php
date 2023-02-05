@@ -12,17 +12,23 @@ class karyawan extends Model
     protected $primaryKey = 'id';
     protected $fillable = [
         'position_id',
+        'company',
         'nama',
         'nik',
+        'kartu_no',
+        'dept',
         'jenis_kelamin',
         'no_ktp',
         'no_npwp',
         'no_kpj',
-        'tgl_mulai_kerja',
-        'tgl_keluar_kerja',      
+        'tgl_mulai_kerja',     
         'supervisor_no',
+        'lama_kerja',
         'tgl_lahir',
         'tempat_lahir',
+        'nama_bank',
+        'no_rekening',
+        'fas_kesehatan',
         'status',
    ];
 

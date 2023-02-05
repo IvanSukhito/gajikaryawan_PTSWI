@@ -38,6 +38,7 @@ Route::group(['prefix' => env('ADMIN_URL'), 'middleware' => ['web']], function (
                 'App\Http\Controllers\Admin\PositionController' => 'position',
                 'App\Http\Controllers\Admin\KaryawanController' => 'karyawan',
                 'App\Http\Controllers\Admin\UploadAbsensiController' => 'upload-absensi',
+                'App\Http\Controllers\Admin\UploadLemburController' => 'upload-lembur',
                 'App\Http\Controllers\Admin\SalaryController' => 'salary',
                 'App\Http\Controllers\Admin\tunjanganBerkalaController' => 'tunj-berkala',
                 'App\Http\Controllers\Admin\ptkpController' => 'ptkp',
@@ -49,10 +50,14 @@ Route::group(['prefix' => env('ADMIN_URL'), 'middleware' => ['web']], function (
                         $router->get($linkName . '/create2', $controller.'@create2')->name('admin.' . $linkName . '.create2');
                         $router->post($linkName . '/store2', $controller.'@store2')->name('admin.' . $linkName . '.store2');
                         break;
+                    case 'upload-lembur':
+                        $router->get($linkName . '/create2', $controller.'@create2')->name('admin.' . $linkName . '.create2');
+                        $router->post($linkName . '/store2', $controller.'@store2')->name('admin.' . $linkName . '.store2');
+                        break;
                     case 'karyawan':
-                            $router->get($linkName . '/import', $controller.'@import')->name('admin.' . $linkName . '.import');
-                            $router->post($linkName . '/storeimport', $controller.'@storeimport')->name('admin.' . $linkName . '.storeimport');
-                            break;
+                        $router->get($linkName . '/import', $controller.'@import')->name('admin.' . $linkName . '.import');
+                        $router->post($linkName . '/storeimport', $controller.'@storeimport')->name('admin.' . $linkName . '.storeimport');
+                        break;
                     case 'salary':
                         $router->get($linkName . '/import', $controller.'@import')->name('admin.' . $linkName . '.import');
                         $router->post($linkName . '/storeimport', $controller.'@storeimport')->name('admin.' . $linkName . '.storeimport');

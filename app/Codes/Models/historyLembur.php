@@ -12,8 +12,8 @@ class historyLembur extends Model
     protected $primaryKey = 'id';
     protected $fillable = [
         'karyawan_id',
-        'att_start',
-        'att_end',
+        'hari',
+        'tanggal',
         'lama_lembur'
 
     ];

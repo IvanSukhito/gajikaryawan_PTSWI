@@ -423,61 +423,79 @@ class KaryawanController extends _CrudController
                         $spreadsheet = $data->getActiveSheet();
                         foreach ($spreadsheet->getRowIterator() as $key => $row) {
                             if($key >= 2) {
-                                $nama = strip_tags(preg_replace('~[\\\\/:*?"<>|(1234567890)]~', ' ',$spreadsheet->getCell("A". $key)->getValue()));
+                                $company = $spreadsheet->getCell("A". $key)->getValue();
+                               
+                                $nama = strip_tags(preg_replace('~[\\\\/:*?"<>|(1234567890)]~', ' ',$spreadsheet->getCell("C". $key)->getValue()));
                                 $getNik = $spreadsheet->getCell("B". $key)->getValue();
-                                $getGender = $spreadsheet->getCell("D". $key)->getValue();
-                                $getKTP = $spreadsheet->getCell("E". $key)->getValue();
-                                $getNPWP = $spreadsheet->getCell("F". $key)->getValue();
-                                $getKPJ = $spreadsheet->getCell("G". $key)->getValue();
-                                $getTglMulaiKerja = $spreadsheet->getCell("H". $key)->getValue();
-                                $getTglKeluarKerja = $spreadsheet->getCell("I". $key)->getValue();
-                                $getTitlePlan = $spreadsheet->getCell("J". $key)->getValue();
-                                $getSupervisorNo = $spreadsheet->getCell("K". $key)->getValue();
-                                $getTanggalLahir = $spreadsheet->getCell("W". $key)->getValue();
-                                $getTempatLahir = $spreadsheet->getCell("X". $key)->getValue();
-                                $getUsia = $spreadsheet->getCell("Y". $key)->getValue();
-                                $getAgama = $spreadsheet->getCell("Z". $key)->getValue();
-                                $getLevelPendidikan = $spreadsheet->getCell("AA". $key)->getValue();
-                                $getTinggi = $spreadsheet->getCell("AB". $key)->getValue();
-                                $getAlamatSementara = $spreadsheet->getCell("AC". $key)->getValue();
-                                $getKodePos = $spreadsheet->getCell("AD". $key)->getValue();
-                                $getAlamatTetap = $spreadsheet->getCell("AE". $key)->getValue();
-                                $getKodePos2 = $spreadsheet->getCell("AF". $key)->getValue();
-                                $getNegara = $spreadsheet->getCell("AG". $key)->getValue();
-                                $getTelp1 = $spreadsheet->getCell("AH". $key)->getValue();
-                                $getTelp2 = $spreadsheet->getCell("AI". $key)->getValue();
-                                $getNamaBank = $spreadsheet->getCell("AJ". $key)->getValue();
-                                $getRelBank = $spreadsheet->getCell("AK". $key)->getValue();
-                                $getFasKes = $spreadsheet->getCell("AL". $key)->getValue();
-                                //DEduction1 Alpha, Izin, Sakit, dan HD(2)
-                                //Deduction2 sum(Tl, PC, LC) lebih dari 5 x
-
-                                $tglKeluarKerja = '';
-                                if(strlen($getTglKeluarKerja) > 0){
-                                    $tglKeluarKerja = \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($getTglKeluarKerja)->format('Y-m-d');
+                                $getKartuNo = $spreadsheet->getCell("D". $key)->getValue();
+                                $getDept = $spreadsheet->getCell("E". $key)->getValue();
+                                $getGender = $spreadsheet->getCell("F". $key)->getValue();
+                                $getNoKTP = $spreadsheet->getCell("G". $key)->getValue();
+                                $getNoNPWP = $spreadsheet->getCell("H". $key)->getValue();
+                                $getNoKPJ = $spreadsheet->getCell("I". $key)->getValue();
+                                $getTglMulaiKerja = \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($spreadsheet->getCell("J". $key)->getValue())->format('Y-m-d');
+                                //$getTglKeluarKerja = $spreadsheet->getCell("I". $key)->getValue();
+                                $getLamaKerja = $spreadsheet->getCell("L". $key)->getCalculatedValue();
+                                $getTitlePlan = $spreadsheet->getCell("M". $key)->getValue();
+                                $getSupervisorNo = $spreadsheet->getCell("N". $key)->getValue();
+                                $getTanggalLahir = \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($spreadsheet->getCell("AI". $key)->getValue())->format('Y-m-d');
+                                $getTempatLahir = $spreadsheet->getCell("AJ". $key)->getValue();
+                                //dd(intval($getLamaKerja));
+                                //2
+                               
+                                $getUsia = $spreadsheet->getCell("AK". $key)->getValue();
+                                $getAgama = $spreadsheet->getCell("AL". $key)->getValue();
+                                $getLevelPendidikan = $spreadsheet->getCell("AM". $key)->getValue();
+                                $getTinggi = $spreadsheet->getCell("AN". $key)->getValue();
+                                $getAlamatSementara = $spreadsheet->getCell("AO". $key)->getValue();
+                                $getKodePos = $spreadsheet->getCell("AP". $key)->getValue();
+                                $getAlamatTetap = $spreadsheet->getCell("AQ". $key)->getValue();
+                                $getKodePos2 = $spreadsheet->getCell("AR". $key)->getValue();
+                                $getNegara = $spreadsheet->getCell("AS". $key)->getValue();
+                                $getTelp1 = $spreadsheet->getCell("AT". $key)->getValue();
+                                $getTelp2 = $spreadsheet->getCell("AU". $key)->getValue();
+                                $getNamaBank = $spreadsheet->getCell("AV". $key)->getValue();
+                                $getRelBank = $spreadsheet->getCell("AW". $key)->getValue();
+                                $getFasKes = $spreadsheet->getCell("AX". $key)->getValue();
+                         
+                                
+                                $tglMulai = '';
+                                if(strlen($getTglMulaiKerja) > 0){
+                                    $tglMulai = $getTglMulaiKerja;
                                 }else{
-                                    $tglKeluarKerja = null;
+                                    $tglMulai = null;
                                 }
 
+                                // $tglLahir = '';
+                                // if(strlen($getTglLahir) > 0){
+                                //     $tglLahir = \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($getTglLahir)->format('Y-m-d');
+                                // }else{
+                                //     $tglLahir = null;
+                                // }
                                
-
-                               
-
+                                
                                 $saveData = [
                                     'position_id' => 0,
+                                    'company' => $company,
                                     'nama' => $nama,
                                     'nik' => $getNik,
+                                    'kartu_no' => $getKartuNo,
+                                    'dept' => $getDept,
                                     'jenis_kelamin' => $getGender,
-                                    'no_ktp' => $getKTP,
-                                    'no_npwp' => $getNPWP,
-                                    'no_kpj' => $getKPJ,
-                                    'tgl_mulai_kerja' => \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($getTglMulaiKerja)->format('Y-m-d'),
-                                    'tgl_keluar_kerja' =>  $tglKeluarKerja,
+                                    'no_ktp' => $getNoKTP,
+                                    'no_npwp' => $getNoNPWP,
+                                    'no_kpj' => $getNoKPJ,
+                                    'tgl_mulai_kerja' => $tglMulai,
                                     'supervisor_no' => $getSupervisorNo ?? 0,
-                                    'tgl_lahir' => \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($getTanggalLahir)->format('Y-m-d'),
+                                    'lama_kerja' => intval($getLamaKerja),
+                                    'tgl_lahir' => null,
                                     'tempat_lahir' => $getTempatLahir,
                                     'status' => 1
                                 ];
+
+                                //dd($saveData);
+
+                              
 
                                 $karyawan = karyawan::where('nik', $getNik)->first();
                                 //dd($getNik);
@@ -496,7 +514,7 @@ class KaryawanController extends _CrudController
                                 $saveKaryawanDetail = [
                                     'karyawans_id' => $karyawanId,
                                     'title_plan' => $getTitlePlan,
-                                    'usia' => $getUsia,
+                                    'usia' => $getUsia ?? 0,
                                     'agama' => $getAgama,
                                     'level_pendidikan' => $getLevelPendidikan,
                                     'berat_badan' => 0,
@@ -512,6 +530,7 @@ class KaryawanController extends _CrudController
 
                                 //dd($saveKaryawanDetail);
                                 $karyawanDetail = karyawan_details::where('karyawans_id', $karyawanId)->first();
+                                
                                 if($karyawanDetail){
                                     $karyawanDetail->update($saveKaryawanDetail);
                                 }

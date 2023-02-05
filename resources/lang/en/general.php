@@ -29,6 +29,10 @@ return [
     'hari' => 'hari',
 
     //absensi
+    'upload-lembur' => 'Upload Lembur',
+    'upload_lembur' => 'Upload Lembur',
+    'example_upload_lembur' => 'Example Lembur',
+    'lembur' => 'lembur',
     'absensi' => 'Absensi',
     'upload_absensi' => 'Upload Absensi',
     'example_upload_absensi' => 'Example Absensi',
@@ -57,6 +61,7 @@ return [
     'upload-file' => 'Upload File',
     'add_tasks' => 'Add Task',
     'edit_tasks' => 'Edit',
+    'karyawan' => 'Karyawan',
     'cancel_tasks' => 'Cancel',
     'address' => 'Address',
     'id' => 'Id',

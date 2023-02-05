@@ -321,14 +321,7 @@ if ( ! function_exists('listAllMenu')) {
                 ],
                 'type' => 2,
                 'data' => [
-                    [
-                        'name' => __('general.upload-lembur'),
-                        'title' => __('general.upload-lembur'),
-                        'active' => ['admin.upload-lembur.'],
-                        'route' => 'admin.upload-lembur.index',
-                        'key' => 'upload-lembur',
-                        'type' => 1
-                    ],
+               
                     [
                         'name' => __('general.upload-absensi'),
                         'title' => __('general.upload-absensi'),
@@ -336,7 +329,15 @@ if ( ! function_exists('listAllMenu')) {
                         'route' => 'admin.upload-absensi.create',
                         'key' => 'upload-absensi',
                         'type' => 1
-                    ]
+                    ],
+                    [
+                        'name' => __('general.upload-lembur'),
+                        'title' => __('general.upload-lembur'),
+                        'active' => ['admin.upload-lembur.'],
+                        'route' => 'admin.upload-lembur.create',
+                        'key' => 'upload-lembur',
+                        'type' => 1
+                    ],
                 
                 ]
             ],
@@ -392,13 +393,10 @@ if ( ! function_exists('listAvailablePermission'))
 
         foreach ([
             'upload-absensi',
-       
+            'upload-lembur',
                  ] as $keyPermission) {
             $listPermission[$keyPermission] = [
-                'list' => [
-                    'admin.'.$keyPermission.'.index',
-                    'admin.'.$keyPermission.'.dataTable'
-                ],
+              
                 'create' => [
                     'admin.'.$keyPermission.'.create',
                     'admin.'.$keyPermission.'.store'
@@ -489,6 +487,7 @@ if ( ! function_exists('listAvailablePermission'))
 
         $listPermission['upload-absensi']['create'][] = 'admin.upload-absensi.create2';
         $listPermission['upload-absensi']['create'][] = 'admin.upload-absensi.store2';
+        $listPermission['upload-lembur']['create'][] = 'admin.upload-lembur.store2';
         $listPermission['karyawan']['create'][] = 'admin.karyawan.import';
         $listPermission['karyawan']['create'][] = 'admin.karyawan.storeimport';
         $listPermission['salary']['create'][] = 'admin.salary.import';

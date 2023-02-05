@@ -16,15 +16,18 @@ return new class extends Migration
         Schema::create('karyawans', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('position_id')->default(0);
+            $table->string("company");
             $table->string('nama');
             $table->string('nik');
+            $table->string('kartu_no');
+            $table->string('dept');
             $table->string('jenis_kelamin')->nullable();
             $table->string('no_ktp')->nullable();
             $table->string('no_npwp')->nullable();
             $table->string('no_kpj')->nullable();
             $table->date('tgl_mulai_kerja')->nullable();
-            $table->date('tgl_keluar_kerja')->nullable();
             $table->integer('supervisor_no')->default(0);
+            $table->integer('lama_kerja')->default(0);
             $table->date('tgl_lahir')->nullable();
             $table->string('tempat_lahir')->nullable();         
             $table->string('nama_bank')->nullable();

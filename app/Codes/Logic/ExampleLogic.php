@@ -48,4 +48,5 @@ class ExampleLogic
         readfile($file);
         exit();
     }
+
 }

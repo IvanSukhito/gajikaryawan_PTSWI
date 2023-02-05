@@ -7,8 +7,10 @@ use App\Codes\Models\Position;
 use App\Codes\Models\Admin;
 use App\Codes\Models\karyawan;
 use App\Codes\Models\historyAbsen;
+use App\Codes\Models\historyLembur;
 use App\Codes\Models\absenPerMonth;
 use App\Codes\Logic\ExampleLogic;
+use App\Codes\Logic\DatingLogic;
 use Yajra\DataTables\DataTables;
 
 use Illuminate\Http\Request;
@@ -71,7 +73,8 @@ class UploadAbsensiController extends _CrudController
     //function import absensi
     public function store2(){
         ini_set('memory_limit', -1);
-        ini_set('max_execution_time', -1);
+        ini_set('max_execution_time', 10000);
+        ini_set('set_time_limit', 3600);
 
         $this->callPermission();
 
@@ -90,7 +93,11 @@ class UploadAbsensiController extends _CrudController
         $getDate = $this->request->get('month');
         $getYear = substr($getDate, -4);
         $getMonth = date('m', strtotime(substr($getDate, 0, -5)));
-    
+
+
+        $tgl_terakhir = date('t', strtotime($getDate));
+        $getEndCols = new DatingLogic();
+
         if($getFile) {
 //            $destinationPath = 'synapsaapps/product/example_import';
 //
@@ -112,7 +119,7 @@ class UploadAbsensiController extends _CrudController
                         foreach ($spreadsheet->getRowIterator() as $key => $row) {
                             if($key >= 2) {
                                 $nama = strip_tags(preg_replace('~[\\\\/:*?"<>|(1234567890)]~', ' ',$spreadsheet->getCell("C". $key)->getValue()));
-                                $getNik = $spreadsheet->getCell("B". $key)->getValue();
+                                $getNik = $spreadsheet->getCell("B". $key)->getOldCalculatedValue();
                                 $getCountH = $spreadsheet->getCell("AI". $key)->getCalculatedValue();
                                 $getCountN = $spreadsheet->getCell("AJ". $key)->getCalculatedValue();
                                 $getCountCT = $spreadsheet->getCell("AK". $key)->getCalculatedValue();
@@ -127,14 +134,33 @@ class UploadAbsensiController extends _CrudController
                                 $getCountTL = $spreadsheet->getCell("AT". $key)->getCalculatedValue();
                                 $getCountPC = $spreadsheet->getCell("AU". $key)->getCalculatedValue();
                                 $getCountLC = $spreadsheet->getCell("AV". $key)->getCalculatedValue();
-                                $getCountDed1 = $spreadsheet->getCell("AW". $key)->getCalculatedValue();
-                                $getCountDed2 = $spreadsheet->getCell("AX". $key)->getCalculatedValue();
+                                $getCountDed1 = $spreadsheet->getCell("AX". $key)->getCalculatedValue();
+                                $getCountDed2 = $spreadsheet->getCell("AY". $key)->getCalculatedValue();
+                               
+                                $getFullAtt = $spreadsheet->getCell("AW". $key)->getCalculatedValue();
+                                $getBonus = substr($spreadsheet->getCell("BD". $key)->getCalculatedValue(), -1);
+
+                                // $highestRow = $spreadsheet->getRowIterator(); // e.g 'F'
+                                // $highestColumnIndex = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::columnIndexFromString($highestColumn); // e.g. 5
+
+                                // dd($highestRow);
+
+
                                 //Deduction1 Alpha, Izin, Sakit, dan HD(2)
                                 //Deduction2 sum(Tl, PC, LC) lebih dari 5 x
-                                $karyawan = karyawan::where('nik', $getNik)->first();
-                                //dd($karyawan);
-                                $kolomAkhir = 'AI';
-                                if($key >= 2 && $key <= 11){
+                              
+                              
+                                
+                                //key awal = data diambil dari kolom mulai ke berapa
+                                //key akhir = data terakhir diambil dari kolom akhir ke berapa
+                                $keyAwal = 2;
+                                $keyAkhir = karyawan::where('status', 1)->count()+$keyAwal-1;
+                                $karyawan = karyawan::where('nik', strval($getNik))->first();
+                            
+
+                                $kolomAkhir = $getEndCols->generateDateToCell($tgl_terakhir);
+                                if($key >= $keyAwal && $key <= $keyAkhir){
+                                 
                                     if($karyawan){
                                         for($koloms = 'D'; $koloms != $kolomAkhir; $koloms++){
                                      
@@ -163,7 +189,8 @@ class UploadAbsensiController extends _CrudController
                                                 
                                                 $cekAbsensi = historyAbsen::where('karyawan_id', $karyawan->id)->whereDate('tanggal', $tanggal)->first();
 
-                                                if($cekAbsensi){
+                                                //dd($cekAbsensi);
+                                                if(strlen($cekAbsensi) > 0){
                                                     $cekAbsensi->update($saveReportAbsen);
                                                 }else{
                                                     historyAbsen::create($saveReportAbsen);
@@ -172,40 +199,88 @@ class UploadAbsensiController extends _CrudController
                                         
                                         
                                         }
+                                        $saveCountAbsen = [
+                                            'karyawan_id' => $karyawan->id,
+                                            'Month' =>  $getMonth,
+                                            'Year' => $getYear,
+                                            'H' => $getCountH,
+                                            'N' => $getCountN,
+                                            'CT' => $getCountCT,
+                                            'SD' => $getCountSD,
+                                            'CH' => $getCountCH,
+                                            'IR' => $getCountIR,
+                                            'A' => $getCountA,
+                                            'I' => $getCountI,
+                                            'S' => $getCountS,
+                                            'HD' => $getCountHD,
+                                            'DL' => $getCountDL,
+                                            'TL' => $getCountTL,
+                                            'PC' => $getCountPC,
+                                            'LC' => $getCountLC,
+                                            'Deduction_1' => $getCountDed1,
+                                            'Deduction_2'=> $getCountDed2,
+                                            'Working_days' => 26,
+                                            'Full_Att' => $getFullAtt,
+                                            'Bonus' => intval($getBonus),
+                                            ];    
+                                         
+                                        $cekTotalAbsensi = absenPerMonth::where('karyawan_id', $karyawan->id)->whereMonth('Month', $getMonth)->whereYear('Year', $getYear)->first();
+
+                                    
+                                        if(strlen($cekTotalAbsensi) > 0){
+                                            $cektotalAbsensi->update($saveCountAbsen);
+                                        }else{
+                                            absenPerMonth::create($saveCountAbsen);
+                                        }
                                     } 
                                 
                                 }
+
+
+                                $keyAwal2 = 15;
+                                $keyAkhir2 = karyawan::where('status', 1)->count()+$keyAwal2-1;
+                                $kolomAkhir2 = $getEndCols->generateDateToCellLembur($tgl_terakhir);
+                                if($key >= $keyAwal2 && $key <= $keyAkhir2){
+                                  
+                                    if($karyawan && strlen($getNik) > 0){
+                                        for($koloms2 = 'AI'; $koloms2 != $kolomAkhir2; $koloms2++){
+                                           
+                                            $nilai = $spreadsheet->getCell($koloms2 . $key)->getOldCalculatedValue();           
+
+                                            $getTgl2 = $spreadsheet->getCell($koloms2 . 14)->getValue();
+
+                                            $tanggal2 = $getYear.'-'.$getMonth.'-'.$getTgl2;
+
+                                            //dd($nilai);
+                                        
+                                     
+                                            $saveReportLembur = [
+                                            'karyawan_id' => $karyawan->id,
+                                            'hari' =>  date('l', strtotime($tanggal2)),
+                                            'tanggal' => $tanggal2,
+                                            'lama_lembur' => $nilai, 
+                                            ];
+                                            
+                                            //dd($saveReportLembur);
+                                            $cekLembur = historyLembur::where('karyawan_id', $karyawan->id)->whereDate('tanggal', $tanggal2)->first();
+
+                                            if($cekLembur){
+                                                $cekLembur->update($saveReportLembur);
+                                            }else{
+                                                historyLembur::create($saveReportLembur);
+                                            }
+                                        //dd($saveAbsen);
+                                    
+                                    
+                                        }
+                                    }
+                                 
+                                
+                                }
+                               
                               
 
-                                if($key >= 2 && $key <= 11){
-                                    if($karyawan){
-                                            $saveCountAbsen = [
-                                                'karyawan_id' => $karyawan->id,
-                                                'Month' =>  $getMonth,
-                                                'Year' => $getYear,
-                                                'H' => $getCountH,
-                                                'N' => $getCountN,
-                                                'CT' => $getCountCT,
-                                                'SD' => $getCountSD,
-                                                'CH' => $getCountCH,
-                                                'IR' => $getCountIR,
-                                                'A' => $getCountA,
-                                                'I' => $getCountI,
-                                                'S' => $getCountS,
-                                                'HD' => $getCountHD,
-                                                'DL' => $getCountDL,
-                                                'TL' => $getCountTL,
-                                                'PC' => $getCountPC,
-                                                'LC' => $getCountLC,
-                                                'Deduction_1' => $getCountDed1,
-                                                'Deduction_2'=> $getCountDed2
-                                               
-                                                ];    
-                                                //dd($saveCountAbsen); 
-                                            absenPerMonth::create($saveCountAbsen);
-                                        }
-                                     
-                                    }
+                             
                              
                           
                             }
