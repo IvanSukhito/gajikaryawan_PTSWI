@@ -14,5 +14,6 @@ class DatabaseSeeder extends Seeder
         $this->call(\Database\Seeders\InstallingSeeder::class);
         $this->call(\Database\Seeders\PTKPSeeder::class);
         $this->call(\Database\Seeders\TunjBerkalaSeeder::class);
+        $this->call(\Database\Seeders\BPJSSeeder::class);
     }
 }

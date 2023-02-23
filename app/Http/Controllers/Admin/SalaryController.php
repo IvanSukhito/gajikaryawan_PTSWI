@@ -137,7 +137,8 @@ class SalaryController extends _CrudController
     public function storeimport(){
 
         ini_set('memory_limit', -1);
-        ini_set('max_execution_time', -1);
+        ini_set('max_execution_time', 10000);
+        ini_set('set_time_limit', 3600);
 
         $this->callPermission();
 
@@ -209,6 +210,7 @@ class SalaryController extends _CrudController
                                     if($salary){
 
                                         $salary->update($saveMasterSalary);
+                                        
                                     }else{
                                         
                                         

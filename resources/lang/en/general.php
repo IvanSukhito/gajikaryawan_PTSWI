@@ -55,6 +55,7 @@ return [
     'ptkp' => 'PTKP',
     'tunj-berkala' => 'Tunjangan Berkala',
     'master-data' => 'Master Data',
+    'karyawan_karir' => 'Karir & Tunjangan',
     //
     'add' => 'Add',
     'upload-absensi' => 'Upload Absensi',

@@ -37,6 +37,7 @@ Route::group(['prefix' => env('ADMIN_URL'), 'middleware' => ['web']], function (
                 'App\Http\Controllers\Admin\RoleController' => 'role',
                 'App\Http\Controllers\Admin\PositionController' => 'position',
                 'App\Http\Controllers\Admin\KaryawanController' => 'karyawan',
+                'App\Http\Controllers\Admin\KaryawanKarirController' => 'karyawan_karir',
                 'App\Http\Controllers\Admin\UploadAbsensiController' => 'upload-absensi',
                 'App\Http\Controllers\Admin\UploadLemburController' => 'upload-lembur',
                 'App\Http\Controllers\Admin\SalaryController' => 'salary',
@@ -72,6 +73,6 @@ Route::group(['prefix' => env('ADMIN_URL'), 'middleware' => ['web']], function (
 
         $router->get('/', ['uses' => 'Admin\DashboardController@dashboard'])->name('admin');
 
-    });
+    });    
 
 });

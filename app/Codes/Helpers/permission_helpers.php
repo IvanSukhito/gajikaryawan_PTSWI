@@ -265,13 +265,23 @@ if ( ! function_exists('listAllMenu')) {
             ],
             [
                 'name' => __('general.karyawan'),
-                'icon' => '<i class="nav-icon fa fa-users"></i>',
+                'icon' => '<i class="nav-icon fa fa-id-badge"></i>',
                 'title' => __('general.karyawan'),
                 'active' => ['admin.karyawan.'],
                 'route' => 'admin.karyawan.index',
                 'key' => 'karyawan',
                 'type' => 1,
             ],
+            [
+                'name' => __('general.karyawan_karir'),
+                'icon' => '<i class="nav-icon fa fa-desktop"></i>',
+                'title' => __('general.karyawan_karir'),
+                'active' => ['admin.karyawan_karir.'],
+                'route' => 'admin.karyawan_karir.index',
+                'key' => 'karyawan_karir',
+                'type' => 1,
+            ],
+       
         
             //masterdata
             [
@@ -462,6 +472,7 @@ if ( ! function_exists('listAvailablePermission'))
                      'karyawan',
                      'ptkp',
                      'tunj-berkala',
+                     'karyawan_karir',
                  ] as $keyPermission) {
             $listPermission[$keyPermission] = [
                 'list' => [

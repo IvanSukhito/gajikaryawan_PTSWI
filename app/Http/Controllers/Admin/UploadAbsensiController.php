@@ -237,7 +237,7 @@ class UploadAbsensiController extends _CrudController
                                 }
 
 
-                                $keyAwal2 = 15;
+                                $keyAwal2 = $keyAkhir+2;
                                 $keyAkhir2 = karyawan::where('status', 1)->count()+$keyAwal2-1;
                                 $kolomAkhir2 = $getEndCols->generateDateToCellLembur($tgl_terakhir);
                                 if($key >= $keyAwal2 && $key <= $keyAkhir2){
