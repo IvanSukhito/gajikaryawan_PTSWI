@@ -56,6 +56,9 @@ return [
     'tunj-berkala' => 'Tunjangan Berkala',
     'master-data' => 'Master Data',
     'karyawan_karir' => 'Karir & Tunjangan',
+    'bpjs' => 'BPJS',
+    'score' => 'Nilai',
+    'unit' => 'Satuan',
     //
     'add' => 'Add',
     'upload-absensi' => 'Upload Absensi',

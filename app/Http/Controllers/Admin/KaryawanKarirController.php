@@ -8,7 +8,9 @@ use App\Codes\Models\karyawan;
 use App\Codes\Models\karyawan_details;
 use App\Codes\Models\position;
 use App\Codes\Models\Admin;
+use App\Codes\Models\bpjs;
 use App\Codes\Models\salary;
+use App\Codes\Logic\sistemLogic;
 use App\Codes\Logic\ExampleLogic;
 use App\Codes\Models\historyAbsen;
 use App\Codes\Logic\AbsensiPerMonth;
@@ -39,14 +41,69 @@ class KaryawanKarirController extends _CrudController
                 'lang' => 'general.karyawan',
                 'type' => 'select2'
             ],
-            'nama' => [
+            'kode_basic_salary' => [
                 'validate' => [
                     'create' => 'required',
                     'edit' => 'required'
                 ],
                 'lang' => 'general.nama_pekerja',
             ],
-       
+            'basic_salary' => [
+                'validate' => [
+                    'create' => 'required',
+                    'edit' => 'required'
+                ],
+                'type' => 'money',  
+                'lang' => 'general.basic_salary',
+            ],
+            'tunj_jabatan' => [
+                'validate' => [
+                    'create' => 'required',
+                    'edit' => 'required'
+                ],
+                'lang' => 'general.tunj_jabatan',
+                'list' => 0
+            ],
+            'tunj_kerajinan' => [
+                'validate' => [
+                    'create' => 'required',
+                    'edit' => 'required'
+                ],
+                'list' => 0,
+                'lang' => 'general.tunj_kerajinan',
+            ],
+            'tunj_shift' => [
+                'validate' => [
+                    'create' => 'required',
+                    'edit' => 'required'
+                ],
+                'list' => 0,
+                'lang' => 'general.tunj_shift',
+            ],
+            'tunj_kehadiran' => [
+                'validate' => [
+                    'create' => 'required',
+                    'edit' => 'required'
+                ],
+                'list' => 0,
+                'lang' => 'general.tunj_kehadiran',
+            ],
+            'tunj_transport' => [
+                'validate' => [
+                    'create' => 'required',
+                    'edit' => 'required'
+                ],
+                'list' => 0,
+                'lang' => 'general.tunj_transport',
+            ],
+            'tunj_bonus_produksi' => [
+                'validate' => [
+                    'create' => 'required',
+                    'edit' => 'required'
+                ],
+                'list' => 0,
+                'lang' => 'general.tunj_bonus_produksi',
+            ],
             'created_at' => [
                 'create' => 0,
                 'edit' => 0,
@@ -105,27 +162,20 @@ class KaryawanKarirController extends _CrudController
         foreach(salary::where('tunjangan_jabatan', '>', 0)->get(['id','tunjangan_jabatan','grade_series'])->toArray() as $key => $val){
             $tunjJabatan[$val['id']] = $val['grade_series'].' - '.  number_format($val['tunjangan_jabatan'], 0, ',', '.');
         }
-    
-        // $listSalaryJS = [];
-        // foreach(salary::get(['id','basic_salary'])->toArray() as $key => $val){
-        //     $listSalaryJS[$val['id']] = number_format($val['basic_salary'], 0, ',', '.');
-        // }
-        $listSalaryJS = salary::get();
-       
+   
         $listTunjJS = [];
         foreach(salary::where('tunjangan_jabatan', '>', 0)->get(['id','tunjangan_jabatan'])->toArray() as $key => $val){
-            $listTunjJS[$val['id']] = number_format($val['tunjangan_jabatan'], 0, ',', '.');
+            $listTunjJS[$val['id']] = $val['tunjangan_jabatan'];
         }
-
-        //dd($listTunjJS);
         $data['formsTitle'] = __('general.title_create', ['field' => $data['thisLabel']]);
         $data['passing'] = collectPassingData($this->passingData, $data['viewType']);
         $data['datakaryawan'] = $karyawan;
         $data['datasalary'] = $salary;
         $data['datatunj_jabatan'] = $tunjJabatan;
-        $data['listsalary'] = $listSalaryJS;
+        $data['listsalary'] = salary::get();
         $data['listtunj'] = $listTunjJS;
-
+        $data['listBPJSPC'] = bpjs::where('paid_company',1)->get(['id','score','code']);
+        $data['listBPJSPE'] = bpjs::where('paid_employee',1)->get(['id','score','code']);
         return view($this->listView[$data['viewType']], $data);
     }
 
@@ -135,8 +185,73 @@ class KaryawanKarirController extends _CrudController
 
         $viewType = 'create';
 
-        dd($this->request->all());
+        $this->validate($this->request, [
+            'basic_salary' => 'required',
+            'tunj_jabatan' => 'required',
+            'tunj_kerajinan' => 'required',
+            'tunj_shift' => 'required',
+            'tunj_kehadiran' => 'required',
+            'tunj_transport' => 'required',
+            'tunj_bonus_produksi' => 'required',
+            'JK' => 'required',
+            'JKK' => 'required',
+            'JP' => 'required',
+            'JM' => 'required',
+            'JHT' => 'required',
+            'AKDHK' => 'required',
+            'IGD' => 'required',
+            'SPN' => 'required',
+            'JHT_epl' => 'required',
+            'JP_epl' => 'required',
+            'JM_epl' => 'required',
+            'status_kawin' => 'required',
+            'jumlah_tanggungan' => 'required',
+        ]);
+        $status_kawin = strtolower($this->request->get('status_kawin'));
+        $jumlah_tanggungan = $this->request->get('jumlah_tanggungan');
 
+        $searchPTKP = new sistemLogic();
+        $ptkp = $searchPTKP->getPTKP($status_kawin, $jumlah_tanggungan);
+        $karyawanID = $this->request->get('karyawans_id');
+        //dd($this->request->all());
+        $tunjangan = new karyawan_karir();
+        $tunjangan->karyawans_id = $karyawanID;
+        $tunjangan->kode_basic_salary = $this->request->get('kode_basic_salary');
+        $tunjangan->kode_tunjangan = $this->request->get('kode_tunjangan');
+        $tunjangan->basic_salary = clear_money_format($this->request->get('basic_salary'));
+        $tunjangan->tunj_jabatan = clear_money_format($this->request->get('tunj_jabatan'));
+        $tunjangan->tunj_kerajinan = clear_money_format($this->request->get('tunj_kerajinan'));
+        $tunjangan->tunj_shift = clear_money_format($this->request->get('tunj_shift'));
+        $tunjangan->tunj_kehadiran = clear_money_format($this->request->get('tunj_kehadiran'));
+        $tunjangan->tunj_transport = clear_money_format($this->request->get('tunj_transport'));
+        $tunjangan->tunj_bonus_produksi = clear_money_format($this->request->get('tunj_bonus_produksi'));
+        $tunjangan->JK = clear_money_format($this->request->get('JK'));
+        $tunjangan->JKK = clear_money_format($this->request->get('JKK'));
+        $tunjangan->JHT = clear_money_format($this->request->get('JHT'));
+        $tunjangan->JP = clear_money_format($this->request->get('JP'));
+        $tunjangan->JM = clear_money_format($this->request->get('JM'));
+        $tunjangan->AKDHK = clear_money_format($this->request->get('AKDHK'));
+        $tunjangan->IGD = clear_money_format($this->request->get('IGD'));
+        $tunjangan->SPN = clear_money_format($this->request->get('SPN'));
+        $tunjangan->jht_epl = clear_money_format($this->request->get('JHT_epl'));
+        $tunjangan->jp_epl = clear_money_format($this->request->get('JP_epl'));
+        $tunjangan->jm_epl = clear_money_format($this->request->get('JM_epl'));
+        $tunjangan->kode_ptkp = $ptkp['code'];
+        $tunjangan->ptkp = $ptkp['amount'];
+        $tunjangan->save();
+
+        $karyawan = karyawan::where('id', $karyawanID)->update([
+            'karir' => 1,
+        ]);
+
+        $karyawans_details = karyawan_details::where('karyawans_id', $karyawanID)->update([
+            'tunjangan' => $tunjangan,
+            'status_kawin' => $status_kawin,
+        ]);
+
+        $id = $tunjangan->save();
+    
+        //cara panggil ptkp $ptkp['code'] $ptkp['amount']
         if($this->request->ajax()){
             return response()->json(['result' => 1, 'message' => __('general.success_add_', ['field' => $this->data['thisLabel']])]);
         }

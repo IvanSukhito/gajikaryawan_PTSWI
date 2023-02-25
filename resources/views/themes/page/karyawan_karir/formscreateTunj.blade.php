@@ -69,16 +69,16 @@ else {
             <div class="card-body">
                     <div class="form-group">
                         <label for="karyawan">{{ __('general.karyawan') }} *</label>
-                        {{ Form::select('karyawan', $datakaryawan, old('karyawan'), ['id' => 'karyawan', 'class' => 'form-control  input-lg select2']) }}
+                        {{ Form::select('karyawans_id', $datakaryawan, old('karyawan'), ['id' => 'karyawan', 'class' => 'form-control  input-lg select2']) }}
                     </div>
                    
                     <div class="form-group">
                         <label for="salary">{{ __('general.salary') }} *</label>
-                        {{ Form::select('salary', $datasalary, old('salary'), ['id' => 'salary', 'class' => 'form-control  input-lg select2']) }}
+                        {{ Form::select('kode_basic_salary', $datasalary, old('salary'), ['id' => 'salary', 'class' => 'form-control  input-lg select2']) }}
                     </div>
                     <div class="form-group">
                         <label for="salary">{{ __('general.tunjangan_jabatan') }} *</label>
-                        {{ Form::select('tunjangan_jabatan', $datatunj_jabatan, old('tunjangan_jabatan'), ['id' => 'tunjangan_jabatan', 'class' => 'form-control  input-lg select2']) }}
+                        {{ Form::select('kode_tunjangan', $datatunj_jabatan, old('tunjangan_jabatan'), ['id' => 'tunjangan_jabatan', 'class' => 'form-control  input-lg select2']) }}
                     </div>
                   
             </div>
@@ -130,9 +130,9 @@ else {
         
         let isiLoopingSalary = JSON.parse('{!! $listsalary !!}');
         let isiLoopingTunj = JSON.parse('{!! json_encode($listtunj) !!}');
-
-        // console.log(isiLoopingTunj[410]);
-     
+        let isiLoopingBPJSPC = JSON.parse('{!! $listBPJSPC!!}');
+        let isiLoopingBPJSPE = JSON.parse('{!! $listBPJSPE!!}');
+        let rupiah = Intl.NumberFormat('id-ID');
        
         $(document).ready(function() {
 
@@ -157,9 +157,19 @@ else {
 
                         html += render_table_tunjangan();
                         html += render_table_bpjs();
+                        html += render_table_ptkp();
                         html +='</tbody></table>';
 
                 $('#formTunjangan').html(html);     
+
+                $('.setMoney').inputmask('numeric', {
+                radixPoint: ".",
+                groupSeparator: ",",
+                digits: 2,
+                autoGroup: false,
+                prefix: '', //Space after $, this will not truncate the first character.
+                rightAlign: false
+                });
             });
 
             $('#salary').on('change', function() {
@@ -180,7 +190,7 @@ else {
                 const isiarrTunjTetap = [];
                  let kodegapok= $('#salary').val();
                  let tunjJabatan = $('#tunjangan_jabatan').val();
-                 isiarrTunjTetap[0] = isiLoopingSalary[kodegapok-1].tunjangan_kerajinan;
+                 isiarrTunjTetap[0] = isiLoopingSalary[kodegapok-1].basic_salary;
                 //  isiarrTunjTetap[0] = isiLoopingSalary[kodegapok];
                  isiarrTunjTetap[1] = isiLoopingTunj[tunjJabatan];
                  //isiarrTunjTetap[1] = isiLoopingTunj[tunjJabatan-1].tunjangan_jabatan;
@@ -233,33 +243,81 @@ else {
 
 
             function render_table_bpjs(){
+                //PC = paid company
+                const arrBPJSPC = isiLoopingBPJSPC;
+                
+                //PE = paid employee
+                const arrBPJSPE = isiLoopingBPJSPE;
                 var html = '<tr class="all-row tunjtetap-1 jen-0" style="">'+
                         '<td colspan="5">BPJS</td>'+
                         '<td width="15%">&nbsp;</td>'+
                         '<td width="10%" class="text-center"></td>'+
                         '<td width="15%" class="text-center"></td>'+
                         '</tr>';
-                    html += '<tr class="all-row tunjtetap-1 tunjtetap-2 jen-0" style=""><td width="1%">&nbsp;</td>'+
-                                '<td colspan="4"><b>1.Dibayarkan Oleh Perusahaan</b></td>'+
-                                '<td width="15%">&nbsp;</td>'+
-                                '<td width="10%" class="text-center"></td>'+
-                                '<td width="15%" class="text-center"></td>'+
-                                '</tr>';
+                html += '<tr class="all-row tunjtetap-1 tunjtetap-2 jen-0" style=""><td width="1%">&nbsp;</td>'+
+                        '<td colspan="4"><b>1.Dibayarkan Oleh Perusahaan</b></td>'+
+                        '<td width="15%">&nbsp;</td>'+
+                        '<td width="10%" class="text-center"></td>'+
+                        '<td width="15%" class="text-center"></td>'+
+                        '</tr>';
 
                     //isi 1        
+                    for (let k = 0; k<arrBPJSPC.length; k++){
+                        html += '<tr class="all-row tunjtetap-1 tunjtetap-2 tunjtetap-3 jen-4" style="">'+
+                        '<td width="1%">&nbsp;</td><td width="1%">&nbsp;</td>'+
+                        '<td colspan="3">'+arrBPJSPC[k].code+'</td>'+
+                        '<td width="15%" class="text-center"><input type="text" name="'+arrBPJSPC[k].code+'" class="form-control setMoney" value="'+arrBPJSPC[k].score+'" ></td>'+
+                        '<td width="10%" class="text-center">Persen</td>'+
+                        '<td width="15%" class="text-center">Dibayar kan Perusahaan</td>'+
+                        '</tr>';
+                    }
                     html += '<tr class="all-row tunjtetap-1 tunjtetap-2 jen-0" style=""><td width="1%">&nbsp;</td>'+
                     '<td colspan="4"><b>2.Dibayarkan Oleh Karyawan</b></td>'+
                     '<td width="15%">&nbsp;</td>'+
                     '<td width="10%" class="text-center"></td>'+
                     '<td width="15%" class="text-center"></td>'+
                     '</tr>';     
-                    //isi function 2       
+                    //isi function 2   
+                    for (let l = 0; l<arrBPJSPE.length; l++){
+                        html += '<tr class="all-row tunjtetap-1 tunjtetap-2 tunjtetap-3 jen-4" style="">'+
+                        '<td width="1%">&nbsp;</td><td width="1%">&nbsp;</td>'+
+                        '<td colspan="3">'+arrBPJSPE[l].code+'</td>'+
+                        '<td width="15%" class="text-center"><input type="text" name="'+arrBPJSPE[l].code+'_epl" class="form-control setMoney" value="'+arrBPJSPE[l].score+'" ></td>'+
+                        '<td width="10%" class="text-center">Persen</td>'+
+                        '<td width="15%" class="text-center">Dibayar kan Karyawan</td>'+
+                        '</tr>';
+                    }    
                 return html;
             };
+            function render_table_ptkp(){
+                var html = '<tr class="all-row tunjtetap-1 jen-0" style="">'+
+                        '<td colspan="5">PTKP</td>'+
+                        '<td width="15%">&nbsp;</td>'+
+                        '<td width="10%" class="text-center"></td>'+
+                        '<td width="15%" class="text-center"></td>'+
+                        '</tr>';
+                html += '<tr class="all-row tunjtetap-1 tunjtetap-2 jen-0" style=""><td width="1%">&nbsp;</td>'+
+                    '<td colspan="4"><b>1.Status Kawin / Tidak Kawin</b></td>'+
+                    '<td width="15%"><input type="text" name="status_kawin" class="form-control" placeholder="Tidak Kawin" ></td>'+
+                    '<td width="10%" class="text-center">Karakter</td>'+
+                    '<td width="15%" class="text-center">Kawin / Tidak Kawin</td>'+
+                    '</tr>';     
+                html += '<tr class="all-row tunjtetap-1 tunjtetap-2 jen-0" style=""><td width="1%">&nbsp;</td>'+
+                    '<td colspan="4"><b>2.Jumlah Tanggungan</b></td>'+
+                    '<td width="15%"><input type="text" name="jumlah_tanggungan"  class="form-control" placeholder="2" ></td>'+
+                    '<td width="10%" class="text-center">Bulat</td>'+
+                    '<td width="15%" class="text-center">Jumlah Tanggungan Keluarga</td>'+
+                    '</tr>';     
+           
+                return html        
+            }
+
+      
 
       
 
         });
+     
      
 
     </script>

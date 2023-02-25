@@ -21,20 +21,21 @@ class karyawan_karir extends Model
         'tunj_kehadiran',
         'tunj_transport',
         'tunj_bonus_prod',
-        'bpjs_jk',
-        'bpjs_jkk',
-        'bpjs_jht',
-        'bpjs_jp',
-        'bpjs_m',
+        'jk',
+        'jkk',
+        'jht',
+        'jp',
+        'jm',
         'akdhk',
         'igd',
         'spn',
         'jht_epl',
         'jp_epl',
         'jm_epl',
+        'kode_ptkp',
         'ptkp',
+            
 
-      
    ];
 
     public function getKaryawan()

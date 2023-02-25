@@ -30,6 +30,7 @@ class karyawan extends Model
         'no_rekening',
         'fas_kesehatan',
         'status',
+        'karir',
    ];
 
     public function getPosition()

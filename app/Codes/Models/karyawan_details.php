@@ -25,7 +25,8 @@ class karyawan_details extends Model
         'negara',
         'telephone_1',
         'telephone_2',
-
+        'tanggungan',
+        'status_kawin',
       
    ];
 

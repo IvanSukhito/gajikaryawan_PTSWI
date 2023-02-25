@@ -43,6 +43,7 @@ Route::group(['prefix' => env('ADMIN_URL'), 'middleware' => ['web']], function (
                 'App\Http\Controllers\Admin\SalaryController' => 'salary',
                 'App\Http\Controllers\Admin\tunjanganBerkalaController' => 'tunj-berkala',
                 'App\Http\Controllers\Admin\ptkpController' => 'ptkp',
+                'App\Http\Controllers\Admin\bpjsController' => 'bpjs',
             ];
 
             foreach ($listRouter as $controller => $linkName) {

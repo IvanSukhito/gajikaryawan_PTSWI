@@ -312,6 +312,14 @@ if ( ! function_exists('listAllMenu')) {
                         'type' => 1
                     ],
                     [
+                        'name' => __('general.bpjs'),
+                        'title' => __('general.bpjs'),
+                        'active' => ['admin.bpjs.'],
+                        'route' => 'admin.bpjs.index',
+                        'key' => 'bpjs',
+                        'type' => 1
+                    ],
+                    [
                         'name' => __('general.tunj-berkala'),
                         'title' => __('general.tunj-berkala'),
                         'active' => ['admin.tunj-berkala.'],
@@ -471,6 +479,7 @@ if ( ! function_exists('listAvailablePermission'))
                      'position',
                      'karyawan',
                      'ptkp',
+                     'bpjs',
                      'tunj-berkala',
                      'karyawan_karir',
                  ] as $keyPermission) {

@@ -34,6 +34,7 @@ return new class extends Migration
             $table->string('no_rekening')->nullable();
             $table->string('fas_kesehatan')->nullable();
             $table->tinyInteger('status')->default(1);
+            $table->tinyInteger('karir')->default(0);
             $table->timestamps();
                 // $table->tinyInteger('gender')->default(1);
             // $table->string('npwp');

@@ -29,6 +29,8 @@ return new class extends Migration
             $table->string('negara')->nullable();
             $table->string('telephone_1')->nullable();
             $table->string('telephone_2')->nullable();  
+            $table->string('status_kawin')->nullable();
+            $table->integer('tanggungan')->default(0);  
             $table->timestamps();
         });
     }
