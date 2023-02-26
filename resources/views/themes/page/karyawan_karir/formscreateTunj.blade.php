@@ -67,6 +67,7 @@ else {
                 @endif
 
             <div class="card-body">
+        
                     <div class="form-group">
                         <label for="karyawan">{{ __('general.karyawan') }} *</label>
                         {{ Form::select('karyawans_id', $datakaryawan, old('karyawan'), ['id' => 'karyawan', 'class' => 'form-control  input-lg select2']) }}
@@ -85,8 +86,16 @@ else {
             
 
                 <div class="card-body overflow">
+                @if(count($datakaryawan) != 1)
                 <div id="formTunjangan"></div>
-                             
+                @endif         
+                @if(count($datakaryawan) == 1)
+                <div class="alert alert-warning alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h5><i class="icon fa fa-exclamation-triangle"></i> Alert!</h5>
+                Seluruh Karyawan, Telah memiliki tunjangan !
+                </div>
+                @endif     
                 </div>
 
                 <!-- /.card-body -->
