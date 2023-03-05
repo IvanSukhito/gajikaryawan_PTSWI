@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Codes\Logic\_CrudController;
 use App\Codes\Models\karyawan;
 use App\Codes\Models\karyawan_details;
-use App\Codes\Models\position;
+
 use App\Codes\Models\Admin;
 use App\Codes\Logic\ExampleLogic;
 use App\Codes\Models\historyAbsen;
@@ -37,14 +37,7 @@ class KaryawanController extends _CrudController
                 'lang' => 'general.status',
                 'type' => 'select2'
             ],
-            'position_id' => [
-                'validate' => [
-                    'create' => 'required',
-                    'edit' => 'required'
-                ],
-                'lang' => 'general.position',
-                'type' => 'select2'
-            ],
+        
             'nama' => [
                 'validate' => [
                     'create' => 'required',
@@ -233,14 +226,10 @@ class KaryawanController extends _CrudController
         );
       
        
-        $position = [0 => 'Lainnya'];
-        foreach(position::pluck('name', 'id')->toArray() as $key => $val){
-            $position[$key] = $val;
-        }
-
+    
         $this->data['listSet']['status'] = get_list_active_inactive();
         $this->data['listSet']['jenis_kelamin'] = get_list_gender();
-        $this->data['listSet']['position_id'] = $position;
+      
         $this->listView['show'] = env('ADMIN_TEMPLATE').'.page.karyawan.forms';
         $this->listView['index'] = env('ADMIN_TEMPLATE').'.page.karyawan.list';
         $this->listView['import'] = env('ADMIN_TEMPLATE').'.page.karyawan.import';
@@ -475,7 +464,7 @@ class KaryawanController extends _CrudController
                                
                                 
                                 $saveData = [
-                                    'position_id' => 0,
+                             
                                     'company' => $company,
                                     'nama' => $nama,
                                     'nik' => $getNik,

@@ -4,6 +4,8 @@ namespace App\Codes\Logic;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use App\Codes\Models\ptkp;
+use App\Codes\Models\tunjberkala;
+use DateTime;
 class sistemLogic
 {
     public function __construct()
@@ -18,9 +20,7 @@ class sistemLogic
         $getPTKP[$val['id']] = ['code' => $val['code'],
                             'amount' => $val['amount']];
     }
-    // dd($ptkp['code']);
-    // dd($ptkp[7]['amount']);
-    //dd($jumlah_tanggungan);
+
     $result = '';
     //logicnya masukin statusnya kalau sesuai keluarin kode_ptkpnya sama amountnya
    if($status_kawin == 'tidak kawin' && $jumlah_tanggungan == 0){
@@ -59,6 +59,33 @@ class sistemLogic
    }
 
   
+   public function rendertunjanganberkala($getTglMasuk){
+
+     $getTjBerkala = [];
+     foreach(tunjberkala::get(['id','code','amount'])->toArray() as $key => $val){
+         $getTjBerkala[$val['id']] = ['code' => $val['code'],
+                             'amount' => $val['amount']];
+     }
+
+     $tglMasuk =  new DateTime($getTglMasuk);
+     $today = new DateTime();
+
+     $lamaKerja = $tglMasuk->diff($today)->y;
+
+        $hasil = 0;
+          foreach($getTjBerkala as $TunjBerkala){
+               if($lamaKerja == $TunjBerkala['code']){
+                    $amount = $TunjBerkala['amount'];
+               }
+          }
+         
+     $hasil = $amount;
+
+     return $hasil;
+          
+  
+      
+   }
    
 
 }

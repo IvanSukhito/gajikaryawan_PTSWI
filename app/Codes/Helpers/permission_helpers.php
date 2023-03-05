@@ -254,15 +254,15 @@ if ( ! function_exists('listAllMenu')) {
         return [
 
             //position
-            [
-                'name' => __('general.position'),
-                'icon' => '<i class="nav-icon fa fa-book"></i>',
-                'title' => __('general.position'),
-                'active' => ['admin.position.'],
-                'route' => 'admin.position.index',
-                'key' => 'position',
-                'type' => 1,
-            ],
+            // [
+            //     'name' => __('general.position'),
+            //     'icon' => '<i class="nav-icon fa fa-book"></i>',
+            //     'title' => __('general.position'),
+            //     'active' => ['admin.position.'],
+            //     'route' => 'admin.position.index',
+            //     'key' => 'position',
+            //     'type' => 1,
+            // ],
             [
                 'name' => __('general.karyawan'),
                 'icon' => '<i class="nav-icon fa fa-id-badge"></i>',
@@ -279,6 +279,15 @@ if ( ! function_exists('listAllMenu')) {
                 'active' => ['admin.karyawan_karir.'],
                 'route' => 'admin.karyawan_karir.index',
                 'key' => 'karyawan_karir',
+                'type' => 1,
+            ],
+            [
+                'name' => __('general.karyawan_gaji'),
+                'icon' => '<i class="nav-icon fa fa-credit-card-alt"></i>',
+                'title' => __('general.karyawan_gaji'),
+                'active' => ['admin.karyawan_gaji.'],
+                'route' => 'admin.karyawan_gaji.index',
+                'key' => 'karyawan_gaji',
                 'type' => 1,
             ],
        
@@ -476,12 +485,12 @@ if ( ! function_exists('listAvailablePermission'))
         foreach ([
                      'admin',
                      'role',
-                     'position',
                      'karyawan',
                      'ptkp',
                      'bpjs',
                      'tunj-berkala',
                      'karyawan_karir',
+                     'karyawan_gaji',
                  ] as $keyPermission) {
             $listPermission[$keyPermission] = [
                 'list' => [

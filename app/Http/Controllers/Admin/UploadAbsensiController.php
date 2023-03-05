@@ -137,7 +137,7 @@ class UploadAbsensiController extends _CrudController
                                 $getCountDed1 = $spreadsheet->getCell("AX". $key)->getCalculatedValue();
                                 $getCountDed2 = $spreadsheet->getCell("AY". $key)->getCalculatedValue();
                                
-                                $getFullAtt = $spreadsheet->getCell("AW". $key)->getCalculatedValue();
+                                $getWorkAtt = $spreadsheet->getCell("AW". $key)->getCalculatedValue();
                                 $getBonus = substr($spreadsheet->getCell("BD". $key)->getCalculatedValue(), -1);
 
                                 // $highestRow = $spreadsheet->getRowIterator(); // e.g 'F'
@@ -219,8 +219,8 @@ class UploadAbsensiController extends _CrudController
                                             'LC' => $getCountLC,
                                             'Deduction_1' => $getCountDed1,
                                             'Deduction_2'=> $getCountDed2,
-                                            'Working_days' => 26,
-                                            'Full_Att' => $getFullAtt,
+                                            'Working_days' => $getWorkAtt,
+                                            'Full_Att' => 26,
                                             'Bonus' => intval($getBonus),
                                             ];    
                                          
@@ -247,7 +247,7 @@ class UploadAbsensiController extends _CrudController
                                            
                                             $nilai = $spreadsheet->getCell($koloms2 . $key)->getOldCalculatedValue();           
 
-                                            $getTgl2 = $spreadsheet->getCell($koloms2 . 14)->getValue();
+                                            $getTgl2 = $spreadsheet->getCell($koloms2 . $keyAwal2)->getValue();
 
                                             $tanggal2 = $getYear.'-'.$getMonth.'-'.$getTgl2;
 

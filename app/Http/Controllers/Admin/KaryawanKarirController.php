@@ -9,6 +9,7 @@ use App\Codes\Models\karyawan_details;
 use App\Codes\Models\position;
 use App\Codes\Models\Admin;
 use App\Codes\Models\bpjs;
+use App\Codes\Models\absenPerMonth;
 use App\Codes\Models\salary;
 use App\Codes\Logic\sistemLogic;
 use App\Codes\Logic\ExampleLogic;
@@ -246,6 +247,10 @@ class KaryawanKarirController extends _CrudController
             'karir' => 1
         ]);
 
+        $absen = absenPerMonth::where('karyawan_id', $karyawanID)->update([
+            'karir' => 1
+        ]);
+
         $karyawans_details = karyawan_details::where('karyawans_id', $karyawanID)->update([
             'tanggungan' => $jumlah_tanggungan,
             'status_kawin' => $status_kawin,
@@ -380,7 +385,7 @@ class KaryawanKarirController extends _CrudController
         $searchPTKP = new sistemLogic();
         $ptkp = $searchPTKP->getPTKP($status_kawin, $jumlah_tanggungan);
 
-        $getData->karyawans_id = $id;
+        $getData->karyawans_id = $getData->karyawans_id;
         $getData->kode_basic_salary = $this->request->get('kode_basic_salary');
         $getData->kode_tunjangan = $this->request->get('kode_tunjangan');
         $getData->basic_salary = clear_money_format($this->request->get('basic_salary'));
@@ -407,12 +412,15 @@ class KaryawanKarirController extends _CrudController
         $getData->save();
         $id = $getData->id;
 
-        $karyawan = karyawan::where('id', $id)->update([
+        $karyawan = karyawan::where('id', $getData->karyawans_id)->update([
             'karir' => 1
         ]);
 
+        $absen = absenPerMonth::where('karyawan_id',  $getData->karyawans_id)->update([
+            'karir' => 1
+        ]);
 
-        $karyawans_details = karyawan_details::where('karyawans_id', $id)->update([
+        $karyawans_details = karyawan_details::where('karyawans_id', $getData->karyawans_id)->update([
             'tanggungan' => $jumlah_tanggungan,
             'status_kawin' => $status_kawin,
         ]);

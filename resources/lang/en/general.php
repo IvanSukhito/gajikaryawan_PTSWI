@@ -60,6 +60,10 @@ return [
     'score' => 'Nilai',
     'unit' => 'Satuan',
     //
+    'please_insert_attendance_first' => 'Mohon Tambahkan Absensi Dahulu',
+    //karyawangaji
+    'karyawan_gaji' => 'Gaji Karyawan',
+    //
     'add' => 'Add',
     'upload-absensi' => 'Upload Absensi',
     'upload-file' => 'Upload File',

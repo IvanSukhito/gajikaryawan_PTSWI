@@ -32,6 +32,7 @@ return new class extends Migration
             $table->tinyInteger('TL')->default(0);
             $table->tinyInteger('PC')->default(0);
             $table->tinyInteger('LC')->default(0);
+            $table->tinyInteger('karir')->default(0);
             $table->tinyInteger('Deduction_1')->default(0);
             $table->tinyInteger('Deduction_2')->default(0);
             $table->tinyInteger('Working_days')->default(0);

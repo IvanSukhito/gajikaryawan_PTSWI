@@ -13,9 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('karyawans', function (Blueprint $table) {
+        Schema::create('karyawan', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('position_id')->default(0);
             $table->string("company");
             $table->string('nama');
             $table->string('nik');

@@ -28,6 +28,7 @@ class absenPerMonth extends Model
         'TL',
         'PC',
         'LC',
+        'karir',
         'Deduction_1',
         'Deduction_2',
         'Working_days',
