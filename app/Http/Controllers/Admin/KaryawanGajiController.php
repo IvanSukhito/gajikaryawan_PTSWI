@@ -153,11 +153,17 @@ class KaryawanGajiController extends _CrudController
         $getAbsensi = absenPerMonth::where('Month',$getMonth)->where('Year', $getYear)->get();
         //dd(count($getAbsensi));
         //dd(count($getAbsensi));
+       // dd(count($getAbsensi->where('karir',2)));
         if(count($getAbsensi) == 0){
             session()->flash('message', __('general.please_insert_attendance_first'));
             session()->flash('message_alert', 5);
             return redirect()->route($this->rootRoute.'.' . $this->route . '.index');
-        }else{
+        }else if(count($getAbsensi->where('karir',2)) >= 1){
+            session()->flash('message', __('general.salary_has_been_entered'));
+            session()->flash('message_alert', 5);
+            return redirect()->route($this->rootRoute.'.' . $this->route . '.index');
+        }
+        else{
             $getKaryawan = karyawan::where('karir', 1)->get();
             foreach($getKaryawan as $key => $val){
                 $getKaryawanKarir = karyawan_karir::where('karyawans_id', $val->id)->get();
@@ -204,6 +210,7 @@ class KaryawanGajiController extends _CrudController
             }
             $getAbsensi1 = $getAbsensi->where('karir',1);
 
+            //dd($getAbsensi1);
             $storeData = [];
             foreach($getAbsensi1 as $index => $listAbsensi){
                 //dd($GajiKaryawan);
@@ -243,13 +250,34 @@ class KaryawanGajiController extends _CrudController
                         $storeData['upah'] =  $storeData['basic_salary']+$storeData['tunj_berkala']+$storeData['tunj_jabatan']+$storeData['tunj_kerajinan']+$storeData['tunj_shift'] ;
                         $storeData['non_upah'] = $storeData['tunj_kehadiran']+$storeData['tunj_transport']+$storeData['tunj_bonus_produksi'];
                         $storeData['lembur'] = round(($sumGapokTunj/173)*$totalLembur);//dikali jumlah hadir lembur
+                        $storeData['total_gaji'] = round($storeData['upah']+$storeData['non_upah']+$storeData['lembur']);
+                        //thr
+                      
+                        //bonus thn , rumus total gaji setahun = totgaji*12+thr+bonus
+                        $storeData['total_gaji_setahun'] = round($storeData['total_gaji']*12+0+0);
+                        $storeData['potongan_bijab'] = round($storeData['total_gaji_setahun']*0.05) > 6000000 ? 6000000 : round($storeData['total_gaji_setahun']*0.05);
+                        $storeData['potongan_jp'] =  round($storeData['total_gaji_setahun']*0.01) > 1089312 ?  1089312 : round($storeData['total_gaji_setahun']*0.01);
+                        $storeData['potongan_jht'] =  round($storeData['total_gaji_setahun']*0.02) > 2400000 ? 2400000 : round($storeData['total_gaji_setahun']*0.02);
+                        $storeData['total_pkp'] = $storeData['total_gaji_setahun']-$storeData['potongan_bijab']-$storeData['potongan_jp']-$storeData['potongan_jht'];
+                        $storeData['ptkp'] = $listGajiKaryawan['ptkp'];
+                        $netPkp = $storeData['total_pkp']-$storeData['ptkp'];
+                        $storeData['net_pkp'] = round($netPkp) > 0 ? round($netPkp) : 0;
+                        $pph21 = new sistemLogic();
+                        $storeData['pph_21'] = round($pph21->render_pph21($storeData['net_pkp']));
                     }
                   
+
                   
                 }
+             
                     //dd($storeData);
                 $storeData = karyawan_gaji::create($storeData);
+                $listAbsensi->update(['karir' => 2]);
+               
             }
+
+         
+
 
         }
     

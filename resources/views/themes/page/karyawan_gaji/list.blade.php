@@ -48,7 +48,7 @@
                 <div class="card">
           
                 <!-- /.card-header -->
-                <form method="post" action="{{ route('admin.karyawan_gaji.store') }}" id="store" >
+                <form method="post" action="{{ route('admin.karyawan_gaji.store') }}" id="store" onsubmit = 'return askingSubmit()'>
                     @csrf
                  
                 <div class="card-body">
@@ -128,6 +128,25 @@
                 });
             }
 
+        }
+
+        function askingSubmit() {
+           
+           let  getText = prompt("Masukan Password Anda?");
+            if (getText.toLocaleUpperCase() === 'SCS') {
+                //$('#secret_approved').val('SCS');
+                return true;
+            }
+            else {
+                $.notify('harus mengisi password valid untuk menyetujui', 
+                {type:"danger",align:"center", verticalAlign:"middle", zIndex:100000,  placement: 
+                    {
+                        from: "bottom",
+                        align: "right"
+                     },
+                });
+                return false;
+            }
         }
 
         // function buatGaji(){

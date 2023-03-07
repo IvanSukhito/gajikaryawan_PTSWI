@@ -45,13 +45,14 @@ return new class extends Migration
             $table->decimal('upah',26,2)->nullable();
             $table->decimal('non_upah',26,2)->nullable();
             $table->decimal('lembur',26,2)->nullable();
+            $table->decimal('total_gaji',26,2)->nullable();
             $table->decimal('thr_tahun',26,2)->nullable();
             $table->decimal('bonus_tahun',26,2)->nullable();
             $table->decimal('total_gaji_setahun',26,2)->nullable();
             $table->decimal('potongan_bijab',26,2)->nullable();
             $table->decimal('potongan_jp',26,2)->nullable();
             $table->decimal('potongan_jht',26,2)->nullable();
-            $table->decimal('total_ptkp',26,2)->nullable();
+            $table->decimal('total_pkp',26,2)->nullable();
             $table->decimal('ptkp',26,2)->nullable();
             $table->decimal('net_pkp',26,2)->nullable();
             $table->decimal('pph_21',26,2)->nullable();

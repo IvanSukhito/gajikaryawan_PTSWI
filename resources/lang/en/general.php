@@ -36,6 +36,7 @@ return [
     'absensi' => 'Absensi',
     'upload_absensi' => 'Upload Absensi',
     'example_upload_absensi' => 'Example Absensi',
+    'salary_has_been_entered' => 'Gaji Telah Diinputkan',
     'choose_month' => 'Choose Month',
     'Normal' => 'Normal',
     'Libur' => 'Libur',
