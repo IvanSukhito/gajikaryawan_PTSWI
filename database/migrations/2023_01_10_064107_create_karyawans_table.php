@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('karyawan', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('admin_id')->default(0);
             $table->string("company");
             $table->string('nama');
             $table->string('nik');

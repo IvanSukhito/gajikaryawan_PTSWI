@@ -217,6 +217,7 @@ class UploadAbsensiController extends _CrudController
                                             'TL' => $getCountTL,
                                             'PC' => $getCountPC,
                                             'LC' => $getCountLC,
+                                            'karir' => 1,
                                             'Deduction_1' => $getCountDed1,
                                             'Deduction_2'=> $getCountDed2,
                                             'Working_days' => $getWorkAtt,
@@ -236,8 +237,10 @@ class UploadAbsensiController extends _CrudController
                                 
                                 }
 
+                            
 
                                 $keyAwal2 = $keyAkhir+2;
+                                //dd($keyAwal2);
                                 $keyAkhir2 = karyawan::where('status', 1)->count()+$keyAwal2-1;
                                 $kolomAkhir2 = $getEndCols->generateDateToCellLembur($tgl_terakhir);
                                 if($key >= $keyAwal2 && $key <= $keyAkhir2){
@@ -247,7 +250,7 @@ class UploadAbsensiController extends _CrudController
                                            
                                             $nilai = $spreadsheet->getCell($koloms2 . $key)->getOldCalculatedValue();           
 
-                                            $getTgl2 = $spreadsheet->getCell($koloms2 . $keyAwal2)->getValue();
+                                            $getTgl2 = $spreadsheet->getCell($koloms2 . $keyAwal2+1)->getValue();
 
                                             $tanggal2 = $getYear.'-'.$getMonth.'-'.$getTgl2;
 

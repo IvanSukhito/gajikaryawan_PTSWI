@@ -207,15 +207,9 @@ class SalaryController extends _CrudController
 
                                
                                     
-                                    if($salary){
-
-                                        $salary->update($saveMasterSalary);
-                                        
-                                    }else{
-                                        
-                                        
+                                
                                         salary::create($saveMasterSalary);
-                                    }
+                                 
                                  
 
                                 }
@@ -239,7 +233,7 @@ class SalaryController extends _CrudController
         else {
             session()->flash('message', __('general.success_add_', ['field' => $this->data['thisLabel']]));
             session()->flash('message_alert', 2);
-            return redirect()->route($this->rootRoute.'.' . $this->route . '.create');
+            return redirect()->route($this->rootRoute.'.' . $this->route . '.index');
         }
     }
     

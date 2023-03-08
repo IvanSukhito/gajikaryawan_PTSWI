@@ -136,7 +136,6 @@ else {
     @include(env('ADMIN_TEMPLATE').'._component.generate_forms_script')
 
     <script>
-        
         let isiLoopingSalary = JSON.parse('{!! $listsalary !!}');
         let isiLoopingTunj = JSON.parse('{!! json_encode($listtunj) !!}');
         let isiLoopingBPJSPC = JSON.parse('{!! $listBPJSPC!!}');

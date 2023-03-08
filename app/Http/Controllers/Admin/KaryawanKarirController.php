@@ -162,12 +162,12 @@ class KaryawanKarirController extends _CrudController
         }
 
         $tunjJabatan = [];
-        foreach(salary::where('tunjangan_jabatan', '>', 0)->get(['id','tunjangan_jabatan','grade_series'])->toArray() as $key => $val){
+        foreach(salary::get(['id','tunjangan_jabatan','grade_series'])->toArray() as $key => $val){
             $tunjJabatan[$val['id']] = $val['grade_series'].' - '.  number_format($val['tunjangan_jabatan'], 0, ',', '.');
         }
    
         $listTunjJS = [];
-        foreach(salary::where('tunjangan_jabatan', '>', 0)->get(['id','tunjangan_jabatan'])->toArray() as $key => $val){
+        foreach(salary::get(['id','tunjangan_jabatan'])->toArray() as $key => $val){
             $listTunjJS[$val['id']] = $val['tunjangan_jabatan'];
         }
         $data['formsTitle'] = __('general.title_create', ['field' => $data['thisLabel']]);
@@ -213,6 +213,8 @@ class KaryawanKarirController extends _CrudController
         $status_kawin = strtolower($this->request->get('status_kawin'));
         $jumlah_tanggungan = $this->request->get('jumlah_tanggungan');
 
+        //dd($this->request->all());
+
         $searchPTKP = new sistemLogic();
         $ptkp = $searchPTKP->getPTKP($status_kawin, $jumlah_tanggungan);
         $karyawanID = $this->request->get('karyawans_id');
@@ -222,7 +224,7 @@ class KaryawanKarirController extends _CrudController
         $tunjangan->kode_basic_salary = $this->request->get('kode_basic_salary');
         $tunjangan->kode_tunjangan = $this->request->get('kode_tunjangan');
         $tunjangan->basic_salary = clear_money_format($this->request->get('basic_salary'));
-        $tunjangan->tunj_jabatan = clear_money_format($this->request->get('tunj_jabatan'));
+        $tunjangan->tunj_jabatan = clear_money_format($this->request->get('tunj_jabatan')) ?? 0;
         $tunjangan->tunj_kerajinan = clear_money_format($this->request->get('tunj_kerajinan'));
         $tunjangan->tunj_shift = clear_money_format($this->request->get('tunj_shift'));
         $tunjangan->tunj_kehadiran = clear_money_format($this->request->get('tunj_kehadiran'));
@@ -291,12 +293,12 @@ class KaryawanKarirController extends _CrudController
         }
 
         $tunjJabatan = [];
-        foreach(salary::where('tunjangan_jabatan', '>', 0)->get(['id','tunjangan_jabatan','grade_series'])->toArray() as $key => $val){
+        foreach(salary::get(['id','tunjangan_jabatan','grade_series'])->toArray() as $key => $val){
             $tunjJabatan[$val['id']] = $val['grade_series'].' - '.  number_format($val['tunjangan_jabatan'], 0, ',', '.');
         }
    
         $listTunjJS = [];
-        foreach(salary::where('tunjangan_jabatan', '>', 0)->get(['id','tunjangan_jabatan'])->toArray() as $key => $val){
+        foreach(salary::get(['id','tunjangan_jabatan'])->toArray() as $key => $val){
             $listTunjJS[$val['id']] = $val['tunjangan_jabatan'];
         }    
 
@@ -432,6 +434,45 @@ class KaryawanKarirController extends _CrudController
             session()->flash('message', __('general.success_edit_', ['field' => $this->data['thisLabel']]));
             session()->flash('message_alert', 2);
             return redirect()->route($this->rootRoute.'.' . $this->route . '.show', $id);
+        }
+    }
+
+    public function destroy($id)
+    {
+        $this->callPermission();
+
+        $getData = $this->crud->show($id);
+        if (!$getData) {
+            return redirect()->route($this->rootRoute.'.' . $this->route . '.index');
+        }
+
+        foreach ($this->passingData as $fieldName => $fieldValue) {
+            if (in_array($fieldValue['type'], ['image', 'video', 'file'])) {
+                $destinationPath = $fieldValue['path'];
+                if (strlen($getData->$fieldName) > 0 && is_file($destinationPath.$getData->$fieldName)) {
+                    unlink($destinationPath.$getData->$fieldName);
+                }
+            }
+        }
+
+        $this->crud->destroy($id);
+
+        absenPerMonth::where('karyawan_id',  $getData->karyawans_id)->update([
+            'karir' => 0
+        ]);
+
+        karyawan::where('id', $getData->karyawans_id)->update([
+            'karir' => 0
+        ]);
+
+
+        if($this->request->ajax()){
+            return response()->json(['result' => 1, 'message' => __('general.success_delete_', ['field' => $this->data['thisLabel']])]);
+        }
+        else {
+            session()->flash('message', __('general.success_delete_', ['field' => $this->data['thisLabel']]));
+            session()->flash('message_alert', 2);
+            return redirect()->route($this->rootRoute.'.' . $this->route . '.index');
         }
     }
 }

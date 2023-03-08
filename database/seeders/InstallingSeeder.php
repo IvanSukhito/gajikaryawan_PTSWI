@@ -24,7 +24,7 @@ class InstallingSeeder extends Seeder
         ]);
 
         DB::table('admin')->insertGetId([
-            'name' => 'admin',
+            'name' => 'PT SWI',
             'username' => 'admin',
             'password' => bcrypt('admin'),
             'role_id' => 1,

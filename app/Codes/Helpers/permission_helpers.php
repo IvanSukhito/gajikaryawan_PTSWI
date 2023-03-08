@@ -445,6 +445,10 @@ if ( ! function_exists('listAvailablePermission'))
                     'admin.'.$keyPermission.'.show'
                  
                 ],
+                'create' => [
+                    'admin.'.$keyPermission.'.create',
+                    'admin.'.$keyPermission.'.store'
+                ],
 
             ];
         }

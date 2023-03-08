@@ -36,15 +36,15 @@ class DatingLogic
     
     if($tgl_terakhir == '31'){
     
-        $endCol = 'BM';
+        $endCol = 'BN';
     
     }elseif($tgl_terakhir == '30'){
     
-        $endCol = 'BL';
+        $endCol = 'BM';
     
     }elseif($tgl_terakhir == '28'){
     
-        $endCol = 'BJ';
+        $endCol = 'BK';
     
     }
 

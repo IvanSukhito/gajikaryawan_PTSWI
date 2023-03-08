@@ -37,7 +37,23 @@ class KaryawanController extends _CrudController
                 'lang' => 'general.status',
                 'type' => 'select2'
             ],
-        
+            'jenis_kelamin' => [
+                'validate' => [
+                    'create' => 'required',
+                    'edit' => 'required'
+                ],
+                'list' => 0,
+                'type' => 'select2',
+                'lang' => 'general.gender',
+            ],
+            'admin_id' => [
+                'validate' => [
+                    'create' => 'required',
+                    'edit' => 'required'
+                ],
+                'lang' => 'general.company',
+                'type' => 'select2'
+            ],
             'nama' => [
                 'validate' => [
                     'create' => 'required',
@@ -52,6 +68,27 @@ class KaryawanController extends _CrudController
                 ],
                 'lang' => 'general.nik',
             ],
+            'kartu_no' => [
+                'validate' => [
+                    'create' => 'required',
+                    'edit' => 'required'
+                ],
+                'lang' => 'general.kartu_kerja',
+            ],
+            'dept' => [
+                'validate' => [
+                    'create' => 'required',
+                    'edit' => 'required'
+                ],
+                'lang' => 'general.dept',
+            ],
+            'no_ktp' => [
+                'validate' => [
+                    'create' => 'required',
+                    'edit' => 'required'
+                ],
+                'lang' => 'general.no_ktp',
+            ],
             'no_npwp' => [
                 'validate' => [
                     'create' => 'required',
@@ -60,13 +97,13 @@ class KaryawanController extends _CrudController
                 'list' => 0,
                 'lang' => 'general.no_npwp',
             ],
-            'no_ktp' => [
+            'no_kpj' => [
                 'validate' => [
                     'create' => 'required',
                     'edit' => 'required'
                 ],
                 'list' => 0,
-                'lang' => 'general.no_ktp',
+                'lang' => 'general.no_kpj',
             ],
             'tgl_mulai_kerja' => [
                 'validate' => [
@@ -75,15 +112,6 @@ class KaryawanController extends _CrudController
                 ],
                 'type' => 'datepicker',
                 'lang' => 'general.tgl_mulai',
-            ],
-            'tgl_keluar_kerja' => [
-                'validate' => [
-                    'create' => 'required',
-                    'edit' => 'required'
-                ],
-                'type' => 'datepicker',
-                'list' => 0,
-                'lang' => 'general.tgl_keluar',
             ],
             'tgl_lahir' => [
                 'validate' => [
@@ -94,15 +122,7 @@ class KaryawanController extends _CrudController
                 'type' => 'datepicker',
                 'lang' => 'general.dob',
             ],
-            'jenis_kelamin' => [
-                'validate' => [
-                    'create' => 'required',
-                    'edit' => 'required'
-                ],
-                'list' => 0,
-                'type' => 'select2',
-                'lang' => 'general.gender',
-            ],
+          
           
             'keterangan' => [
                 'create' => 0,
@@ -230,6 +250,13 @@ class KaryawanController extends _CrudController
         $this->data['listSet']['status'] = get_list_active_inactive();
         $this->data['listSet']['jenis_kelamin'] = get_list_gender();
       
+        foreach(admin::pluck('name', 'id')->toArray() as $key => $val){
+            $admin[$key] = $val;
+        }
+
+        //dd($admin[1]);
+        $this->data['listSet']['admin_id'] = $admin;
+      
         $this->listView['show'] = env('ADMIN_TEMPLATE').'.page.karyawan.forms';
         $this->listView['index'] = env('ADMIN_TEMPLATE').'.page.karyawan.list';
         $this->listView['import'] = env('ADMIN_TEMPLATE').'.page.karyawan.import';
@@ -254,74 +281,74 @@ class KaryawanController extends _CrudController
         
 
         $riwayatAbsenJan = historyAbsen::selectRaw('history_absen.*')
-                            ->leftjoin('karyawans', 'karyawans.id','=','history_absen.karyawan_id')
+                            ->leftjoin('karyawan', 'karyawan.id','=','history_absen.karyawan_id')
                             ->where('history_absen.karyawan_id', $id)
                             ->whereMonth('tanggal', '01')
                             ->get();
 
         $riwayatAbsenFeb = historyAbsen::selectRaw('history_absen.*')
-                            ->leftjoin('karyawans', 'karyawans.id','=','history_absen.karyawan_id')
+                            ->leftjoin('karyawan', 'karyawan.id','=','history_absen.karyawan_id')
                             ->where('history_absen.karyawan_id', $id)
                             ->whereMonth('tanggal','02')
                             ->get();
 
         $riwayatAbsenMar = historyAbsen::selectRaw('history_absen.*')
-                            ->leftjoin('karyawans', 'karyawans.id','=','history_absen.karyawan_id')
+                            ->leftjoin('karyawan', 'karyawan.id','=','history_absen.karyawan_id')
                             ->where('history_absen.karyawan_id', $id)
                             ->whereMonth('tanggal', '03')
                             ->get();
 
         $riwayatAbsenApr = historyAbsen::selectRaw('history_absen.*')
-                            ->leftjoin('karyawans', 'karyawans.id','=','history_absen.karyawan_id')
+                            ->leftjoin('karyawan', 'karyawan.id','=','history_absen.karyawan_id')
                             ->where('history_absen.karyawan_id', $id)
             
                             ->whereMonth('tanggal', '04')
                             ->get();
 
         $riwayatAbsenMei = historyAbsen::selectRaw('history_absen.*')
-                            ->leftjoin('karyawans', 'karyawans.id','=','history_absen.karyawan_id')
+                            ->leftjoin('karyawan', 'karyawan.id','=','history_absen.karyawan_id')
                             ->where('history_absen.karyawan_id', $id)
                             ->whereMonth('tanggal', '05')
                             ->get();
 
         $riwayatAbsenJun = historyAbsen::selectRaw('history_absen.*')
-                            ->leftjoin('karyawans', 'karyawans.id','=','history_absen.karyawan_id')
+                            ->leftjoin('karyawan', 'karyawan.id','=','history_absen.karyawan_id')
                             ->where('history_absen.karyawan_id', $id)
                             ->whereMonth('tanggal', '06')
                             ->get();
 
         $riwayatAbsenJul = historyAbsen::selectRaw('history_absen.*')
-                            ->leftjoin('karyawans', 'karyawans.id','=','history_absen.karyawan_id')
+                            ->leftjoin('karyawan', 'karyawan.id','=','history_absen.karyawan_id')
                             ->where('history_absen.karyawan_id', $id)
                             ->whereMonth('tanggal', '07')
                             ->get(); 
 
         $riwayatAbsenAgu = historyAbsen::selectRaw('history_absen.*')
-                            ->leftjoin('karyawans', 'karyawans.id','=','history_absen.karyawan_id')
+                            ->leftjoin('karyawan', 'karyawan.id','=','history_absen.karyawan_id')
                             ->where('history_absen.karyawan_id', $id)
                             ->whereMonth('tanggal', '08')
                             ->get();      
                    
         $riwayatAbsenSep = historyAbsen::selectRaw('history_absen.*')
-                            ->leftjoin('karyawans', 'karyawans.id','=','history_absen.karyawan_id')
+                            ->leftjoin('karyawan', 'karyawan.id','=','history_absen.karyawan_id')
                             ->where('history_absen.karyawan_id', $id)
                             ->whereMonth('tanggal', '09')
                             ->get();
 
         $riwayatAbsenOkt = historyAbsen::selectRaw('history_absen.*')
-                            ->leftjoin('karyawans', 'karyawans.id','=','history_absen.karyawan_id')
+                            ->leftjoin('karyawan', 'karyawan.id','=','history_absen.karyawan_id')
                             ->where('history_absen.karyawan_id', $id)
                             ->whereMonth('tanggal', '10')
                             ->get(); 
         
         $riwayatAbsenNov = historyAbsen::selectRaw('history_absen.*')
-                            ->leftjoin('karyawans', 'karyawans.id','=','history_absen.karyawan_id')
+                            ->leftjoin('karyawan', 'karyawan.id','=','history_absen.karyawan_id')
                             ->where('history_absen.karyawan_id', $id)
                             ->whereMonth('tanggal', '11')
                             ->get();  
                             
         $riwayatAbsenDec = historyAbsen::selectRaw('history_absen.*')
-                            ->leftjoin('karyawans', 'karyawans.id','=','history_absen.karyawan_id')
+                            ->leftjoin('karyawan', 'karyawan.id','=','history_absen.karyawan_id')
                             ->where('history_absen.karyawan_id', $id)
                             ->whereMonth('tanggal', '12')
                             ->get();     
@@ -448,6 +475,8 @@ class KaryawanController extends _CrudController
                                 $getFasKes = $spreadsheet->getCell("AX". $key)->getValue();
                          
                                 
+
+                                $perusahaanId = admin::where('name', 'LIKE', strip_tags($company))->first();
                                 $tglMulai = '';
                                 if(strlen($getTglMulaiKerja) > 0){
                                     $tglMulai = $getTglMulaiKerja;
@@ -465,6 +494,7 @@ class KaryawanController extends _CrudController
                                 
                                 $saveData = [
                              
+                                    'admin_id' => $perusahaanId->id,
                                     'company' => $company,
                                     'nama' => $nama,
                                     'nik' => $getNik,

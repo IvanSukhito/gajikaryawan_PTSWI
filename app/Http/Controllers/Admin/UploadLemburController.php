@@ -10,6 +10,7 @@ use App\Codes\Models\historyLembur;
 use App\Codes\Models\absenPerMonth;
 use App\Codes\Logic\ExampleLogic;
 use Yajra\DataTables\DataTables;
+use App\Codes\Logic\DatingLogic;
 
 use Illuminate\Http\Request;
 
@@ -90,7 +91,7 @@ class UploadLemburController extends _CrudController
         $getDate = $this->request->get('month');
         $getYear = substr($getDate, -4);
         $getMonth = date('m', strtotime(substr($getDate, 0, -5)));
-
+        $tgl_terakhir = date('t', strtotime($getDate));
         if($getFile) {
 //            $destinationPath = 'synapsaapps/product/example_import';
 //
@@ -116,8 +117,10 @@ class UploadLemburController extends _CrudController
                             
                               
                                 //dd($karyawan);
+                                $getEndCols = new DatingLogic();
                                 $karyawan = karyawan::where('nik', strval($getNik))->first();
-                                $kolomAkhir = 'BL';
+                              
+                                $kolomAkhir = $getEndCols->generateDateToCell($tgl_terakhir);
                                 $keyAwal = 15;
                                 $keyAkhir = karyawan::where('status', 1)->count()+$keyAwal-1;
                                 if($key >= $keyAwal && $key <= $keyAkhir){

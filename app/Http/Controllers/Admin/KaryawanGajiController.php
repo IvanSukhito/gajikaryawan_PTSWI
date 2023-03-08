@@ -137,7 +137,7 @@ class KaryawanGajiController extends _CrudController
 
         //dd($karyawan[1]);
         $this->data['listSet']['karyawans_id'] = $karyawan;
-        // $this->listView['show'] = env('ADMIN_TEMPLATE').'.page.karyawan_karir.formshowTunj';
+        $this->listView['show'] = env('ADMIN_TEMPLATE').'.page.karyawan_gaji.formsDetail';
         // $this->listView['edit'] = env('ADMIN_TEMPLATE').'.page.karyawan_karir.formshowTunj';
         // $this->listView['create'] = env('ADMIN_TEMPLATE').'.page.karyawan_karir.formscreateTunj';
         $this->listView['index'] = env('ADMIN_TEMPLATE').'.page.karyawan_gaji.list';
@@ -164,7 +164,9 @@ class KaryawanGajiController extends _CrudController
             return redirect()->route($this->rootRoute.'.' . $this->route . '.index');
         }
         else{
-            $getKaryawan = karyawan::where('karir', 1)->get();
+            //dd($this->request->all());
+            $getKaryawan = karyawan::where('karir', 1)->where('status',1)->get();
+            //dd($getKaryawan);
             foreach($getKaryawan as $key => $val){
                 $getKaryawanKarir = karyawan_karir::where('karyawans_id', $val->id)->get();
                 //tunj berkala
@@ -270,7 +272,7 @@ class KaryawanGajiController extends _CrudController
                   
                 }
              
-                    //dd($storeData);
+                //dd($storeData);
                 $storeData = karyawan_gaji::create($storeData);
                 $listAbsensi->update(['karir' => 2]);
                
@@ -291,6 +293,35 @@ class KaryawanGajiController extends _CrudController
         }
 
     }
+
+    public function show($id)
+    {
+        $this->callPermission();
+
+        $getData = $this->crud->show($id);
+        if (!$getData) {
+            return redirect()->route($this->rootRoute.'.' . $this->route . '.index');
+        }
+
+        $data = $this->data;
+        $getYear = substr($getData->periode_tanggal, -4);
+        $getMonth = date('m', strtotime(substr($getData->periode_tanggal, 0, -5)));
+
+        //dd($getData);
+
+        $absensi = historyAbsen::where('karyawan_id', $getData->karyawans_id)->whereMonth('tanggal', $getMonth)->whereYear('tanggal',$getYear)->get();
+        $lembur = historyLembur::where('karyawan_id', $getData->karyawans_id)->whereMonth('tanggal', $getMonth)->whereYear('tanggal',$getYear)->get();
+        //dd($lembur);
+        $data['viewType'] = 'show';
+        $data['formsTitle'] = __('general.title_show', ['field' => $data['thisLabel']]);
+        $data['passing'] = collectPassingData($this->passingData, $data['viewType']);
+        $data['data'] = $getData;
+        $data['listAbsensi'] = $absensi;
+        $data['listLembur'] = $lembur;
+      
+        return view($this->listView[$data['viewType']], $data);
+    }
+
 
    
 }
