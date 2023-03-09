@@ -96,7 +96,7 @@
                     <div class="card">
 
                             <!-- /.card-header -->
-                            <form method="post" action="{{ route('admin.karyawan_gaji.store') }}" id="store" onsubmit = 'return askingSubmit()'>
+                            <form method="post" action="{{ route('admin.karyawan_gaji.storeManual') }}" id="store" onsubmit = 'return askingSubmit()'>
                                 @csrf
 
                             <div class="card-body">
@@ -113,11 +113,9 @@
                             </div>
                             <div class="col-5">
                                 <div class="form-group">
-                                        <select name="month" id="period-month" class="form-control select2" style="width: 100%;" data-select2-id="month" tabindex="-1" aria-hidden="true">
-                                            <option selected="selected" data-select2-id="'{{date('F Y', strtotime(date("Y-m-d")))}}" value="{{date('F Y', strtotime(date("Y-m-d")))}}">{{date('F Y', strtotime(date("Y-m-d")))}}</option>
-                                        <option data-select2-id="{{date('F Y', strtotime("-1 month", strtotime(date("Y-m-d"))))}}" value="{{date('F Y', strtotime("-1 month", strtotime(date("Y-m-d"))))}}">{{date('F Y', strtotime("-1 month", strtotime(date("Y-m-d"))))}}</option>
-                                        </select>
+                                    {{ Form::select('karyawans_id', $datakaryawan, old('karyawan'), ['id' => 'karyawan', 'class' => 'form-control input-lg select2 ']) }}
                                 </div>
+                   
                             </div>
                             <div class="col-2">
                                     <button type="submit" class="btn btn-block btn-outline-primary " id="buat-gaji"><i class="nav-icon fa fa-send"></i></button>
@@ -144,6 +142,7 @@
     @parent
     <script type="text/javascript">
         'use strict';
+        $('.select2').select2();
         let table;
         table = jQuery('#data1').DataTable({
             serverSide: true,

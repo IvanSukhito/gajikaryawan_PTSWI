@@ -64,6 +64,9 @@ Route::group(['prefix' => env('ADMIN_URL'), 'middleware' => ['web']], function (
                         $router->get($linkName . '/import', $controller.'@import')->name('admin.' . $linkName . '.import');
                         $router->post($linkName . '/storeimport', $controller.'@storeimport')->name('admin.' . $linkName . '.storeimport');
                         break;
+                    case 'karyawan_gaji':
+                        $router->post($linkName . '/storeManual', $controller.'@storeManual')->name('admin.' . $linkName . '.storeManual');
+                        break;
 
                 }    
                 $router->get($linkName . '/data', $controller . '@dataTable')->name('admin.' . $linkName . '.dataTable');

@@ -525,6 +525,7 @@ if ( ! function_exists('listAvailablePermission'))
         $listPermission['karyawan']['create'][] = 'admin.karyawan.storeimport';
         $listPermission['salary']['create'][] = 'admin.salary.import';
         $listPermission['salary']['create'][] = 'admin.salary.storeimport';
+        $listPermission['karyawan_gaji']['create'][] = 'admin.karyawan_gaji.storeManual';
 
         return $listPermission;
     }

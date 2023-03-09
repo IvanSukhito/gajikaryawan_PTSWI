@@ -134,7 +134,6 @@ class KaryawanGajiController extends _CrudController
         foreach(karyawan::pluck('nama', 'id')->toArray() as $key => $val){
             $karyawan[$key] = $val;
         }
-
         //dd($karyawan[1]);
         $this->data['listSet']['karyawans_id'] = $karyawan;
         $this->listView['show'] = env('ADMIN_TEMPLATE').'.page.karyawan_gaji.formsDetail';
@@ -143,6 +142,22 @@ class KaryawanGajiController extends _CrudController
         $this->listView['index'] = env('ADMIN_TEMPLATE').'.page.karyawan_gaji.list';
        
     }
+    public function index()
+    {
+        $this->callPermission();
+
+        $data = $this->data;
+
+      
+        foreach(karyawan::pluck('nama', 'id')->toArray() as $key => $val){
+            $karyawan[$key] = $val;
+        }
+
+        $data['passing'] = collectPassingData($this->passingData);
+        $data['datakaryawan'] = $karyawan;
+        return view($this->listView['index'], $data);
+    }
+
 
     public function store(){
         
@@ -322,6 +337,29 @@ class KaryawanGajiController extends _CrudController
         return view($this->listView[$data['viewType']], $data);
     }
 
+    //store Manual
+    public function storeManual(){
+        //dd($this->request->all());
+        $getDate = $this->request->get('month');
+        $getId = $this->request->get('karyawans_id');
+        $getYear = substr($getDate, -4);
+        $getMonth = date('m', strtotime(substr($getDate, 0, -5)));
+
+        $getAbsensi = absenPerMonth::where('Month',$getMonth)->where('Year', $getYear)->where('karyawan_id', $getId)->first();
+        //dd($getAbsensi);
+        if(!$getAbsensi){
+            session()->flash('message', __('general.please_insert_attendance_first'));
+            session()->flash('message_alert', 5);
+            return redirect()->route($this->rootRoute.'.' . $this->route . '.index');
+        }else if($getAbsensi->karir == 2){
+            session()->flash('message', __('general.salary_has_been_entered'));
+            session()->flash('message_alert', 5);
+            return redirect()->route($this->rootRoute.'.' . $this->route . '.index');
+        }
+        else{
+            dd('isi');
+        }
+    }
 
    
 }
